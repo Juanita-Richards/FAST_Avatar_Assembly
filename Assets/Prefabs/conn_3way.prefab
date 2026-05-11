@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3643930048480928714}
   - component: {fileID: 1546177624232105728}
   - component: {fileID: 6069612043565969482}
-  - component: {fileID: 1544590332116285613}
   - component: {fileID: 2330488787988584956}
   - component: {fileID: 4386450601082024106}
   - component: {fileID: 8645595804905377094}
@@ -23,7 +22,7 @@ GameObject:
   - component: {fileID: 8328793526975581670}
   m_Layer: 6
   m_Name: conn_3way
-  m_TagString: Untagged
+  m_TagString: Connector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,74 +141,6 @@ MonoBehaviour:
     owningPiece: {fileID: 6069612043565969482}
     attachTransform: {fileID: 8445824447467476792}
     _mAlignSymmetry: 2
-    _mCurrentAttachState: 0
-    _mOtherBuildingPiece: {fileID: 0}
-    _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: 0, y: 0, z: 0, w: 0}
-    configurableJoint: {fileID: 0}
-  symmetries:
-  - eulerRotOffCanonical: {x: 0, y: 0, z: 0}
-    attachPointMapping:
-    - attachPointIndex: 0
-      eulerOffset: {x: 0, y: 0, z: 0}
-    - attachPointIndex: 1
-      eulerOffset: {x: 0, y: 0, z: 0}
-    - attachPointIndex: 2
-      eulerOffset: {x: 0, y: 0, z: 0}
-  - eulerRotOffCanonical: {x: -90, y: 0, z: -90}
-    attachPointMapping:
-    - attachPointIndex: 1
-      eulerOffset: {x: 0, y: 0, z: 0}
-    - attachPointIndex: 2
-      eulerOffset: {x: 0, y: 0, z: 0}
-    - attachPointIndex: 0
-      eulerOffset: {x: 0, y: 0, z: 0}
-  - eulerRotOffCanonical: {x: 0, y: 90, z: 90}
-    attachPointMapping:
-    - attachPointIndex: 2
-      eulerOffset: {x: 0, y: 0, z: 0}
-    - attachPointIndex: 0
-      eulerOffset: {x: 0, y: 0, z: 0}
-    - attachPointIndex: 1
-      eulerOffset: {x: 0, y: 0, z: 0}
---- !u!114 &1544590332116285613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041980967166457557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 812f951558d03514ab0c71d1c062fa29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mBuildingPieceID: -1
-  _pieceType: 3
-  _pieceColor: 0
-  _attachPoints:
-  - name: 
-    owningPiece: {fileID: 6069612043565969482}
-    attachTransform: {fileID: 1585775327128684177}
-    _mAlignSymmetry: 0
-    _mCurrentAttachState: 0
-    _mOtherBuildingPiece: {fileID: 0}
-    _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: 0, y: 0, z: 0, w: 0}
-    configurableJoint: {fileID: 0}
-  - name: 
-    owningPiece: {fileID: 6069612043565969482}
-    attachTransform: {fileID: 5374406945044711784}
-    _mAlignSymmetry: 0
-    _mCurrentAttachState: 0
-    _mOtherBuildingPiece: {fileID: 0}
-    _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: 0, y: 0, z: 0, w: 0}
-    configurableJoint: {fileID: 0}
-  - name: 
-    owningPiece: {fileID: 6069612043565969482}
-    attachTransform: {fileID: 8445824447467476792}
-    _mAlignSymmetry: 0
     _mCurrentAttachState: 0
     _mOtherBuildingPiece: {fileID: 0}
     _mOtherBuildingPieceAttachPointIndex: 0
@@ -620,7 +551,7 @@ MonoBehaviour:
   _maxInteractors: -1
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
-  _pointableElement: {fileID: 1675102695886059841}
+  _pointableElement: {fileID: 0}
   _rigidbody: {fileID: 2330488787988584956}
   _grabSource: {fileID: 0}
   _useClosestPointAsGrabSource: 0
