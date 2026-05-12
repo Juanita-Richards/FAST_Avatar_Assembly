@@ -6947,13 +6947,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8990707949211923358, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
+    - {fileID: -5552609214231726091, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2229968316047873090, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
-      insertIndex: 7
+      insertIndex: 5
       addedObject: {fileID: 1799462042}
     - targetCorrespondingSourceObject: {fileID: 2229968316047873090, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
-      insertIndex: 8
+      insertIndex: 6
       addedObject: {fileID: 1991020093}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
@@ -11186,6 +11188,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1456821457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5797791815741475479, guid: 12d3c9840c2eaf24eb52e6c26be8fdf9, type: 3}
+  m_PrefabInstance: {fileID: 6623470335851941384}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a7676b01585ce43908639a27765dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1456911076 stripped
@@ -17365,9 +17378,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1565459309965905656, guid: b751a5dd107494142b64981ad41f8bb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5993765073226758288}
-    - targetCorrespondingSourceObject: {fileID: 1565459309965905656, guid: b751a5dd107494142b64981ad41f8bb5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5993765073226758298}
   m_SourcePrefab: {fileID: 100100000, guid: b751a5dd107494142b64981ad41f8bb5, type: 3}
 --- !u!4 &572872250838518853 stripped
 Transform:
@@ -17734,6 +17744,18 @@ PrefabInstance:
     - target: {fileID: 1675102695886059841, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: _rigidbody
       value: 
+      objectReference: {fileID: 6568785873552780228}
+    - target: {fileID: 1675102695886059841, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
+      propertyPath: _throwWhenUnselected
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675102695886059841, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
+      propertyPath: _forceKinematicDisabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675102695886059841, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
+      propertyPath: _kinematicWhileSelected
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4282338058069095519, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: _pointableElement
@@ -17745,7 +17767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8328793526975581670, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: _whenRelease.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8328793526975581670, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: _whenRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -24265,40 +24287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812f951558d03514ab0c71d1c062fa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5993765073226758298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572872250838518854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 0}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &6016526340797649960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24717,6 +24705,11 @@ MonoBehaviour:
   _whenCancel:
     m_PersistentCalls:
       m_Calls: []
+--- !u!54 &6568785873552780228 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2330488787988584956, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
+  m_PrefabInstance: {fileID: 1036215105950610040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6623470335851941384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24820,7 +24813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 0}
+  _pointable: {fileID: 1456821457}
   _whenRelease:
     m_PersistentCalls:
       m_Calls: []
@@ -25052,7 +25045,7 @@ PrefabInstance:
     - target: {fileID: 4282338058069095519, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: _pointableElement
       value: 
-      objectReference: {fileID: 7325652230457514645}
+      objectReference: {fileID: 0}
     - target: {fileID: 4445531778734931833, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -25064,7 +25057,7 @@ PrefabInstance:
     - target: {fileID: 5002891133065321998, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: _pointableElement
       value: 
-      objectReference: {fileID: 7325652230457514645}
+      objectReference: {fileID: 0}
     - target: {fileID: 5794641951191700250, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -25083,6 +25076,7 @@ PrefabInstance:
     - {fileID: 1544590332116285613, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
     - {fileID: 4445531778734931833, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
     - {fileID: -1526640711150672451, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
+    - {fileID: 1675102695886059841, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -25100,17 +25094,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1041980967166457557, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
   m_PrefabInstance: {fileID: 7325652230457514641}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7325652230457514645 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1675102695886059841, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
-  m_PrefabInstance: {fileID: 7325652230457514641}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7325652230457514643}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f86b14a27b52f4f9298c33015b5c26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.Grabbable
 --- !u!1001 &7353420482329531309
 PrefabInstance:
   m_ObjectHideFlags: 0
