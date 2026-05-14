@@ -18,9 +18,9 @@ public class TogglePhysics : MonoBehaviour
 
     // direct access to rigidbody has been fully deprecated (throws NotSupportedException)
     // hiding UnityEngine.component.rigidbody is perfectly fine.
-#pragma warning disable CS0108, CS0114
-    private Rigidbody rigidbody;
-#pragma warning restore CS0108, CS0114
+    #pragma warning disable CS0108, CS0114
+        private Rigidbody rigidbody;
+    #pragma warning restore CS0108, CS0114
 
     void Awake()
     {
@@ -50,8 +50,7 @@ public class TogglePhysics : MonoBehaviour
         rigidbody.useGravity = value;
         rigidbody.linearVelocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
-        // Toggling the colliders and the Interactable might be overkill, but 
-        // Looking into SteamVR Hand, it seems that it might check overlapped colliders irrespective.
+        
         if (toggleCollidersAlso)
         {
             foreach (var c in collidersToToggle)
