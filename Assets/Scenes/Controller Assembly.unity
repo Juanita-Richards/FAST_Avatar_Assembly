@@ -1190,19 +1190,7 @@ MonoBehaviour:
   _pointable: {fileID: 170811513}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 170811515}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -2280,19 +2268,7 @@ MonoBehaviour:
   _pointable: {fileID: 303028490}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 303028492}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -2945,19 +2921,7 @@ MonoBehaviour:
   _pointable: {fileID: 410099212}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 410099214}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -4679,12 +4643,12 @@ GameObject:
   - component: {fileID: 697597989}
   - component: {fileID: 697597988}
   m_Layer: 0
-  m_Name: Point Light 2 (1)
+  m_Name: Point Light 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &697597987
 Transform:
   m_ObjectHideFlags: 0
@@ -5409,19 +5373,7 @@ MonoBehaviour:
   _pointable: {fileID: 823135681}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 823135683}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -6331,6 +6283,10 @@ PrefabInstance:
       propertyPath: _rigidbody
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3346571678153001462, guid: 56f6ab98fbde41f428d5adb65e8c520c, type: 3}
+      propertyPath: _throwWhenUnselected
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6174249961776397753, guid: 56f6ab98fbde41f428d5adb65e8c520c, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -6448,19 +6404,7 @@ MonoBehaviour:
   _pointable: {fileID: 938955902}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 938955904}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -6539,6 +6483,9 @@ MonoBehaviour:
       m_Calls: []
   _whenSelect:
     m_PersistentCalls:
+      m_Calls: []
+  _whenUnselect:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 938955904}
         m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
@@ -6552,9 +6499,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls: []
   _whenMove:
     m_PersistentCalls:
       m_Calls: []
@@ -6846,19 +6790,7 @@ MonoBehaviour:
   _pointable: {fileID: 1002383768}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1002383770}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -7560,19 +7492,7 @@ MonoBehaviour:
   _pointable: {fileID: 1064044325}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1064044327}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -9633,7 +9553,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379336594}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90c2938872312d846991501804e4bde4, type: 3}
   m_Name: 
@@ -10088,6 +10008,10 @@ PrefabInstance:
       propertyPath: _rigidbody
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3346571678153001462, guid: 56f6ab98fbde41f428d5adb65e8c520c, type: 3}
+      propertyPath: _throwWhenUnselected
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6174249961776397753, guid: 56f6ab98fbde41f428d5adb65e8c520c, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -10205,19 +10129,7 @@ MonoBehaviour:
   _pointable: {fileID: 1504804917}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1504804919}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -11214,19 +11126,7 @@ MonoBehaviour:
   _pointable: {fileID: 1753023313}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1753023315}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -12748,19 +12648,7 @@ MonoBehaviour:
   _pointable: {fileID: 1938234950}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1938234952}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -13830,19 +13718,7 @@ MonoBehaviour:
   _pointable: {fileID: 2041227347}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2041227349}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -15446,6 +15322,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1302060206010596362, guid: 35cfa6cb236d2474cbfc22446ce4d380, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8671737501012514769}
+    - targetCorrespondingSourceObject: {fileID: 1302060206010596362, guid: 35cfa6cb236d2474cbfc22446ce4d380, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8671737501012514776}
+    - targetCorrespondingSourceObject: {fileID: 1302060206010596362, guid: 35cfa6cb236d2474cbfc22446ce4d380, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8671737501012514775}
   m_SourcePrefab: {fileID: 100100000, guid: 35cfa6cb236d2474cbfc22446ce4d380, type: 3}
 --- !u!4 &1254522845017978530 stripped
 Transform:
@@ -21559,7 +21441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6174249961776397753, guid: 56f6ab98fbde41f428d5adb65e8c520c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5567998
+      value: 0.557
       objectReference: {fileID: 0}
     - target: {fileID: 6174249961776397753, guid: 56f6ab98fbde41f428d5adb65e8c520c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21681,19 +21563,7 @@ MonoBehaviour:
   _pointable: {fileID: 5279403183622225990}
   _whenRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5279403183622225992}
-        m_TargetAssemblyTypeName: PlayStructure.ScrewPiece, FAB
-        m_MethodName: InsertIfValidScrewHoleNearby
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -22689,7 +22559,7 @@ PrefabInstance:
       objectReference: {fileID: 7353420482329531315}
     - target: {fileID: 5640848829067405491, guid: ab74a0fd915603a4aa2a870b24895abc, type: 3}
       propertyPath: _whenRelease.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5640848829067405491, guid: ab74a0fd915603a4aa2a870b24895abc, type: 3}
       propertyPath: _whenRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -23170,9 +23040,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1565459309965905656, guid: b751a5dd107494142b64981ad41f8bb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3972164834309127242}
-    - targetCorrespondingSourceObject: {fileID: 1565459309965905656, guid: b751a5dd107494142b64981ad41f8bb5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8014424272648416579}
   m_SourcePrefab: {fileID: 100100000, guid: b751a5dd107494142b64981ad41f8bb5, type: 3}
 --- !u!4 &8014424272648416568 stripped
 Transform:
@@ -23195,52 +23062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812f951558d03514ab0c71d1c062fa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8014424272648416579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8014424272648416569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 2032416296}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8014424272648416569}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &8019133464245192037
 Transform:
   m_ObjectHideFlags: 0
@@ -23320,6 +23141,10 @@ PrefabInstance:
     - target: {fileID: 2229968316047873090, guid: ab74a0fd915603a4aa2a870b24895abc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839087949603322270, guid: ab74a0fd915603a4aa2a870b24895abc, type: 3}
+      propertyPath: toggleCollidersAlso
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23601,8 +23426,99 @@ MonoBehaviour:
   _maxGrabPoints: -1
   _rigidbody: {fileID: 8671737501012514765}
   _kinematicWhileSelected: 1
-  _throwWhenUnselected: 1
+  _throwWhenUnselected: 0
   _forceKinematicDisabled: 0
+--- !u!114 &8671737501012514771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3891310841517444175, guid: 35cfa6cb236d2474cbfc22446ce4d380, type: 3}
+  m_PrefabInstance: {fileID: 1254522845017978529}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254522845017978531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30dd32ef7068c3b44bc5167f6ea2fe89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8671737501012514775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254522845017978531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
+  _pointable: {fileID: 1441507880}
+  _whenRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnhover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnselect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8671737501012514771}
+        m_TargetAssemblyTypeName: PlayStructure.Screwdriver, FAB
+        m_MethodName: SendMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Screw driver used
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenMove:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenCancel:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8671737501012514776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254522845017978531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
+  _pointable: {fileID: 1441507881}
+  _whenRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnhover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnselect:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenMove:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenCancel:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &9143305919943812380
 PrefabInstance:
   m_ObjectHideFlags: 0
