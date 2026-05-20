@@ -23,6 +23,7 @@ namespace PlayStructure
             // Check if this is good for the current step first:
             if (!PlayInstructions.instance.CheckScrewInsert(ap)) return;
             TryAttach(ap);
+            
         }
 
         public AttachPoint CheckIfHoleToAttachTo(float distanceThresh = 0.05f)

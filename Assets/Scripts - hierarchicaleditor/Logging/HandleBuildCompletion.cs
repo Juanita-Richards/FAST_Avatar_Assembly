@@ -26,7 +26,7 @@ public class HandleBuildCompletion : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsUntilDisableGameObjects);
         experimentManager.StopLogging(); 
-        Motion.Instance.StopTrackingOff(); //may need to remove
+        //Motion.Instance.StopTrackingOff(); //may need to remove
         VEQ.gameObject.SetActive(true);
         ISDK_Ray.gameObject.SetActive(true);
         foreach (var g in gameObjectsToDisableAfterTime)

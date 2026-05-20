@@ -199,6 +199,7 @@ namespace PlayStructure
             {
                 SnapToOther(toAttach.Value.Item1, toAttach.Value.Item2);
             }
+            
         }
 
         public void BreakJoint(FixedJoint joint) => Destroy(joint);
