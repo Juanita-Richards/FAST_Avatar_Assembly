@@ -12,11 +12,11 @@ public class VEQuestionnaire : MonoBehaviour
     private string logPath;
     private StringBuilder sb;
 
-    //public ConditionFlow conditionFlow;
+    
     public ParticipantLog participantLog;
     
 
-    [SerializeField] string PIDS = ""; //int trial = 0;
+    [SerializeField] string PIDS = ""; 
 
     private int[] answers = new int[12];
     [SerializeField] int counter = 0;
@@ -79,14 +79,11 @@ public class VEQuestionnaire : MonoBehaviour
         float average_two = Average(4, 4);
         float average_three = Average(8, 4);
 
-        //trial = conditionFlow.trialCount;
-        //PIDS = conditionFlow.PID_dropdown.options[conditionFlow.PID_dropdown.value].text;
-
-        //logPath = $"MES_{PIDS}_{conditionFlow.currentCohort}_VEQ.csv";
+        
         var cohort = participantLog.cohort_dropdown.options[participantLog.cohort_dropdown.value].text;
 
         PIDS = participantLog.PID_dropdown.options[participantLog.PID_dropdown.value].text;
-        logPath = $"FASTA_{PIDS}_{cohort}.csv";
+        logPath = $"FASTA_VEQ.csv";
 
         //Create directory FIRST
         string directoryPath = Path.Combine(
@@ -114,7 +111,7 @@ public class VEQuestionnaire : MonoBehaviour
 
             string row =
                 //$"{trial + 1}," +
-                $"{PIDS}, {cohort}" +
+                $"{PIDS}, {cohort}," +
                 $"{answers[0]},{answers[1]},{answers[2]},{answers[3]},{average_one}," +
                 $"{answers[4]},{answers[5]},{answers[6]},{answers[7]},{average_two}," +
                 $"{answers[8]},{answers[9]},{answers[10]},{answers[11]},{average_three}";
@@ -136,7 +133,7 @@ public class VEQuestionnaire : MonoBehaviour
     public void FinishQuestionnaire()
     {
         VEQuestionnaire.Instance.VEQQuestionnaireToCSV();
-        VEQuestionnaire.Instance.ResetAnswers();
+        //VEQuestionnaire.Instance.ResetAnswers();
     }
 
     public void ResetQuestions()

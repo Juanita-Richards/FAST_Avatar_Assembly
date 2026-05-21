@@ -48,6 +48,13 @@ public class FPSQuestionnaire : MonoBehaviour
 
     }
 
+    public void LogAnswer(int questionIndex, int value)
+    {
+        answers[questionIndex] = value;
+        Debug.Log($"Recorded Q{questionIndex + 1} = {value}");
+    }
+
+
     public void Next()
     {
         if (counter != questions.Count - 1)
@@ -58,18 +65,14 @@ public class FPSQuestionnaire : MonoBehaviour
         counter++;
     }
 
-    public void LogAnswer(int questionIndex, int value)
-    {
-        answers[questionIndex] = value;
-        Debug.Log($"Recorded Q{questionIndex + 1} = {value}");
-    }
+   
 
     public void FPSToCSV()
     {
         var cohort = participantLog.cohort_dropdown.options[participantLog.cohort_dropdown.value].text;
-        PIDS = participantLog.cohort_dropdown.options[participantLog.cohort_dropdown.value].text;
-        logPath = $"FASTA_{PIDS}_{cohort}_FPS.csv";
+        PIDS = participantLog.cohort_dropdown.options[participantLog.PID_dropdown.value].text;
         
+        logPath = $"FASTA_FPS.csv";
 
         //Create directory FIRST
         string directoryPath = Path.Combine(
@@ -110,7 +113,8 @@ public class FPSQuestionnaire : MonoBehaviour
     public void FinishQuestionnaire()
     {
         FPSQuestionnaire.Instance.FPSToCSV();
-        FPSQuestionnaire.Instance.ResetAnswers();
+        //Application.Quit();
+        //FPSQuestionnaire.Instance.ResetAnswers();
     }
 
     public void ResetQuestions()
