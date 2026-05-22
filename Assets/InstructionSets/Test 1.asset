@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9aaabbbf9fc684c9bd8f615e36071e, type: 3}
+  m_Name: Test 1
+  m_EditorClassIdentifier: FAB::PlayStructure.ScriptableInstructions
+  _mInstructions:
+  - name: 'Attach PIPE_1[1] to C_3WAY_0[2]'
+    toAttach: 0
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: 7.1054274e-15, y: -1, z: -1.3397012e-15, w: -0.00000004371139}
+    toAttach_color: 1
+    toID: 1
+    fromAttach: 5
+    fromAttachPointIndex: 2
+    fromAttach_rotation: {x: 7.1054274e-15, y: -1, z: -1.3397012e-15, w: -0.00000004371139}
+    fromID: 0
+  - name: 'Attach PIPE_2[1] to C_3WAY_0[0]'
+    toAttach: 0
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: -0.7071069, y: -0.7071068, z: 0.000000029802326, w: -0.000000071949174}
+    toAttach_color: 2
+    toID: 2
+    fromAttach: 5
+    fromAttachPointIndex: 0
+    fromAttach_rotation: {x: -0.7071069, y: -0.7071068, z: 0.000000029802326, w: -0.000000071949174}
+    fromID: 0
+  - name: 'Attach C_3WAY_3[2] to PIPE_2[0]'
+    toAttach: 5
+    toAttachPointIndex: 2
+    toAttach_rotation: {x: 0, y: -1.0000001, z: -0.000000059604645, w: 5.3290705e-15}
+    toAttach_color: 0
+    toID: 3
+    fromAttach: 0
+    fromAttachPointIndex: 0
+    fromAttach_rotation: {x: 0, y: -1.0000001, z: -0.000000059604645, w: 5.3290705e-15}
+    fromID: 2
+  - name: 'Attach PIPE_5[1] to C_3WAY_0[1]'
+    toAttach: 0
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: -0.7071068, y: 0.70710677, z: 0.00000001485386, w: -0.000000013450821}
+    toAttach_color: 4
+    toID: 5
+    fromAttach: 5
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: -0.7071068, y: 0.70710677, z: 0.00000001485386, w: -0.000000013450821}
+    fromID: 0
+  - name: 'Attach PIPE_4[1] to C_3WAY_3[0]'
+    toAttach: 0
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: -0.70710677, y: -0.70710677, z: 0.000000030908613, w: -0.00000003090862}
+    toAttach_color: 4
+    toID: 4
+    fromAttach: 5
+    fromAttachPointIndex: 0
+    fromAttach_rotation: {x: -0.70710677, y: -0.70710677, z: 0.000000030908613, w: -0.00000003090862}
+    fromID: 3
+  - name: 'Attach PIPE_6[0] to C_3WAY_3[1]'
+    toAttach: 0
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: -1, y: 0.00000005960465, z: 0.000000059604638, w: 0}
+    toAttach_color: 1
+    toID: 6
+    fromAttach: 5
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: -1, y: 0.00000005960465, z: 0.000000059604638, w: 0}
+    fromID: 3
+  - name: 'Attach C_3WAY_7[0] to PIPE_1[0]'
+    toAttach: 5
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.00000006322026, w: 0.0000000014030285}
+    toAttach_color: 0
+    toID: 7
+    fromAttach: 0
+    fromAttachPointIndex: 0
+    fromAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.00000006322026, w: 0.0000000014030285}
+    fromID: 1
+  - name: 'Attach PIPE_8[1] to C_3WAY_7[2]'
+    toAttach: 0
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: 0.0000000149011585, y: -1.0000001, z: 0.000000014901168, w: -0.000000074505806}
+    toAttach_color: 2
+    toID: 8
+    fromAttach: 5
+    fromAttachPointIndex: 2
+    fromAttach_rotation: {x: 0.0000000149011585, y: -1.0000001, z: 0.000000014901168, w: -0.000000074505806}
+    fromID: 7
