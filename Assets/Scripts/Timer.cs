@@ -4,16 +4,17 @@ using UnityEngine;
 using TMPro;
 public class Timer : MonoBehaviour
 {
-    public TextMeshProUGUI timer;
-    public float timerCountUp;
+    public TextMeshProUGUI timer, timerVisualtext;
+    public float timerCountDown;
     public bool timeStarted;
     public float reset;
-
+    public float minimumTime = 2f;
+    public GameObject timerVisual;
 
     // Start is called before the first frame update
     void Start()
     {
-        timer.text = timerCountUp.ToString();
+        timer.text = timerCountDown.ToString();
     }
 
     // Update is called once per frame
@@ -22,15 +23,23 @@ public class Timer : MonoBehaviour
         if (timeStarted)
         {
             StartCoroutine(TimeCount());
+
+            /// <Here>
+            /// The below could be used as well
+            /// </Here>
+            //timerCountDown -= Time.deltaTime;
+            //DisplayTime(timerCountDown);
+
         }
     }
 
-    public void TurnBoolOn()
+    public void TurnTimerOn()
     {
         timeStarted = true;
+        
     }
     
-    public void TurnBoolOff()
+    public void TurnTImerOff()
     {
         timeStarted = false;
     }
@@ -41,12 +50,21 @@ public class Timer : MonoBehaviour
         float seconds = Mathf.FloorToInt(time  % 60);
 
         timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerVisualtext.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
     IEnumerator TimeCount()
     {
-        timerCountUp += Time.deltaTime;
+        timerCountDown -= Time.deltaTime;
 
-        DisplayTime(timerCountUp);
+        if (timerCountDown <= 240)
+            timerVisual.SetActive(true);
+
+        if (timerCountDown <= 0)
+        {
+            timerCountDown = 0f;
+        }
+
+        DisplayTime(timerCountDown);
         yield return null;
     }
 }

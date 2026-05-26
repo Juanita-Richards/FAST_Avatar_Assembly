@@ -20,7 +20,7 @@ public class PlayInstructions : Singleton<PlayInstructions>
 
     [SerializeField] private bool allowPipesToAny90InsertOffset = true;
     [SerializeField]
-    private ScriptableInstructions _instructions;
+    public ScriptableInstructions _instructions;
 
     private int _instructionCounter = 0;
 
@@ -85,8 +85,10 @@ public class PlayInstructions : Singleton<PlayInstructions>
     {
         get
         {
-            _mKey ??= FindObjectOfType<Screwdriver>();
+            //_mKey ??= FindObjectOfType<Screwdriver>(); -- deprecated
+            _mKey ??= FindFirstObjectByType<Screwdriver>();
             return _mKey;
+
         }
     }
 
@@ -98,6 +100,27 @@ public class PlayInstructions : Singleton<PlayInstructions>
         if (beginOnStart) BeginInstructions();
 
     }
+
+    //public void callBuildTracker()
+    //{
+    //   BuildTracker.Instance.ChangeScriptableInstructions();
+    //}
+
+    public void SetInstructions(ScriptableInstructions newInstructions)
+    {
+        if (newInstructions == null)
+        {
+            Debug.LogError("New instructions was null");
+            return;
+        }
+
+        _instructions = newInstructions;
+        _instructionCounter = 0;
+        currentSubStepState = InstructionSubStepState.AttachPiece;
+
+        Debug.Log($"PlayInstructions now using: {_instructions.name}");
+    }
+
 
     public void BeginInstructions()
     {

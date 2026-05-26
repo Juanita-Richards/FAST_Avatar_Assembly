@@ -10765,7 +10765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4532285616980454155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31928,7 +31928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6096936235795818463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -68178,6 +68178,7 @@ GameObject:
   - component: {fileID: 6334170642678292874}
   - component: {fileID: 8648913830366221437}
   - component: {fileID: 7750519340542303436}
+  - component: {fileID: 5883682749545183752}
   m_Layer: 0
   m_Name: Questionnaire Manager
   m_TagString: Untagged
@@ -68255,6 +68256,38 @@ MonoBehaviour:
   - {fileID: 2141893751619007841}
   - {fileID: 771725972908303115}
   - {fileID: 6850958625293044237}
+--- !u!114 &5883682749545183752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139965311785136060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0af0b32ee483545b32e0ce26821b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::pESQQuestionnaire
+  participantLog: {fileID: 0}
+  PIDS: 
+  counter: 0
+  questions:
+  - {fileID: 3616674001811179111}
+  - {fileID: 3664990721559765263}
+  - {fileID: 2231944410747752304}
+  - {fileID: 1114627050342299736}
+  - {fileID: 528479944093250019}
+  - {fileID: 6121424251156763109}
+  - {fileID: 641221867550328559}
+  - {fileID: 5769681465061522515}
+  - {fileID: 3249675450366300532}
+  - {fileID: 7253049195389006072}
+  - {fileID: 274374382225574687}
+  - {fileID: 5115704364746648234}
+  - {fileID: 1144687681836470}
+  - {fileID: 4222709622595638333}
+  - {fileID: 3539313959739628895}
+  - {fileID: 6164327532854521582}
 --- !u!1 &8146271072203177479
 GameObject:
   m_ObjectHideFlags: 0
@@ -73913,6 +73946,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1133980369869104607}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &9010365427810382062
 GameObject:
