@@ -363,21 +363,6 @@ Transform:
   - {fileID: 1786991386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
---- !u!115 &181511838
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: MetaXRGrabStateTracker
-  m_Namespace: PlayStructure
-  m_AssemblyName: FAB
 --- !u!1001 &310033332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -477,7 +462,6 @@ GameObject:
   - component: {fileID: 362991188}
   - component: {fileID: 362991187}
   - component: {fileID: 362991186}
-  - component: {fileID: 362991185}
   m_Layer: 0
   m_Name: substructure
   m_TagString: Untagged
@@ -485,20 +469,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &362991185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 362991184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 181511838}
-  m_Name: 
-  m_EditorClassIdentifier: FAB::PlayStructure.MetaXRGrabStateTracker
-  isHeld: 0
-  isGrabLocked: 0
 --- !u!114 &362991186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,7 +522,7 @@ Transform:
   m_GameObject: {fileID: 362991184}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12243353, y: 1.019, z: 3.2636876}
+  m_LocalPosition: {x: -0.12243353, y: 1.019, z: 3.437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
