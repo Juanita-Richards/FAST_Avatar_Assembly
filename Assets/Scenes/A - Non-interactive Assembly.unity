@@ -2016,11 +2016,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265922669}
   m_CullTransparentMesh: 1
---- !u!1 &268063408 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3943913426216500942, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1979148959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &274190206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,17 +2962,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344292359}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 137ba0799a544a644b80472b6b78537a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Motion
-  MotionObjects:
-  - {fileID: 1111254538}
-  - {fileID: 268063408}
-  - {fileID: 1005568348}
+  TrackedBodies: []
   PID: {fileID: 2014332226}
   Cohort: {fileID: 2014332228}
+  Build: {fileID: 2014332225}
   startTracking: 0
 --- !u!114 &344292363
 MonoBehaviour:
@@ -7918,11 +7911,6 @@ MonoBehaviour:
   _whenCancel:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1005568348 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5861900635374596133, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1979148959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &1005824530 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 6178803503584002856, guid: 56f6ab98fbde41f428d5adb65e8c520c, type: 3}
@@ -8990,11 +8978,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077657765}
   m_CullTransparentMesh: 1
---- !u!1 &1111254538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
-  m_PrefabInstance: {fileID: 1021265144}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128291077
 GameObject:
   m_ObjectHideFlags: 0
@@ -14238,6 +14221,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7832577717056845408, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832577717056845408, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_ReceivesEvents
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8741415040372866719, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
       propertyPath: m_Name
       value: Participant Log UI
@@ -14256,6 +14247,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2014332225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7686795772006967846, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+  m_PrefabInstance: {fileID: 2014332223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2014332226 stripped

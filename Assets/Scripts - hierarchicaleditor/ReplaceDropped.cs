@@ -6,63 +6,87 @@ using UnityEngine;
 public class ReplaceDropped : MonoBehaviour
 {
 
-    public float minHeightOfCenter = 0.7f;
-    public float timeUnderMinToReset = 1f;
-    private float currentTimeUnderMin = 0f;
-    public bool onlyCountIfNotHeld = true;
 
-    private TableBounds _tableBounds;
-    private TableBounds tableBounds => _tableBounds ??= TableBounds.instance;
+    [Header("Reset Settings")]
+    public float minYPosition = 0.2f;          // If object falls below this height, start timer
+    public float secondsBeforeReset = 1f;     // How long it must stay below before resetting
 
-    [HideInInspector]public Quaternion startRotation;
-    [HideInInspector]public Vector3 startPosition;
-    
+    [Header("Optional")]
+    public bool onlyResetWhenNotHeld = true;  // Uses parent check as a simple held check
+    public bool restoreOriginalParent = true;
+
+    public Vector3 startPosition;
+    public Quaternion startRotation;
+    public Transform startParent;
+
+    private Rigidbody rb;
+    private float timeBelowMin = 0f;
+
     void Awake()
     {
         startPosition = transform.position;
         startRotation = transform.rotation;
+        startParent = transform.parent;
+
+        rb = GetComponent<Rigidbody>();
     }
-    
+
     void Update()
     {
-        // don't accumulate time if this object is not top of hierarchy.
-        if (transform.parent!=null && transform.parent.name!="PhysicalObjects") return;
-        var pos = transform.position;
-        
-        // check if it's back in bounds and so we should clear out the timer.
-        if (tableBounds.testBounds(pos))
+        // If the object is currently being held by a controller/hand,
+        // it may have a different parent. Do not reset while held.
+        if (onlyResetWhenNotHeld && transform.parent != startParent)
         {
-            currentTimeUnderMin = 0f;
+            timeBelowMin = 0f;
+            return;
+        }
+
+        // If object is below the floor/drop height, start counting.
+        if (transform.position.y < minYPosition)
+        {
+            timeBelowMin += Time.deltaTime;
         }
         else
         {
-            // out of bounds: only accumulate time if the object is not being held.
-            //if (!Player.instance.leftHand.ObjectIsAttached(gameObject) &&
-            //    !Player.instance.rightHand.ObjectIsAttached(gameObject))
-            //    currentTimeUnderMin += Time.deltaTime;
-            //else if (onlyCountIfNotHeld) currentTimeUnderMin = 0f;
+            timeBelowMin = 0f;
         }
 
-        // We're done in Update if we're still under the maximum amount of time.
-        if (!(currentTimeUnderMin > timeUnderMinToReset)) return;
-        
-        // Zero out the velocities on the rigidbody, and use it to replace if one exists:
-        var r = GetComponent<Rigidbody>();
-        if (r != null)
+        // Reset after it has been below the minimum height long enough.
+        if (timeBelowMin >= secondsBeforeReset)
         {
-            r.MovePosition(startPosition);
-            r.MoveRotation(startRotation);
-            r.linearVelocity = Vector3.zero;
-            r.angularVelocity = Vector3.zero;
+            ResetObject();
         }
-        // If there's no rigidbody (how did this fall?) reset it using the retained transform pose.
+    }
+
+    private void ResetObject()
+    {
+        if (restoreOriginalParent)
+        {
+            transform.SetParent(startParent);
+        }
+
+        if (rb != null)
+        {
+            // Stop all movement first.
+#if UNITY_6000_0_OR_NEWER
+            rb.linearVelocity = Vector3.zero;
+#else
+            rb.velocity = Vector3.zero;
+#endif
+            rb.angularVelocity = Vector3.zero;
+
+            // Move it back.
+            rb.position = startPosition;
+            rb.rotation = startRotation;
+
+            rb.Sleep();
+        }
         else
         {
             transform.position = startPosition;
             transform.rotation = startRotation;
         }
-        
-        // After resetting the position and orientation, reset the timer as well.
-        currentTimeUnderMin = 0f;
+
+        timeBelowMin = 0f;
     }
 }
