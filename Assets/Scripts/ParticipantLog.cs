@@ -13,7 +13,7 @@ using TMPro.Examples;
 public class ParticipantLog : MonoBehaviour
 {
     
-    public TMP_Dropdown cohort_dropdown, gender_dropdown, PID_dropdown;
+    public TMP_Dropdown cohort_dropdown, gender_dropdown, PID_dropdown, build_dropdown;
   
     
     //don't use readonly key word
@@ -27,20 +27,21 @@ public class ParticipantLog : MonoBehaviour
         string ParticipantID = PID_dropdown.options[PID_dropdown.value].text;
         string gender = gender_dropdown.options[gender_dropdown.value].text;
         string cohort = cohort_dropdown.options[cohort_dropdown.value].text;
+        string build = build_dropdown.options[build_dropdown.value].text;
 
         if (!File.Exists(log_path))
         {
             using StreamWriter writer = File.CreateText(log_path);
-            writer.WriteLine("ParticipantID, Gender, Cohort, date-time, Time");
+            writer.WriteLine("ParticipantID, Gender, Cohort,Build, date-time, Time");
 
-            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {dateTime}");
+            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {build},{dateTime}");
             writer.Close();
         }
 
         else 
         { 
             using StreamWriter writer = File.AppendText(log_path);
-            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {dateTime}");
+            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {build},{dateTime}");
             writer.Close();
         }
 

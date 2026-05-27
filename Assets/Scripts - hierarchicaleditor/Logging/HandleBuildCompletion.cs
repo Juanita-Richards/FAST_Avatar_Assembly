@@ -10,9 +10,11 @@ public class HandleBuildCompletion : MonoBehaviour
     public ExperimentManager experimentManager;
     public float secondsUntilDisableGameObjects = 20f; //was 10 seconds
     public GameObject VEQ, ISDK_Ray;
+    public Motion motionLogger;
 
     public void DoComplete()
     {
+        //motionLogger.StopTrackingOff();
         foreach (var g in gameObjectsToHideImmediately)
         {
             HideMesh(g);
@@ -26,7 +28,7 @@ public class HandleBuildCompletion : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsUntilDisableGameObjects);
         experimentManager.StopLogging(); 
-        Motion.Instance.StopTrackingOff(); //may need to remove
+        
         VEQ.gameObject.SetActive(true);
         ISDK_Ray.gameObject.SetActive(true);
         foreach (var g in gameObjectsToDisableAfterTime)

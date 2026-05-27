@@ -99,5 +99,8 @@ public class pESQQuestionnaire : MonoBehaviour
             item.SetActive(false);
         }
     }
-
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
