@@ -93,7 +93,7 @@ public class pESQQuestionnaire : MonoBehaviour
     public void FinishQuestionnaire()
     {
 
-       pESQQuestionnaire.Instance.FinishQuestionnaire();
+       pESQQuestionnaire.Instance.pESQtoCSV();
     }
    
 }

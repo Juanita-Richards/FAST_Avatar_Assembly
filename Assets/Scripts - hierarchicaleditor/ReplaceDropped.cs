@@ -42,9 +42,10 @@ public class ReplaceDropped : MonoBehaviour
         }
 
         // If object is below the floor/drop height, start counting.
-        if (transform.position.y < minYPosition || transform.position.y < 0)
+        if (transform.position.y < minYPosition)
         {
             timeBelowMin += Time.deltaTime;
+            //ResetObject();
         }
         else
         {
