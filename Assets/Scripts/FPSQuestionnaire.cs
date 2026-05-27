@@ -113,7 +113,7 @@ public class FPSQuestionnaire : MonoBehaviour
     public void FinishQuestionnaire()
     {
         FPSQuestionnaire.Instance.FPSToCSV();
-        //Application.Quit();
+        Application.Quit();
         //FPSQuestionnaire.Instance.ResetAnswers();
     }
 

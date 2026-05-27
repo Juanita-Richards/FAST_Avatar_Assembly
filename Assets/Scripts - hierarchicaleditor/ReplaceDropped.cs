@@ -8,7 +8,7 @@ public class ReplaceDropped : MonoBehaviour
 
 
     [Header("Reset Settings")]
-    public float minYPosition = 0.2f;          // If object falls below this height, start timer
+    public float minYPosition = 0f;          // If object falls below this height, start timer
     public float secondsBeforeReset = 1f;     // How long it must stay below before resetting
 
     [Header("Optional")]
@@ -42,7 +42,7 @@ public class ReplaceDropped : MonoBehaviour
         }
 
         // If object is below the floor/drop height, start counting.
-        if (transform.position.y < minYPosition)
+        if (transform.position.y < minYPosition || transform.position.y < 0)
         {
             timeBelowMin += Time.deltaTime;
         }

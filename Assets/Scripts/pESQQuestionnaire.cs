@@ -93,14 +93,7 @@ public class pESQQuestionnaire : MonoBehaviour
     public void FinishQuestionnaire()
     {
 
-        counter = 0;
-        foreach (var item in questions)
-        {
-            item.SetActive(false);
-        }
+       pESQQuestionnaire.Instance.FinishQuestionnaire();
     }
-    public void Quit()
-    {
-        Application.Quit();
-    }
+   
 }
