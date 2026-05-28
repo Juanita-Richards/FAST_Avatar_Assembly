@@ -10,7 +10,7 @@ public class HandleBuildCompletion : MonoBehaviour
     public ExperimentManager experimentManager;
     public float secondsUntilDisableGameObjects = 20f; //was 10 seconds
     public GameObject VEQ, ISDK_Ray;
-    public Motion motionLogger;
+   
 
     public void DoComplete()
     {
