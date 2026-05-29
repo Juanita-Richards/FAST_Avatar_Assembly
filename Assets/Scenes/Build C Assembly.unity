@@ -2472,7 +2472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &344292360
 Transform:
   m_ObjectHideFlags: 0
@@ -6263,7 +6263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1565459309965905656, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2229968316047873090, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
       propertyPath: m_RootOrder
@@ -11719,7 +11719,7 @@ MonoBehaviour:
   _interactionCue: {fileID: 1893368777}
   substructurePositioningHint: {fileID: 1048795220}
   allowPipesToAny90InsertOffset: 1
-  _instructions: {fileID: 0}
+  _instructions: {fileID: 11400000, guid: dbe01924f1cdbf149a6b5533d45dd2a3, type: 2}
   currentSubStepState: 0
   subStepProgress:
     m_PersistentCalls:
@@ -13971,14 +13971,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109356286}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.1975, y: -0.398, z: 0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 422591568}
   m_Father: {fileID: 1048795219}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &2113262150
 GameObject:
   m_ObjectHideFlags: 0
@@ -34906,6 +34906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Questionnaire Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 8139965311785136060, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8648913830366221437, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
       value: 
@@ -37561,7 +37565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2229968316047873090, guid: 12d3c9840c2eaf24eb52e6c26be8fdf9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7823273
+      value: 0.7823274
       objectReference: {fileID: 0}
     - target: {fileID: 2229968316047873090, guid: 12d3c9840c2eaf24eb52e6c26be8fdf9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -37569,7 +37573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2229968316047873090, guid: 12d3c9840c2eaf24eb52e6c26be8fdf9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.4515297
+      value: 3.45153
       objectReference: {fileID: 0}
     - target: {fileID: 2229968316047873090, guid: 12d3c9840c2eaf24eb52e6c26be8fdf9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39565,7 +39569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 377753196331592815, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 377753196331592815, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: m_LocalPosition.y

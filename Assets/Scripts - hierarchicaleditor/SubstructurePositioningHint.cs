@@ -112,7 +112,7 @@ public class SubstructurePositioningHint : MonoBehaviour
             Destroy(hintTransform.GetChild(0).gameObject);
         }
         // add hint recursive to our hintTransform, copying from substructure.
-        AddHintRecursive(hintTransform, substructure);
+        //AddHintRecursive(hintTransform, substructure); -- JB 5/29/26 I commented it out
     }
 
     private void AddHintRecursive(Transform copyTo, Transform copyFrom)
@@ -142,47 +142,47 @@ public class SubstructurePositioningHint : MonoBehaviour
         }
     }
 
-    //IEnumerator Animate()
-    //{
-    //    while (beAnimating)
-    //    {
-    //        var time = Time.time;
-    //        // allow the hint animation to complete even if beShowingTheHint is false, since I anticipate
-    //        // we'll want a relatively large-ish range on the thresholds, and don't want to annoyingly trigger
-    //        // the animations turning off on a hard wall.
-    //        if (!keepSecretUntilFirstInPlace
-    //            && (substructure != null && (beShowingTheHint || (lingerHintToComplete && time <= startTime + lerpDuration + holdDuration)))
-    //            && !doSuspendHint)
-    //        {
-    //            hintTransform.gameObject.SetActive(true);
-    //            if (time > startTime + lerpDuration + holdDuration)
-    //            {
-    //                startTime = time;
-    //            }
+    IEnumerator Animate()
+    {
+        while (beAnimating)
+        {
+            var time = Time.time;
+            // allow the hint animation to complete even if beShowingTheHint is false, since I anticipate
+            // we'll want a relatively large-ish range on the thresholds, and don't want to annoyingly trigger
+            // the animations turning off on a hard wall.
+            if (!keepSecretUntilFirstInPlace
+                && (substructure != null && (beShowingTheHint || (lingerHintToComplete && time <= startTime + lerpDuration + holdDuration)))
+                && !doSuspendHint)
+            {
+                hintTransform.gameObject.SetActive(true);
+                if (time > startTime + lerpDuration + holdDuration)
+                {
+                    startTime = time;
+                }
 
-    //            var animMoving = time <= startTime + lerpDuration;
-    //            var lerp = (time - startTime) / lerpDuration;
-    //            var animHolding = time > startTime + lerpDuration && time <= startTime + lerpDuration + holdDuration;
+                var animMoving = time <= startTime + lerpDuration;
+                var lerp = (time - startTime) / lerpDuration;
+                var animHolding = time > startTime + lerpDuration && time <= startTime + lerpDuration + holdDuration;
 
-    //            if (animMoving)
-    //            {
-    //                hintTransform.position = Vector3.Lerp(
-    //                    substructure.position, targetTransform.position, lerp);
-    //                hintTransform.rotation = Quaternion.Lerp(
-    //                    substructure.rotation, targetTransform.rotation, lerp);
-    //            }
+                if (animMoving)
+                {
+                    hintTransform.position = Vector3.Lerp(
+                        substructure.position, targetTransform.position, lerp);
+                    hintTransform.rotation = Quaternion.Lerp(
+                        substructure.rotation, targetTransform.rotation, lerp);
+                }
 
-    //            if (animHolding)
-    //            {
-    //                hintTransform.position = targetTransform.position;
-    //                hintTransform.rotation = targetTransform.rotation;
-    //            }
+                if (animHolding)
+                {
+                    hintTransform.position = targetTransform.position;
+                    hintTransform.rotation = targetTransform.rotation;
+                }
 
-    //        }
-    //        else hintTransform.gameObject.SetActive(false);
-    //        yield return new WaitForEndOfFrame();
-    //    }
-    //}
+            }
+            else hintTransform.gameObject.SetActive(false);
+            yield return new WaitForEndOfFrame();
+        }
+    }
     //IEnumerator Animate()
     //{
     //    while (beAnimating)
@@ -206,28 +206,28 @@ public class SubstructurePositioningHint : MonoBehaviour
     //        yield return new WaitForEndOfFrame();
     //    }
     //}
-    IEnumerator Animate()
-    {
-        while (beAnimating)
-        {
-            if (!keepSecretUntilFirstInPlace
-                && substructure != null
-                && beShowingTheHint
-                && !doSuspendHint)
-            {
-                hintTransform.gameObject.SetActive(true);
+    //IEnumerator Animate()
+    //{
+    //    while (beAnimating)
+    //    {
+    //        if (!keepSecretUntilFirstInPlace
+    //            && substructure != null
+    //            && beShowingTheHint
+    //            && !doSuspendHint)
+    //        {
+    //            hintTransform.gameObject.SetActive(true);
 
-                // No animation, no lerp, just appear at the target pose
-                hintTransform.position = targetTransform.position;
-                hintTransform.rotation = targetTransform.rotation;
-            }
-            else
-            {
-                hintTransform.gameObject.SetActive(false);
-            }
+    //            // No animation, no lerp, just appear at the target pose
+    //            hintTransform.position = targetTransform.position;
+    //            hintTransform.rotation = targetTransform.rotation;
+    //        }
+    //        else
+    //        {
+    //            hintTransform.gameObject.SetActive(false);
+    //        }
 
-            yield return null;
-        }
-    }
+    //        yield return null;
+    //    }
+    //}
 }
 

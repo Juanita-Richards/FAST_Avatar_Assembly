@@ -32,15 +32,34 @@ namespace PlayStructure
                 this.side = side;
             }
         }
-
+        // UPDATED: Expanded and corrected name hints so left/right anchors are detected reliably.
         private static readonly string[] LeftHandNameHints =
         {
-            "lefthandanchor", "left hand anchor", "left_hand", "left hand", "hand_l", "l_hand", "leftcontrolleranchor"
+            // Meta/OVR
+            "lefthandanchor", "left hand anchor", "left_hand", "left hand", "hand_l",
+            "lefthanddatasource", "leftcontrolleranchor",
+            // OpenXR / XRI / Action-based
+            "openxrlefthand", "xri lefthand", "xri left hand", "actionbasedlefthand",
+            "leftcontroller", "left controller", "controller_left",
+            // Other common rig names
+            "left hand controller", "leftxrcontroller",
+            // Misc variations seen in rigs
+            "left hand device", "leftdevice", "left_hand_anchor"
         };
-
         private static readonly string[] RightHandNameHints =
         {
-            "righthandanchor", "right hand anchor", "right_hand", "right hand", "hand_r", "r_hand", "rightcontrolleranchor"
+            // Meta/OVR
+            "righthandanchor", "right hand anchor", "right_hand", "right hand", "hand_r",
+            "righthanddatasource", "rightcontrolleranchor",
+            // Fixed typos from original
+            "metaquesttouchplus_right",
+            // OpenXR / XRI / Action-based
+            "openxrrighthand", "xri righthand", "xri right hand", "actionbasedrighthand",
+            "rightcontroller", "right controller", "controller_right",
+            // Other common rig names
+            "right hand controller", "rightxrcontroller",
+            // Misc variations seen in rigs
+            "right hand device", "rightdevice", "right_hand_anchor"
         };
 
         public static Transform GetLeftHandTransform(Transform overrideTransform = null)
@@ -70,6 +89,7 @@ namespace PlayStructure
             var targetPosition = target != null ? target.transform.position : Vector3.zero;
             var left = GetLeftHandTransform();
             var right = GetRightHandTransform();
+            Debug.Log($"Left hand found: {(left != null ? left.name : "NULL")} | Right hand found: {(right != null ? right.name : "NULL")}");
 
             if (left == null && right == null) return new HandInfo(null, HandSide.Unknown);
             if (left != null && right == null) return new HandInfo(left, HandSide.Left);
@@ -80,6 +100,8 @@ namespace PlayStructure
             return leftDistance <= rightDistance
                 ? new HandInfo(left, HandSide.Left)
                 : new HandInfo(right, HandSide.Right);
+
+
         }
 
         public static bool IsHeld(GameObject obj)
@@ -194,7 +216,8 @@ namespace PlayStructure
         private static Transform FindHandTransform(HandSide side)
         {
             // First try OVRHand components, if they exist in the scene.
-            foreach (var behaviour in UnityEngine.Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None))
+            foreach (var behaviour in UnityEngine.Object.FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include,
+             FindObjectsSortMode.None))
             {
                 if (behaviour == null) continue;
                 var type = behaviour.GetType();
@@ -211,10 +234,11 @@ namespace PlayStructure
 
             // Then try common OVRCameraRig / Interaction SDK anchor names.
             var hints = side == HandSide.Left ? LeftHandNameHints : RightHandNameHints;
-            foreach (var transform in UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsSortMode.None))
+            foreach (var transform in UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include,
+             FindObjectsSortMode.None))
             {
                 var lowerName = transform.name.ToLowerInvariant();
-                if (hints.Any(h => lowerName.Contains(h))) return transform;
+                if (hints.Any(h => lowerName.Contains(h.ToLowerInvariant()))) return transform;
             }
 
             return null;
