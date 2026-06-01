@@ -44,7 +44,7 @@ namespace PlayStructure
             // Other common rig names
             "left hand controller", "leftxrcontroller",
             // Misc variations seen in rigs
-            "left hand device", "leftdevice", "left_hand_anchor"
+            "left hand device", "leftdevice", "left_hand_anchor", "LeftHandnchor"
         };
         private static readonly string[] RightHandNameHints =
         {
@@ -59,17 +59,44 @@ namespace PlayStructure
             // Other common rig names
             "right hand controller", "rightxrcontroller",
             // Misc variations seen in rigs
-            "right hand device", "rightdevice", "right_hand_anchor"
+            "right hand device", "rightdevice", "right_hand_anchor", "RightHandAnchor"
         };
 
         public static Transform GetLeftHandTransform(Transform overrideTransform = null)
         {
-            return overrideTransform != null ? overrideTransform : FindHandTransform(HandSide.Left);
+            //return overrideTransform != null ? overrideTransform : FindHandTransform(HandSide.Left);
+            if (overrideTransform != null)
+            {
+                return overrideTransform;
+            }
+
+
+            if (MetaHandReference.Instance != null && MetaHandReference.Instance.leftAnchor != null)
+            {
+                return MetaHandReference.Instance.leftAnchor;
+            }
+
+            return FindHandTransform(HandSide.Left);
+
         }
 
         public static Transform GetRightHandTransform(Transform overrideTransform = null)
         {
-            return overrideTransform != null ? overrideTransform : FindHandTransform(HandSide.Right);
+            //return overrideTransform != null ? overrideTransform : FindHandTransform(HandSide.Right);
+            
+            if (overrideTransform != null)
+            {
+                return overrideTransform;
+            }
+
+
+            if (MetaHandReference.Instance != null && MetaHandReference.Instance.rightAnchor != null)
+            {
+                return MetaHandReference.Instance.rightAnchor;
+            }
+
+            return FindHandTransform(HandSide.Right);
+
         }
 
         public static Transform[] GetHandTransforms(Transform leftOverride = null, Transform rightOverride = null)
@@ -133,11 +160,16 @@ namespace PlayStructure
 
             var leftDistance = Vector3.Distance(left.position, targetPosition);
             var rightDistance = Vector3.Distance(right.position, targetPosition);
+
+            Debug.Log(
+                $"[MetaXRCompatibility] LeftDist: {leftDistance:F3} | RightDist: {rightDistance:F3} | " +
+                $"Left: {left.name} | Right: {right.name}"
+            );
             const float tieEpsilon = 0.01f;
             if (Mathf.Abs(leftDistance - rightDistance) <= tieEpsilon)
                 return new HandInfo(left, HandSide.Left);
 
-            return (leftDistance < rightDistance) || (leftDistance < rightDistance)
+            return (leftDistance <= rightDistance) 
                 ? new HandInfo(left, HandSide.Left)
                 : new HandInfo(right, HandSide.Right);
 
@@ -252,32 +284,93 @@ namespace PlayStructure
             return false;
         }
 
+
         private static Transform FindHandTransform(HandSide side)
         {
-            // First try OVRHand components, if they exist in the scene.
-            foreach (var behaviour in UnityEngine.Object.FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include,
-             FindObjectsSortMode.None))
+            string[] anchorPriorityNames = side == HandSide.Left
+                ? new[]
+            {
+            "LeftHandAnchor",
+            "LeftControllerAnchor",
+            "LeftHand",
+            "Left Controller",
+            "LeftHandSynthetic",
+            "LeftHandVisual" }
+            : new[] //Right
+                {
+            "RightHandAnchor",
+            "RightControllerAnchor",
+            "RightHand",
+            "Right Controller",
+            "RightHandSynthetic",
+            "RightHandVisual"
+                };
+
+            // 1. Prefer real moving anchors first.
+            foreach (var transform in UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include,FindObjectsSortMode.None))
+            {
+                string cleanName = transform.name.Replace(" ", "").Replace("_", "").ToLowerInvariant();
+
+                foreach (string priorityName in anchorPriorityNames)
+                {
+                    string cleanPriority = priorityName.Replace(" ", "").Replace("_", "").ToLowerInvariant();
+
+                    if (cleanName == cleanPriority || cleanName.Contains(cleanPriority))
+                    {
+                        // Avoid returning DataSource objects here.
+                        if (!cleanName.Contains("datasource"))
+                        {
+                            return transform;
+                        }
+                    }
+                }
+            }
+
+            // 2. Then try regular name hints, but still avoid DataSource if possible.
+            var hints = side == HandSide.Left ? LeftHandNameHints : RightHandNameHints;
+
+            foreach (var transform in UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include,FindObjectsSortMode.None))
+            {
+                string lowerName = transform.name.ToLowerInvariant();
+
+                if (lowerName.Contains("datasource"))
+                {
+                    continue;
+                }
+
+                if (hints.Any(h => lowerName.Contains(h.ToLowerInvariant())))
+                {
+                    return transform;
+                }
+            }
+
+            // 3. Last fallback: use OVRHand components if no anchor was found.
+            foreach (var behaviour in UnityEngine.Object.FindObjectsByType<MonoBehaviour>(
+                         FindObjectsInactive.Include,
+                         FindObjectsSortMode.None))
             {
                 if (behaviour == null) continue;
+
                 var type = behaviour.GetType();
+                Debug.Log($"Type: {type.Name}: {behaviour.GetType().Name}");
+
                 if (type.Name != "OVRHand") continue;
 
                 var handType = GetObjectMember(type, behaviour, "HandType")?.ToString();
+
                 if (string.IsNullOrEmpty(handType)) continue;
 
-                if (side == HandSide.Left && handType.IndexOf("Left", StringComparison.OrdinalIgnoreCase) >= 0)
+                if (side == HandSide.Left &&
+                    handType.IndexOf("Left", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
                     return behaviour.transform;
-                if (side == HandSide.Right && handType.IndexOf("Right", StringComparison.OrdinalIgnoreCase) >= 0)
-                    return behaviour.transform;
-            }
+                }
 
-            // Then try common OVRCameraRig / Interaction SDK anchor names.
-            var hints = side == HandSide.Left ? LeftHandNameHints : RightHandNameHints;
-            foreach (var transform in UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include,
-             FindObjectsSortMode.None))
-            {
-                var lowerName = transform.name.ToLowerInvariant();
-                if (hints.Any(h => lowerName.Contains(h.ToLowerInvariant()))) return transform;
+                if (side == HandSide.Right &&
+                    handType.IndexOf("Right", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return behaviour.transform;
+                }
             }
 
             return null;

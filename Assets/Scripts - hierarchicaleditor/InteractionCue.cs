@@ -4,7 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using PlayStructure;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -33,6 +35,10 @@ public class InteractionCue : MonoBehaviour
     [HideInInspector] public bool suspendHintAnimations = false;
     public void doSuspendHintAnimations(bool value) => suspendHintAnimations = value;
 
+    //bool for hands
+    [SerializeField] public bool isHands;
+    public bool isControllers;
+    public Toggle isControllersOnToggle;
 
     [SerializeField] private bool ShowHighlightingForGrasps = true;
     [SerializeField] private GameObject interactionCueHighlighter;
@@ -54,6 +60,21 @@ public class InteractionCue : MonoBehaviour
 
     [SerializeField] private float lerpDuration = 2f;
     [SerializeField] private float holdDuration = 0.8f;
+
+
+    public void ToggleBoolForHandsorControllers()
+    {
+        
+        if (isControllersOnToggle.isOn)
+        {
+            isControllers = true;
+        }
+
+        else
+        {
+            isControllers = false;
+        }
+    }
 
     IEnumerator Animate()
     {
@@ -89,6 +110,8 @@ public class InteractionCue : MonoBehaviour
                 hintScrewModel.SetActive(false);
                 hintLeftModel.SetActive(false);
                 hintRightModel.SetActive(false);
+                hintLeftHand.SetActive(false);
+                hintRightHand.SetActive(false);
                 startTime = time;
                 yield return new WaitForEndOfFrame();
                 continue;
@@ -113,8 +136,26 @@ public class InteractionCue : MonoBehaviour
             var usingLeftHandIfUsingHands = cueHand.side == MetaXRCompatibility.HandSide.Left;
             var usingRightHandIfUsingHands = cueHand.side == MetaXRCompatibility.HandSide.Right;
 
-            hintLeftModel.SetActive(_hintTypeToShow == HintTypeToShow.GRAB && usingLeftHandIfUsingHands);
-            hintRightModel.SetActive(_hintTypeToShow == HintTypeToShow.GRAB && usingRightHandIfUsingHands);
+           
+            if (isControllers)
+            {
+                hintLeftModel.SetActive(_hintTypeToShow == HintTypeToShow.GRAB && usingLeftHandIfUsingHands);
+                hintRightModel.SetActive(_hintTypeToShow == HintTypeToShow.GRAB && usingRightHandIfUsingHands);
+
+                hintLeftHand.SetActive(false);
+                hintRightModel.SetActive(false);
+            }
+            else
+            {
+                hintLeftHand.SetActive(_hintTypeToShow == HintTypeToShow.GRAB && usingLeftHandIfUsingHands);
+                hintRightHand.SetActive(_hintTypeToShow == HintTypeToShow.GRAB && usingRightHandIfUsingHands);
+
+                hintRightModel.SetActive(false) ;
+                hintLeftModel.SetActive(false);
+            }
+
+
+
 
 
             var hintHandOffsetRot = usingControllerGraspHintsRatherThanHands ?
@@ -253,6 +294,8 @@ public class InteractionCue : MonoBehaviour
 
     public GameObject hintLeftModel;
     public GameObject hintRightModel;
+    public GameObject hintLeftHand;
+    public GameObject hintRightHand;
     public GameObject hintPieceParent;
     public GameObject hintScrewModel;
     public GameObject hintKeyModel;
