@@ -7,6 +7,7 @@ using PlayStructure;
 using UnityEngine;
 
 
+
 public class InteractionCue : MonoBehaviour
 {
     public bool overrideNoSymmetryCalculations = true;
@@ -107,13 +108,14 @@ public class InteractionCue : MonoBehaviour
             hintKeyModel.SetActive(_hintTypeToShow == HintTypeToShow.KEY);
             hintScrewModel.SetActive(_hintTypeToShow == HintTypeToShow.SCREW);
             var cueHand = MetaXRCompatibility.GetBestHandForCue(_thingToMove);
-            Debug.Log($"Cue hand selected: {cueHand.side}, Transform: {(cueHand.transform != null ? cueHand.transform.name : "NULL")}");
+            //Debug.Log($"Cue hand selected: {cueHand.side}, Transform: {(cueHand.transform != null ? cueHand.transform.name : "NULL")}");
             var fromHand = cueHand.transform;
             var usingLeftHandIfUsingHands = cueHand.side == MetaXRCompatibility.HandSide.Left;
             var usingRightHandIfUsingHands = cueHand.side == MetaXRCompatibility.HandSide.Right;
 
             hintLeftModel.SetActive(_hintTypeToShow == HintTypeToShow.GRAB && usingLeftHandIfUsingHands);
             hintRightModel.SetActive(_hintTypeToShow == HintTypeToShow.GRAB && usingRightHandIfUsingHands);
+
 
             var hintHandOffsetRot = usingControllerGraspHintsRatherThanHands ?
                 Quaternion.identity
@@ -225,6 +227,8 @@ public class InteractionCue : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
+
+
 
     public void ShowHint(HintTargetType targetType, GameObject thingToMove, Transform toMoveTo)
     {

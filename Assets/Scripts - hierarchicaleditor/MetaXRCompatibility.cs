@@ -84,12 +84,48 @@ namespace PlayStructure
             return hands.ToArray();
         }
 
+        // Returns whether a specific hand is "active" toward a target object.
+        // Today this uses selecting/hovering state on the object as a proxy.
+        // If you later have per-hand signals, replace this with real per-hand checks.
+        public static bool IsHandActiveForTarget(Transform hand, GameObject target)
+        {
+            if (hand == null || target == null) return false;
+
+            // If the object reports any selecting/hovering, treat the nearest hand as the active one.
+            // This keeps SDK-agnostic behavior while still favoring engaged input.
+            if (!TryReadSelectingState(target, out var selected) || !selected)
+                return false;
+
+            // Heuristic: when selected is true but we don't have per-hand counts,
+            // consider the nearer hand as the "active" one.
+            var left = GetLeftHandTransform();
+            var right = GetRightHandTransform();
+
+            if (left == null && right == null) return false;
+            if (left != null && right == null) return hand == left;
+            if (right != null && left == null) return hand == right;
+
+            var tpos = target.transform.position;
+            var leftDist = Vector3.Distance(left.position, tpos);
+            var rightDist = Vector3.Distance(right.position, tpos);
+
+            // Bias left on very small ties to reduce flicker.
+            const float tieEpsilon = 0.01f;
+            if (Mathf.Abs(leftDist - rightDist) <= tieEpsilon)
+                return hand == left;
+
+            return (leftDist < rightDist) ? (hand == left) : (hand == right);
+        }
+
+        // ...existing code...
+
+
         public static HandInfo GetBestHandForCue(GameObject target)
         {
             var targetPosition = target != null ? target.transform.position : Vector3.zero;
             var left = GetLeftHandTransform();
             var right = GetRightHandTransform();
-            Debug.Log($"Left hand found: {(left != null ? left.name : "NULL")} | Right hand found: {(right != null ? right.name : "NULL")}");
+            //Debug.Log($"Left hand found: {(left != null ? left.name : "NULL")} | Right hand found: {(right != null ? right.name : "NULL")}");
 
             if (left == null && right == null) return new HandInfo(null, HandSide.Unknown);
             if (left != null && right == null) return new HandInfo(left, HandSide.Left);
@@ -97,10 +133,13 @@ namespace PlayStructure
 
             var leftDistance = Vector3.Distance(left.position, targetPosition);
             var rightDistance = Vector3.Distance(right.position, targetPosition);
-            return leftDistance <= rightDistance
+            const float tieEpsilon = 0.01f;
+            if (Mathf.Abs(leftDistance - rightDistance) <= tieEpsilon)
+                return new HandInfo(left, HandSide.Left);
+
+            return (leftDistance < rightDistance) || (leftDistance < rightDistance)
                 ? new HandInfo(left, HandSide.Left)
                 : new HandInfo(right, HandSide.Right);
-
 
         }
 
@@ -367,3 +406,4 @@ namespace PlayStructure
         }
     }
 }
+

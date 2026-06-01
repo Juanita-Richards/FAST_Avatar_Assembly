@@ -18,7 +18,8 @@ namespace PlayStructure
             var screwPiece = (ScrewPiece)target;
             if (screwPiece.screwIndex != -1) return;
             if (screwPiece.gameObject.scene != SceneManager.GetActiveScene()) return; 
-            var highestIndex = FindObjectsOfType<ScrewPiece>().Max(s => s.screwIndex);
+            //var highestIndex = FindObjectsOfType<ScrewPiece>().Max(s => s.screwIndex);
+            var highestIndex = FindObjectsByType<ScrewPiece>(FindObjectsSortMode.None).Max(s => s.screwIndex);
             Undo.RecordObject(screwPiece, "Set screwIndex");
             screwPiece.screwIndex = highestIndex + 1;
             
