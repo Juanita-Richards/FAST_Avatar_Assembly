@@ -2046,6 +2046,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282484137}
   m_CullTransparentMesh: 1
+--- !u!1 &299188593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299188594}
+  m_Layer: 0
+  m_Name: MetaHandReference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &299188594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299188593}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &303028488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2472,7 +2503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &344292360
 Transform:
   m_ObjectHideFlags: 0
@@ -2524,7 +2555,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildTracker
   Builds: {fileID: 1316542575}
-  scriptableBuilds: []
+  scriptableBuilds:
+  - {fileID: 11400000, guid: cfd73a98752460c4c88ddace774e809d, type: 2}
+  - {fileID: 11400000, guid: dbe01924f1cdbf149a6b5533d45dd2a3, type: 2}
+  - {fileID: 11400000, guid: dbe01924f1cdbf149a6b5533d45dd2a3, type: 2}
 --- !u!114 &344292364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2541,6 +2575,7 @@ MonoBehaviour:
   gender_dropdown: {fileID: 2014332227}
   PID_dropdown: {fileID: 2014332226}
   build_dropdown: {fileID: 1316542575}
+  isController: {fileID: 2014332224}
 --- !u!1 &386177682
 GameObject:
   m_ObjectHideFlags: 0
@@ -6263,7 +6298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1565459309965905656, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2229968316047873090, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
       propertyPath: m_RootOrder
@@ -6377,6 +6412,10 @@ PrefabInstance:
       propertyPath: _whereThingWillGo
       value: 
       objectReference: {fileID: 2109356287}
+    - target: {fileID: 6540333739034998796, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
+      propertyPath: isControllersOnToggle
+      value: 
+      objectReference: {fileID: 2014332224}
     - target: {fileID: 6540333739034998796, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
       propertyPath: overrideNoSymmetryCalculations
       value: 1
@@ -13017,6 +13056,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+--- !u!114 &2014332224 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 529756075240345203, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+  m_PrefabInstance: {fileID: 2014332223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Toggle
 --- !u!114 &2014332226 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 205829137791323222, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
@@ -34908,7 +34958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8139965311785136060, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648913830366221437, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
@@ -45371,3 +45421,4 @@ SceneRoots:
   - {fileID: 3722589265289764145}
   - {fileID: 5460625626903072259}
   - {fileID: 344292360}
+  - {fileID: 299188594}
