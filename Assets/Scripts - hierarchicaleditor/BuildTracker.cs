@@ -11,6 +11,8 @@ public class BuildTracker : MonoBehaviour
 
     public static BuildTracker Instance; //not really needed
 
+   
+
     [SerializeField] private List<ScriptableInstructions> scriptableBuilds = new List<ScriptableInstructions>();
 
     private void Awake()
@@ -40,11 +42,16 @@ public class BuildTracker : MonoBehaviour
         if (dropdownIndex < 0 || dropdownIndex >= scriptableBuilds.Count)
         {
             Debug.LogError($"DropIndex index {scriptableBuilds[dropdownIndex]} does not match the Scriptable list");
+           
         }
 
         PlayInstructions.instance.SetInstructions(scriptableBuilds[dropdownIndex]);
+        
 
-        Debug.Log($"Changed instructions to: {scriptableBuilds[dropdownIndex].name}");
+        Debug.Log($"Changed instructions to: {scriptableBuilds[dropdownIndex].name}"); 
+        Debug.Log($"Scriptable Count: {scriptableBuilds.Count}");
+        Debug.Log($"DropIndex {dropdownIndex}");
+
     }
 
 }
