@@ -34,7 +34,7 @@ public class ParticipantLog : MonoBehaviour
         if (!File.Exists(log_path))
         {
             using StreamWriter writer = File.CreateText(log_path);
-            writer.WriteLine("ParticipantID, Gender, Cohort,Build, date-time, Time");
+            writer.WriteLine("ParticipantID, Gender, Cohort,Build, ControllerOn,date-time, Time");
 
             writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {build},{isController},{dateTime}");
             writer.Close();

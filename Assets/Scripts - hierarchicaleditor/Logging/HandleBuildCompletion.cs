@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using XRTLogging;
 public class HandleBuildCompletion : MonoBehaviour
@@ -10,6 +11,7 @@ public class HandleBuildCompletion : MonoBehaviour
     public ExperimentManager experimentManager;
     public float secondsUntilDisableGameObjects = 20f; //was 10 seconds
     public GameObject VEQ, ISDK_Ray;
+    public Timer timerLog;
    
 
     public void DoComplete()
@@ -28,9 +30,10 @@ public class HandleBuildCompletion : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsUntilDisableGameObjects);
         experimentManager.StopLogging(); 
-        
+        timerLog.TurnTImerOff();
         VEQ.gameObject.SetActive(true);
         ISDK_Ray.gameObject.SetActive(true);
+        
         foreach (var g in gameObjectsToDisableAfterTime)
         {
             g.SetActive(false);

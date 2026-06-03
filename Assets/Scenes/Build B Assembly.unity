@@ -2187,7 +2187,7 @@ MonoBehaviour:
   gender_dropdown: {fileID: 2014332227}
   PID_dropdown: {fileID: 2014332226}
   build_dropdown: {fileID: 2014332224}
-  isController: {fileID: 0}
+  isController: {fileID: 1255539366}
 --- !u!114 &344292364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2200,7 +2200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c2938872312d846991501804e4bde4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  timer: {fileID: 117919163}
+  timer: {fileID: 1981857154}
   timerVisualtext: {fileID: 1407726464}
   timerCountDown: 0
   timeStarted: 0
@@ -3012,7 +3012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &558103232
 Transform:
   m_ObjectHideFlags: 0
@@ -8315,6 +8315,7 @@ MonoBehaviour:
   secondsUntilDisableGameObjects: 10
   VEQ: {fileID: 0}
   ISDK_Ray: {fileID: 0}
+  timerLog: {fileID: 0}
 --- !u!1 &1865545413
 GameObject:
   m_ObjectHideFlags: 0
@@ -8790,6 +8791,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4305865058757919010, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
   m_PrefabInstance: {fileID: 1979148959}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1981857154 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 712284143156860154, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+  m_PrefabInstance: {fileID: 2014332223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1996362474
 GameObject:
   m_ObjectHideFlags: 0
@@ -8996,6 +9008,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 1551250493}
+    - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 344292364}
+    - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 344292362}
+    - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: TurnTimerOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: StartTrackingOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: Timer, FAB
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
+      value: Motion, FAB
+      objectReference: {fileID: 0}
     - target: {fileID: 7042226154921311914, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
       propertyPath: m_Pivot.x
       value: 0

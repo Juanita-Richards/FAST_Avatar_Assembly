@@ -76,8 +76,8 @@ public class FPSQuestionnaire : MonoBehaviour
 
         //Create directory FIRST
         string directoryPath = Path.Combine(
-            "Questionnaire",
-            "FPS"
+            "Questionnaire"
+            //"FPS" - this makes another folder
         );
 
         Directory.CreateDirectory(directoryPath);

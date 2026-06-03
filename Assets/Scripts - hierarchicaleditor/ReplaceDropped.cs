@@ -1,74 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class ReplaceDropped : MonoBehaviour
 {
-
-
     [Header("Reset Settings")]
-    public float minYPosition = 0f;          // If object falls below this height, start timer
-    public float secondsBeforeReset = 1f;     // How long it must stay below before resetting
-
-    [Header("Optional")]
-    public bool onlyResetWhenNotHeld = true;  // Uses parent check as a simple held check
-    public bool restoreOriginalParent = true;
+    public float minYPosition = -1f;
 
     public Vector3 startPosition;
     public Quaternion startRotation;
-    public Transform startParent;
-
     private Rigidbody rb;
-    private float timeBelowMin = 0f;
 
-    void Awake()
+    private bool isResetting = false;
+
+    void Start()
     {
         startPosition = transform.position;
         startRotation = transform.rotation;
-        startParent = transform.parent;
-
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // If the object is currently being held by a controller/hand,
-        // it may have a different parent. Do not reset while held.
-        if (onlyResetWhenNotHeld && transform.parent != startParent)
-        {
-            timeBelowMin = 0f;
+        if (isResetting)
             return;
-        }
 
-        // If object is below the floor/drop height, start counting.
         if (transform.position.y < minYPosition)
         {
-            timeBelowMin += Time.deltaTime;
-            //ResetObject();
-        }
-        else
-        {
-            timeBelowMin = 0f;
-        }
-
-        // Reset after it has been below the minimum height long enough.
-        if (timeBelowMin >= secondsBeforeReset)
-        {
+            Debug.Log($"{gameObject.name} fell too far. Current Y: {transform.position.y}");
             ResetObject();
         }
     }
 
     private void ResetObject()
     {
-        if (restoreOriginalParent)
-        {
-            transform.SetParent(startParent);
-        }
+        isResetting = true;
 
         if (rb != null)
         {
-            // Stop all movement first.
+            // Stop physics movement first
 #if UNITY_6000_0_OR_NEWER
             rb.linearVelocity = Vector3.zero;
 #else
@@ -76,10 +44,17 @@ public class ReplaceDropped : MonoBehaviour
 #endif
             rb.angularVelocity = Vector3.zero;
 
-            // Move it back.
+            // Temporarily make it kinematic so physics does not fight the reset
+            bool wasKinematic = rb.isKinematic;
+            rb.isKinematic = true;
+
+            transform.position = startPosition;
+            transform.rotation = startRotation;
+
             rb.position = startPosition;
             rb.rotation = startRotation;
 
+            rb.isKinematic = wasKinematic;
             rb.Sleep();
         }
         else
@@ -88,6 +63,6 @@ public class ReplaceDropped : MonoBehaviour
             transform.rotation = startRotation;
         }
 
-        timeBelowMin = 0f;
+        isResetting = false;
     }
 }

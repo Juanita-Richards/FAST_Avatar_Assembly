@@ -143,7 +143,7 @@ public class InteractionCue : MonoBehaviour
                 hintRightModel.SetActive(_hintTypeToShow == HintTypeToShow.GRAB && usingRightHandIfUsingHands);
 
                 hintLeftHand.SetActive(false);
-                hintRightModel.SetActive(false);
+                hintRightHand.SetActive(false);
             }
             else
             {
