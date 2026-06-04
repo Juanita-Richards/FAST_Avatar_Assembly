@@ -57,13 +57,13 @@ public class Timer : MonoBehaviour
         timerCountDown += Time.deltaTime;
 
         //This is disabled for now
-        //if (timerCountDown <= 240)
-        //    timerVisual.SetActive(true);
+        if (timerCountDown <= 240)
+            timerVisual.SetActive(true);
 
-        //if (timerCountDown <= 0)
-        //{
-        //    timerCountDown = 0f;
-        //}
+        if (timerCountDown <= 0)
+        {
+            timerCountDown = 0f;
+        }
 
         DisplayTime(timerCountDown);
         yield return null;

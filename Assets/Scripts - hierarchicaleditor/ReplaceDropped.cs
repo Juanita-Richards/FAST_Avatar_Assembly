@@ -4,6 +4,7 @@ public class ReplaceDropped : MonoBehaviour
 {
     [Header("Reset Settings")]
     public float minYPosition = -1f;
+    public float maxYPosition = 0.2f;
 
     public Vector3 startPosition;
     public Quaternion startRotation;
@@ -23,7 +24,7 @@ public class ReplaceDropped : MonoBehaviour
         if (isResetting)
             return;
 
-        if (transform.position.y < minYPosition)
+        if (transform.position.y < minYPosition || transform.position.y < maxYPosition)
         {
             Debug.Log($"{gameObject.name} fell too far. Current Y: {transform.position.y}");
             ResetObject();
