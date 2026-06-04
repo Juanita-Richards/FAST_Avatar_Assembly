@@ -80,15 +80,15 @@ public class VEQuestionnaire : MonoBehaviour
         float average_three = Average(8, 4);
 
         
-        string cohort = participantLog.cohort_dropdown.options[participantLog.cohort_dropdown.value].text;
+        var cohort = participantLog.cohort_dropdown.options[participantLog.cohort_dropdown.value].text;
 
         PIDS = participantLog.PID_dropdown.options[participantLog.PID_dropdown.value].text;
         logPath = $"FASTA_VEQ.csv";
 
         //Create directory FIRST
         string directoryPath = Path.Combine(
-            "Questionnaire",
-            "VEQ" //-- this makes another folder
+            "Questionnaire"
+            //"VEQ" //-- this makes another folder
         );
 
         Directory.CreateDirectory(directoryPath);

@@ -53,14 +53,14 @@ public class pESQQuestionnaire : MonoBehaviour
     public void pESQtoCSV()
     {
         var cohort = participantLog.cohort_dropdown.options[participantLog.cohort_dropdown.value].text;
-        PIDS = participantLog.cohort_dropdown.options[participantLog.PID_dropdown.value].text;
+        PIDS = participantLog.PID_dropdown.options[participantLog.PID_dropdown.value].text;
 
         logPath = $"FASTA_pESQ.csv";
 
         //Create directory FIRST
         string directoryPath = Path.Combine(
-            "Questionnaire",
-            "pESQ"
+            "Questionnaire"
+            //"pESQ"
         );
 
         Directory.CreateDirectory(directoryPath);

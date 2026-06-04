@@ -70,8 +70,8 @@ public class FPSQuestionnaire : MonoBehaviour
     public void FPSToCSV()
     {
         var cohort = participantLog.cohort_dropdown.options[participantLog.cohort_dropdown.value].text;
-        PIDS = participantLog.cohort_dropdown.options[participantLog.PID_dropdown.value].text;
-        
+        PIDS = participantLog.PID_dropdown.options[participantLog.PID_dropdown.value].text;
+
         logPath = $"FASTA_FPS.csv";
 
         //Create directory FIRST
@@ -92,10 +92,10 @@ public class FPSQuestionnaire : MonoBehaviour
             // Write header only once
             if (!fileExists)
             {
-                writer.WriteLine("Trial#,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10");
+                writer.WriteLine("PID #, Cohort,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10");
             }
             //trial
-            string row = $"{PIDS}_{cohort}," + string.Join(",", answers);
+            string row = $"{PIDS}, {cohort}," + string.Join(",", answers);
             writer.WriteLine(row);
         }
         //trial

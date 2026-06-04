@@ -3389,6 +3389,11 @@ MonoBehaviour:
   _movementProvider: {fileID: 0}
   _handAligment: 0
   _handGrabPoses: []
+--- !u!1 &493794470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8465652761795607163, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+  m_PrefabInstance: {fileID: 5460625626903072259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &502959498
 GameObject:
   m_ObjectHideFlags: 0
@@ -11774,7 +11779,7 @@ MonoBehaviour:
   _interactionCue: {fileID: 1893368777}
   substructurePositioningHint: {fileID: 1048795220}
   allowPipesToAny90InsertOffset: 1
-  _instructions: {fileID: 11400000, guid: dbe01924f1cdbf149a6b5533d45dd2a3, type: 2}
+  _instructions: {fileID: 0}
   currentSubStepState: 0
   subStepProgress:
     m_PersistentCalls:
@@ -12961,6 +12966,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 344292360}
     m_Modifications:
+    - target: {fileID: 529756075240345203, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1893368777}
+    - target: {fileID: 529756075240345203, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleBoolForHandsorControllers
+      objectReference: {fileID: 0}
     - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -16569,18 +16582,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138745200304301159}
   m_CullTransparentMesh: 0
---- !u!114 &2138745200360017904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2138745200360017918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df7ff6a0b791a747b8cd3593563359e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2138745200360017905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16631,18 +16632,6 @@ MonoBehaviour:
   - name: RightHand
     gameObject: {fileID: 0}
     inputCollector: {fileID: 0}
---- !u!114 &2138745200360017908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2138745200360017918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df7ff6a0b791a747b8cd3593563359e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2138745200360017918
 GameObject:
   m_ObjectHideFlags: 0
@@ -16654,12 +16643,9 @@ GameObject:
   - component: {fileID: 2138745200360017919}
   - component: {fileID: 2138745200360017905}
   - component: {fileID: 2138745200360017906}
-  - component: {fileID: 2138745200360017908}
-  - component: {fileID: 2138745200360017904}
   - component: {fileID: 335146182}
   - component: {fileID: 335146183}
   - component: {fileID: 335146184}
-  - component: {fileID: 2138745200360017920}
   m_Layer: 0
   m_Name: SampleExperimentSetup (Vive) 2
   m_TagString: Untagged
@@ -16683,18 +16669,6 @@ Transform:
   - {fileID: 2138745200282386843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2138745200360017920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2138745200360017918}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e233180f4948546894a784ff2cc2a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2138745200383303958
 GameObject:
   m_ObjectHideFlags: 0
@@ -21592,6 +21566,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2209828890138639723, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209828890138639723, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209828890138639723, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 493794470}
+    - target: {fileID: 2209828890138639723, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209828890138639723, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209828890138639723, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209828890138639723, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5046609796511051783, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_Camera
       value: 
@@ -21599,7 +21601,7 @@ PrefabInstance:
     - target: {fileID: 5883682749545183752, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 344292364}
     - target: {fileID: 6334170642678292874, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -21640,10 +21642,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6789398852401777757, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7750519340542303436, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 344292364}
     - target: {fileID: 8139965311785136060, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_Name
       value: Questionnaire Manager
@@ -21652,10 +21658,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8282237225615530115, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8648913830366221437, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 344292364}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22933,12 +22943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minYPosition: 0.2
-  secondsBeforeReset: 1
-  onlyResetWhenNotHeld: 1
-  restoreOriginalParent: 1
   startPosition: {x: 0.222, y: 1.42, z: 3.104}
   startRotation: {x: 0, y: 0, z: 0, w: 1}
-  startParent: {fileID: 0}
 --- !u!114 &7548242889292933767
 MonoBehaviour:
   m_ObjectHideFlags: 0

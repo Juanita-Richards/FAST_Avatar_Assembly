@@ -11,7 +11,9 @@ public class BuildTracker : MonoBehaviour
 
     public static BuildTracker Instance; //not really needed
 
-    //public GameObject physObjC, physObjB;
+    public GameObject physObjC, physObjB;
+
+    
 
     [SerializeField] private List<ScriptableInstructions> scriptableBuilds = new List<ScriptableInstructions>();
 
@@ -52,16 +54,16 @@ public class BuildTracker : MonoBehaviour
         Debug.Log($"Scriptable Count: {scriptableBuilds.Count}");
         Debug.Log($"DropIndex {dropdownIndex}");
 
-        //if (scriptableBuilds[dropdownIndex].name == "Int-B")
-        //{
-        //    physObjB.SetActive(true);
-        //    physObjC.SetActive(false);
-        //}
-        //else
-        //{
-        //    physObjC.SetActive(true);
-        //    physObjB.SetActive(false);
-        //}
+        if (scriptableBuilds[dropdownIndex].name == "Int-B")
+        {
+            physObjB.SetActive(true);
+            physObjC.SetActive(false);
+        }
+        else
+        {
+            physObjC.SetActive(true);
+            physObjB.SetActive(false);
+        }
 
     }
 

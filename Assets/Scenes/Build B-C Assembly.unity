@@ -2609,7 +2609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   timer: {fileID: 1623929787}
   timerVisualtext: {fileID: 1623929787}
-  timerCountDown: 360
+  timerCountDown: 0
   timeStarted: 0
   reset: 0
   minimumTime: 2
@@ -12994,6 +12994,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 344292360}
     m_Modifications:
+    - target: {fileID: 529756075240345203, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1893368777}
+    - target: {fileID: 529756075240345203, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleBoolForHandsorControllers
+      objectReference: {fileID: 0}
     - target: {fileID: 2698449733171692223, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -22939,12 +22947,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minYPosition: 0
-  secondsBeforeReset: 1
-  onlyResetWhenNotHeld: 1
-  restoreOriginalParent: 1
   startPosition: {x: 0.222, y: 1.42, z: 3.104}
   startRotation: {x: 0, y: 0, z: 0, w: 1}
-  startParent: {fileID: 0}
 --- !u!1001 &3134458282433946777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25840,7 +25844,7 @@ PrefabInstance:
     - target: {fileID: 5883682749545183752, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 344292364}
     - target: {fileID: 6334170642678292874, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -25884,7 +25888,7 @@ PrefabInstance:
     - target: {fileID: 7750519340542303436, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 344292364}
     - target: {fileID: 8139965311785136060, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_Name
       value: Questionnaire Manager
@@ -25896,7 +25900,7 @@ PrefabInstance:
     - target: {fileID: 8648913830366221437, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 344292364}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26284,7 +26288,7 @@ GameObject:
   - component: {fileID: 7548242889292933766}
   - component: {fileID: 7548242889292933767}
   m_Layer: 0
-  m_Name: substructure
+  m_Name: substructure - C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29101,12 +29105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minYPosition: 0.2
-  secondsBeforeReset: 1
-  onlyResetWhenNotHeld: 1
-  restoreOriginalParent: 1
   startPosition: {x: 0.222, y: 1.42, z: 3.104}
   startRotation: {x: 0, y: 0, z: 0, w: 1}
-  startParent: {fileID: 0}
 --- !u!114 &7548242889292933767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30837,7 +30837,7 @@ GameObject:
   - component: {fileID: 3103757357227472484}
   - component: {fileID: 5072592856637888063}
   m_Layer: 0
-  m_Name: substructure
+  m_Name: substructure - B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
