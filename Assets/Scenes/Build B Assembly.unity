@@ -2132,7 +2132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &344292360
 Transform:
   m_ObjectHideFlags: 0
@@ -2197,16 +2197,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 344292359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90c2938872312d846991501804e4bde4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a538ae75bab1bc4fbe91d77053eaaf6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Timer
+  m_EditorClassIdentifier: FAB::TimerCountUp
   timer: {fileID: 1981857154}
-  timerVisualtext: {fileID: 1407726464}
   timerCountDown: 0
   timeStarted: 0
   reset: 0
   minimumTime: 2
-  timerVisual: {fileID: 1407726465}
 --- !u!1 &386177682
 GameObject:
   m_ObjectHideFlags: 0
@@ -3528,7 +3526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &710633887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4088,6 +4086,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846946045}
   m_CullTransparentMesh: 1
+--- !u!1 &869062012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 869062014}
+  - component: {fileID: 869062013}
+  m_Layer: 0
+  m_Name: Dummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &869062013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869062012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c2938872312d846991501804e4bde4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FAB::Timer
+  timer: {fileID: 1981857154}
+  timerVisualtext: {fileID: 1981857154}
+  timerCountDown: 0
+  timeStarted: 0
+  reset: 0
+  minimumTime: 2
+  timerVisual: {fileID: 2014332225}
+--- !u!4 &869062014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869062012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35373, y: 0, z: 7.42926}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &908572550
 GameObject:
   m_ObjectHideFlags: 0
@@ -6968,22 +7017,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3081977582353249264, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
   m_PrefabInstance: {fileID: 1407726462}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1407726464 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 167489949236831690, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
-  m_PrefabInstance: {fileID: 1407726462}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!1 &1407726465 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5950902706568013867, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
-  m_PrefabInstance: {fileID: 1407726462}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1449760385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8414,7 +8447,8 @@ MonoBehaviour:
   secondsUntilDisableGameObjects: 240
   VEQ: {fileID: 1537579696}
   ISDK_Ray: {fileID: 1015650028}
-  timerLog: {fileID: 344292364}
+  timerLog: {fileID: 869062013}
+  timerBC: {fileID: 344292364}
 --- !u!1 &1865545413
 GameObject:
   m_ObjectHideFlags: 0
@@ -15765,7 +15799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
-      value: Timer, FAB
+      value: TimerCountUp, FAB
       objectReference: {fileID: 0}
     - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
@@ -15871,6 +15905,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2014332225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2707274322148134081, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+  m_PrefabInstance: {fileID: 2014332223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2014332226 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 205829137791323222, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
@@ -17677,7 +17716,7 @@ MonoBehaviour:
   _twoGrabTransformer: {fileID: 0}
   _targetTransform: {fileID: 1274962617498823533}
   _maxGrabPoints: -1
-  _rigidbody: {fileID: 3963841672610890612}
+  _rigidbody: {fileID: 0}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 0
   _forceKinematicDisabled: 0
@@ -17821,40 +17860,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &977495352722182968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7198149788428576731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 6471406930558574385}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls: []
   _whenMove:
     m_PersistentCalls:
       m_Calls: []
@@ -27329,6 +27334,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 51dd09f4a141824428d606766ed30fb3, type: 2}
+    - target: {fileID: 6400000, guid: 6d23c9d076c41c747aaf66ce9a678388, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29423,12 +29432,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1302060206010596362, guid: 35cfa6cb236d2474cbfc22446ce4d380, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8962936177533075827}
-    - targetCorrespondingSourceObject: {fileID: 1302060206010596362, guid: 35cfa6cb236d2474cbfc22446ce4d380, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8952167264972537331}
-    - targetCorrespondingSourceObject: {fileID: 1302060206010596362, guid: 35cfa6cb236d2474cbfc22446ce4d380, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 977495352722182968}
   m_SourcePrefab: {fileID: 100100000, guid: 35cfa6cb236d2474cbfc22446ce4d380, type: 3}
 --- !u!114 &8262592937254222385 stripped
 MonoBehaviour:
@@ -29821,40 +29824,6 @@ MonoBehaviour:
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
   _physicsGrabbable: {fileID: 0}
---- !u!114 &8952167264972537331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7198149788428576731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 1931148287016665563}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8962936177533075827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29874,7 +29843,7 @@ MonoBehaviour:
   _twoGrabTransformer: {fileID: 0}
   _targetTransform: {fileID: 7543291558169607521}
   _maxGrabPoints: -1
-  _rigidbody: {fileID: 2783590144280045039}
+  _rigidbody: {fileID: 0}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 0
   _forceKinematicDisabled: 0
@@ -30018,3 +29987,4 @@ SceneRoots:
   - {fileID: 1914729406}
   - {fileID: 1886961886}
   - {fileID: 710633888}
+  - {fileID: 869062014}

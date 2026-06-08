@@ -2582,16 +2582,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 344292359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90c2938872312d846991501804e4bde4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a538ae75bab1bc4fbe91d77053eaaf6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: FAB::Timer
+  m_EditorClassIdentifier: Assembly-CSharp::TimerCountUp
   timer: {fileID: 22813529}
-  timerVisualtext: {fileID: 22813529}
   timerCountDown: 0
   timeStarted: 0
   reset: 0
   minimumTime: 2
-  timerVisual: {fileID: 1898858469}
 --- !u!1 &386177682
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,6 +3738,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 51dd09f4a141824428d606766ed30fb3, type: 2}
+    - target: {fileID: 6400000, guid: 6d23c9d076c41c747aaf66ce9a678388, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8241,6 +8243,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129827872}
   m_CullTransparentMesh: 1
+--- !u!1 &1154641814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8923823376269155481, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+  m_PrefabInstance: {fileID: 5460625626903072259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1156869105 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4282338058069095519, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
@@ -11953,7 +11960,8 @@ MonoBehaviour:
   secondsUntilDisableGameObjects: 120
   VEQ: {fileID: 6428088886550491712}
   ISDK_Ray: {fileID: 256349115}
-  timerLog: {fileID: 344292366}
+  timerLog: {fileID: 2118671581}
+  timerBC: {fileID: 344292366}
 --- !u!1 &1865545413
 GameObject:
   m_ObjectHideFlags: 0
@@ -12318,11 +12326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9629e60449c9c85479b76faac8918117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1898858469 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2707274322148134081, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
-  m_PrefabInstance: {fileID: 2014332223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1938234948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12998,6 +13001,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
       objectReference: {fileID: 344292366}
+    - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: TurnTimerOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
+      value: TimerCountUp, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7042226154921311914, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -14233,6 +14244,57 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2118671580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118671582}
+  - component: {fileID: 2118671581}
+  m_Layer: 0
+  m_Name: dummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2118671581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118671580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c2938872312d846991501804e4bde4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FAB::Timer
+  timer: {fileID: 22813529}
+  timerVisualtext: {fileID: 22813529}
+  timerCountDown: 0
+  timeStarted: 0
+  reset: 0
+  minimumTime: 2
+  timerVisual: {fileID: 1154641814}
+--- !u!4 &2118671582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118671580}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 236.45752, y: 0, z: 264.54013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2123381473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23719,3 +23781,4 @@ SceneRoots:
   - {fileID: 1688813030}
   - {fileID: 5460625626903072259}
   - {fileID: 344292360}
+  - {fileID: 2118671582}

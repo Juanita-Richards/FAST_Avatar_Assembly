@@ -54,10 +54,10 @@ public class Timer : MonoBehaviour
     }
     IEnumerator TimeCount()
     {
-        timerCountDown += Time.deltaTime;
+        timerCountDown -= Time.deltaTime;
 
         //This is disabled for now
-        if (timerCountDown <= 240)
+        if (timerCountDown <= 120)
             timerVisual.SetActive(true);
 
         if (timerCountDown <= 0)

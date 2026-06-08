@@ -1496,12 +1496,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: FAB::ReplaceDropped
   minYPosition: 0
-  secondsBeforeReset: 1
-  onlyResetWhenNotHeld: 1
-  restoreOriginalParent: 1
+  maxYPosition: 0.2
   startPosition: {x: 0.222, y: 1.42, z: 3.104}
   startRotation: {x: 0, y: 0, z: 0, w: 1}
-  startParent: {fileID: 0}
 --- !u!54 &877703878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2321,8 +2318,32 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.data[0].name
+      value: Attached to conn_3way
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
       propertyPath: _attachPoints.Array.data[1].name
       value: Attached to conn_3way
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.data[0].thisToOther.w
+      value: -0.00000004371139
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.data[0].thisToOther.x
+      value: 7.1054274e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.data[0].thisToOther.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.data[0].thisToOther.z
+      value: -1.3397012e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
       propertyPath: _attachPoints.Array.data[1].thisToOther.w
@@ -2341,6 +2362,18 @@ PrefabInstance:
       value: -1.3397012e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.data[0].attachTransform
+      value: 
+      objectReference: {fileID: 1313986088}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.data[0]._mCurrentAttachState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.data[0]._mOtherBuildingPiece
+      value: 
+      objectReference: {fileID: 565656577}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
       propertyPath: _attachPoints.Array.data[1]._mCurrentAttachState
       value: 1
       objectReference: {fileID: 0}
@@ -2348,6 +2381,10 @@ PrefabInstance:
       propertyPath: _attachPoints.Array.data[1]._mOtherBuildingPiece
       value: 
       objectReference: {fileID: 565656577}
+    - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+      propertyPath: _attachPoints.Array.data[0]._mOtherBuildingPieceAttachPointIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
       propertyPath: _attachPoints.Array.data[1]._mOtherBuildingPieceAttachPointIndex
       value: 2
@@ -2422,6 +2459,11 @@ MonoBehaviour:
 --- !u!4 &1313986087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2229968316047873090, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
+  m_PrefabInstance: {fileID: 1313986085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1313986088 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5861934633523638597, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
   m_PrefabInstance: {fileID: 1313986085}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1420615835
