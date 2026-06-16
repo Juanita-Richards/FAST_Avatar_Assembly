@@ -12,8 +12,8 @@ public class HandleBuildCompletion : MonoBehaviour
     public ExperimentManager experimentManager;
     public float secondsUntilDisableGameObjects = 20f; //was 10 seconds
     public GameObject VEQ, ISDK_Ray;
-    public Timer timerLog;
-    public TimerCountUp timerBC;
+    //public Timer timerLog;
+    //public TimerCountUp timerBC;
    
 
     public void DoComplete()
@@ -32,8 +32,8 @@ public class HandleBuildCompletion : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsUntilDisableGameObjects);
         experimentManager.StopLogging(); 
-        timerLog.TurnTImerOff();
-        timerBC.TurnTimerOn();
+        //timerLog.TurnTImerOff();
+        //timerBC.TurnTimerOn();
         VEQ.gameObject.SetActive(true);
         ISDK_Ray.gameObject.SetActive(true);
         
