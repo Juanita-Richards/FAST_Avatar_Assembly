@@ -161,10 +161,10 @@ namespace PlayStructure
             var leftDistance = Vector3.Distance(left.position, targetPosition);
             var rightDistance = Vector3.Distance(right.position, targetPosition);
 
-            Debug.Log(
-                $"[MetaXRCompatibility] LeftDist: {leftDistance:F3} | RightDist: {rightDistance:F3} | " +
-                $"Left: {left.name} | Right: {right.name}"
-            );
+            //Debug.Log(
+            //    $"[MetaXRCompatibility] LeftDist: {leftDistance:F3} | RightDist: {rightDistance:F3} | " +
+            //    $"Left: {left.name} | Right: {right.name}"
+            //);
             const float tieEpsilon = 0.01f;
             if (Mathf.Abs(leftDistance - rightDistance) <= tieEpsilon)
                 return new HandInfo(left, HandSide.Left);

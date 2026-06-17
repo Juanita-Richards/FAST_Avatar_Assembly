@@ -1,15 +1,16 @@
 using NUnit.Framework;
 using PlayStructure;
-using UnityEngine;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
-using System.Collections;
 
 public class ReplaceDropped : MonoBehaviour
 {
-    [Header("Reset Settings")]
+    //[Header("Reset Settings")]
     public float minYPosition = -1f;
     public float maxYPosition = 0.2f;
 
@@ -30,15 +31,15 @@ public class ReplaceDropped : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        ///<Important>
+        ///<Summary>
         /// The below is good to use when you want certain prefabs (i.e., screws)
         /// to ignore the Building Piece script
-        /// </Important>
+        /// </Summary>
         /// 
 
         TryGetComponent(out buildingPiece);
 
-       
+
     }
 
     private void Start()
@@ -86,7 +87,7 @@ public class ReplaceDropped : MonoBehaviour
         if (isAttachedBuildingPiece() && !HasFallenFar())
         {
             SaveCurrentSnappedResetPoint();
-    
+
         }
     }
 
@@ -120,6 +121,7 @@ public class ReplaceDropped : MonoBehaviour
 
             if (attachPoint.currentAttachState == AttachPoint.AttachState.LOOSE_LOCK || attachPoint.currentAttachState == AttachPoint.AttachState.FULL_LOCK || attachPoint.currentAttachState == AttachPoint.AttachState.PARTIAL_LOCK)
             {
+                //GetComponent<ReplaceDropped>().enabled = false;
                 return true;
             }
         }
@@ -152,7 +154,7 @@ public class ReplaceDropped : MonoBehaviour
     private void MoveObjectTo(Vector3 targetPosition, Quaternion targetRotation)
     {
 
-        if(rb != null)
+        if (rb != null)
         {
 #if UNITY_6000_0_OR_NEWER
             rb.linearVelocity = Vector3.zero;
@@ -183,4 +185,4 @@ public class ReplaceDropped : MonoBehaviour
         }
     }
 }
-   
+
