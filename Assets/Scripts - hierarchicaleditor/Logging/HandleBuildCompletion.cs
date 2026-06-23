@@ -11,7 +11,7 @@ public class HandleBuildCompletion : MonoBehaviour
     public List<GameObject> gameObjectsToHideImmediately;
     public ExperimentManager experimentManager;
     public float secondsUntilDisableGameObjects = 20f; //was 10 seconds
-    public GameObject VEQ, ISDK_Ray;
+    public GameObject Questionnaire;
     //public Timer timerLog;
     //public TimerCountUp timerBC;
    
@@ -31,11 +31,11 @@ public class HandleBuildCompletion : MonoBehaviour
     private IEnumerator WaitThenHideSubstructure()
     {
         yield return new WaitForSeconds(secondsUntilDisableGameObjects);
-        experimentManager.StopLogging(); 
+        experimentManager.StopLogging();
         //timerLog.TurnTImerOff();
         //timerBC.TurnTimerOn();
-        VEQ.gameObject.SetActive(true);
-        ISDK_Ray.gameObject.SetActive(true);
+        Questionnaire.gameObject.SetActive(true);
+       
         
         foreach (var g in gameObjectsToDisableAfterTime)
         {

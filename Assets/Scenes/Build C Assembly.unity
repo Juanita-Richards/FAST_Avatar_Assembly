@@ -3928,7 +3928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &532365709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12984,8 +12984,7 @@ MonoBehaviour:
   - {fileID: 1048795218}
   experimentManager: {fileID: 2138745200360017905}
   secondsUntilDisableGameObjects: 10
-  VEQ: {fileID: 6428088886550491712}
-  ISDK_Ray: {fileID: 532365708}
+  Questionnaire: {fileID: 493794470}
 --- !u!1 &1848547896 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1565459309965905656, guid: 12d3c9840c2eaf24eb52e6c26be8fdf9, type: 3}
@@ -22870,7 +22869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6789398852401777757, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7750519340542303436, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
@@ -22890,7 +22889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8465652761795607163, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8648913830366221437, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
@@ -23162,11 +23161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: SCREW_3
---- !u!1 &6428088886550491712 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6789398852401777757, guid: f136216364c4f984d925f57f38004c4d, type: 3}
-  m_PrefabInstance: {fileID: 5460625626903072259}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6439091180153798354
 PrefabInstance:
   m_ObjectHideFlags: 0

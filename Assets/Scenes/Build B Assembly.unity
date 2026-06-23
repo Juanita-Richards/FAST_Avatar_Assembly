@@ -2827,6 +2827,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8465652761795607163, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8648913830366221437, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
       value: 
@@ -2848,6 +2852,11 @@ RectTransform:
 --- !u!223 &448829733 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5046609796511051783, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+  m_PrefabInstance: {fileID: 448829731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &448829734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8465652761795607163, guid: f136216364c4f984d925f57f38004c4d, type: 3}
   m_PrefabInstance: {fileID: 448829731}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &502959498
@@ -7906,11 +7915,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8464154884059200630, guid: 5d0591bdc1509c5428d2a1229a947466, type: 3}
   m_PrefabInstance: {fileID: 1449760385}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1537579696 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6789398852401777757, guid: f136216364c4f984d925f57f38004c4d, type: 3}
-  m_PrefabInstance: {fileID: 448829731}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1551250489
 GameObject:
   m_ObjectHideFlags: 0
@@ -9350,8 +9354,7 @@ MonoBehaviour:
   - {fileID: 1048795218}
   experimentManager: {fileID: 2138745200360017905}
   secondsUntilDisableGameObjects: 10
-  VEQ: {fileID: 1537579696}
-  ISDK_Ray: {fileID: 1485347939}
+  Questionnaire: {fileID: 448829734}
 --- !u!1 &1865545413
 GameObject:
   m_ObjectHideFlags: 0
