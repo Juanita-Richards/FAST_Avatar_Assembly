@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba9aaabbbf9fc684c9bd8f615e36071e, type: 3}
-  m_Name: Test E
+  m_Name: Int B
   m_EditorClassIdentifier: FAB::PlayStructure.ScriptableInstructions
   _mInstructions:
   - name: 'Attach PIPE_1[0] to C_3WAY_0[0]'
@@ -103,3 +103,33 @@ MonoBehaviour:
     fromAttachPointIndex: 0
     fromAttach_rotation: {x: 0.70710677, y: 0.70710677, z: -0.000000030908627, w: -0.000000030908623}
     fromID: 8
+  - name: 'Attach PIPE_10[1] to C_ELBOW_9[1]'
+    toAttach: 0
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: -0.7071068, y: -0.70710677, z: 0.000000033417965, w: -0.000000001497645}
+    toAttach_color: 4
+    toID: 10
+    fromAttach: 3
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: 0.7071068, y: 0.70710677, z: -0.000000033417965, w: -0.000000001497645}
+    fromID: 9
+  - name: 'Attach PIPE_11[0] to C_3WAY_0[1]'
+    toAttach: 0
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: -0.000000029802326, y: -1.0000001, z: 3.5527137e-15, w: -0.00000002980232}
+    toAttach_color: 3
+    toID: 11
+    fromAttach: 5
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: 0.000000029802326, y: 1.0000001, z: -3.5527137e-15, w: -0.00000002980232}
+    fromID: 0
+  - name: 'Attach PIPE_12[1] to C_3WAY_7[1]'
+    toAttach: 0
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: -0.70710677, y: -0.70710677, z: 0.00000003672341, w: -0.0000000367234}
+    toAttach_color: 1
+    toID: 12
+    fromAttach: 5
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: 0.70710677, y: 0.70710677, z: -0.00000003672341, w: -0.0000000367234}
+    fromID: 7

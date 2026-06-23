@@ -29,21 +29,21 @@ public class ParticipantLog : MonoBehaviour
         string gender = gender_dropdown.options[gender_dropdown.value].text;
         string cohort = cohort_dropdown.options[cohort_dropdown.value].text;
         string build = build_dropdown.options[build_dropdown.value].text;
-        var isControllerValue = isController.isOn;
+        bool isControllerValue = isController.isOn;
 
         if (!File.Exists(log_path))
         {
             using StreamWriter writer = File.CreateText(log_path);
             writer.WriteLine("ParticipantID, Gender, Cohort,Build, ControllerOn,date-time, Time");
 
-            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {build},{isController},{dateTime}");
+            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {build},{isControllerValue},{dateTime}");
             writer.Close();
         }
 
         else 
         { 
             using StreamWriter writer = File.AppendText(log_path);
-            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {build},{isController},{dateTime}");
+            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {build},{isControllerValue},{dateTime}");
             writer.Close();
         }
 
