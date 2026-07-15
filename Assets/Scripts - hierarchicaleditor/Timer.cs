@@ -8,8 +8,8 @@ public class Timer : MonoBehaviour
     public float timerCountDown;
     public bool timeStarted;
     public float reset;
-    public float minimumTime = 2f;
-    public GameObject timerVisual;
+    //public float minimumTime = 2f;
+    //public GameObject timerVisual;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,7 @@ public class Timer : MonoBehaviour
         
     }
     
-    public void TurnTImerOff()
+    public void TurnTimerOff()
     {
         timeStarted = false;
     }
@@ -56,9 +56,9 @@ public class Timer : MonoBehaviour
     {
         timerCountDown -= Time.deltaTime;
 
-        //This is disabled for now
-        if (timerCountDown <= 120)
-            timerVisual.SetActive(true);
+        ////This is disabled for now
+        //if (timerCountDown <= 120)
+        //    timerVisual.SetActive(true);
 
         if (timerCountDown <= 0)
         {

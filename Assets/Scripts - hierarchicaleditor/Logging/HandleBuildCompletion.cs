@@ -10,11 +10,11 @@ public class HandleBuildCompletion : MonoBehaviour
     public List<GameObject> gameObjectsToDisableAfterTime;
     public List<GameObject> gameObjectsToHideImmediately;
     public ExperimentManager experimentManager;
-    public float secondsUntilDisableGameObjects = 20f; //was 10 seconds
+    public float secondsUntilDisableGameObjects = 60f; //was 10 seconds
     public GameObject Questionnaire;
-    //public Timer timerLog;
-    //public TimerCountUp timerBC;
-   
+    public Timer timerLog;
+    public GameObject timerVisual;
+
 
     public void DoComplete()
     {
@@ -23,6 +23,9 @@ public class HandleBuildCompletion : MonoBehaviour
         {
             HideMesh(g);
         }
+
+        timerLog.TurnTimerOn();
+        timerVisual.gameObject.SetActive(true);
         StartCoroutine(WaitThenHideSubstructure());
 
         
@@ -32,11 +35,10 @@ public class HandleBuildCompletion : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsUntilDisableGameObjects);
         experimentManager.StopLogging();
-        //timerLog.TurnTImerOff();
-        //timerBC.TurnTimerOn();
+        timerLog.TurnTimerOff();
+        timerVisual.gameObject.SetActive(false);
         Questionnaire.gameObject.SetActive(true);
        
-        
         foreach (var g in gameObjectsToDisableAfterTime)
         {
             g.SetActive(false);

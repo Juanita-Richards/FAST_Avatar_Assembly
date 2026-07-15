@@ -956,7 +956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &117919162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ RectTransform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1407726463}
+  m_Father: {fileID: 1407726464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -996,7 +996,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2302,16 +2302,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344292359}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a538ae75bab1bc4fbe91d77053eaaf6, type: 3}
+  m_Script: {fileID: 11500000, guid: 90c2938872312d846991501804e4bde4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: FAB::TimerCountUp
-  timer: {fileID: 1981857154}
-  timerCountDown: 0
+  m_EditorClassIdentifier: FAB::Timer
+  timer: {fileID: 117919163}
+  timerVisualtext: {fileID: 1407726465}
+  timerCountDown: 60
   timeStarted: 0
   reset: 0
-  minimumTime: 2
 --- !u!1 &386177682
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,7 +3148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &558103232
 Transform:
   m_ObjectHideFlags: 0
@@ -3162,7 +3162,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1407726463}
+  - {fileID: 1407726464}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &593004972 stripped
@@ -4353,8 +4353,6 @@ MonoBehaviour:
   timerCountDown: 0
   timeStarted: 0
   reset: 0
-  minimumTime: 2
-  timerVisual: {fileID: 2014332225}
 --- !u!4 &869062014
 Transform:
   m_ObjectHideFlags: 0
@@ -4792,6 +4790,10 @@ PrefabInstance:
       propertyPath: isControllersOnToggle
       value: 
       objectReference: {fileID: 1255539366}
+    - target: {fileID: 6540333739034998796, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
+      propertyPath: hintBuildingPieceLookup.Array.data[5].gameObject
+      value: 
+      objectReference: {fileID: 1511763533}
     - target: {fileID: 7115716435512371827, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7373,6 +7375,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2098430208835028501, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3081977582353249264, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7453,19 +7459,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6764182334254388221, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3081977582353249264, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
-      insertIndex: 0
+    - targetCorrespondingSourceObject: {fileID: 6532944888958686531, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 117919162}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
---- !u!224 &1407726463 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3081977582353249264, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
+--- !u!1 &1407726463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2098430208835028501, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
   m_PrefabInstance: {fileID: 1407726462}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1407726464 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6532944888958686531, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
+  m_PrefabInstance: {fileID: 1407726462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1407726465 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5258806375849000365, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
+  m_PrefabInstance: {fileID: 1407726462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1449760385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7835,6 +7861,11 @@ MonoBehaviour:
   _selectSurface: {fileID: 1963598225}
   _movementProvider: {fileID: 0}
   _tiebreakerScore: 0
+--- !u!1 &1511763533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3973971605422355537, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
+  m_PrefabInstance: {fileID: 930088468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1524679034
 GameObject:
   m_ObjectHideFlags: 0
@@ -9353,8 +9384,10 @@ MonoBehaviour:
   - {fileID: 7198149788428576731}
   - {fileID: 1048795218}
   experimentManager: {fileID: 2138745200360017905}
-  secondsUntilDisableGameObjects: 10
+  secondsUntilDisableGameObjects: 60
   Questionnaire: {fileID: 448829734}
+  timerLog: {fileID: 344292364}
+  timerVisual: {fileID: 1407726463}
 --- !u!1 &1865545413
 GameObject:
   m_ObjectHideFlags: 0
@@ -16793,7 +16826,7 @@ PrefabInstance:
     - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
-      objectReference: {fileID: 344292364}
+      objectReference: {fileID: 0}
     - target: {fileID: 6339425275451813016, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
@@ -16914,11 +16947,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2014332225 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2707274322148134081, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
-  m_PrefabInstance: {fileID: 2014332223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2014332226 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 205829137791323222, guid: 0f31d0ed3343de942ae475a0e9700e44, type: 3}
