@@ -3715,7 +3715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &458113087
 Transform:
   m_ObjectHideFlags: 0
@@ -7003,6 +7003,10 @@ PrefabInstance:
       propertyPath: hintBuildingPieceLookup.Array.data[3].gameObject
       value: 
       objectReference: {fileID: 2057059972}
+    - target: {fileID: 6540333739034998796, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
+      propertyPath: hintBuildingPieceLookup.Array.data[5].gameObject
+      value: 
+      objectReference: {fileID: 930088471}
     - target: {fileID: 8323701554707747516, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7036,6 +7040,11 @@ GameObject:
 --- !u!4 &930088470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2229968316047873090, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
+  m_PrefabInstance: {fileID: 930088468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &930088471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3973971605422355537, guid: 8a745d146bfff274a84b0d902df4f2a0, type: 3}
   m_PrefabInstance: {fileID: 930088468}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &930326715
