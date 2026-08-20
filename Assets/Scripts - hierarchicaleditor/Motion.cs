@@ -48,7 +48,7 @@ public class Motion : MonoBehaviour
                 Directory.CreateDirectory(directory);
             }
 
-            string fileName = $"P{ParticipantID}_build{builds}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
+            string fileName = $"FAST_P{ParticipantID}_build{builds}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
             string fullPath = Path.Combine(directory, fileName);
 
             //string headers = "Timestamp, TimeElapsed,"; //placeholder for now
@@ -78,7 +78,7 @@ public class Motion : MonoBehaviour
             //Add Label definition here
 
             timeStamp += Time.deltaTime;
-            stringBuilder.Append($"{timeStamp:0.0000},"); //removed "\n" 7.28.26
+            stringBuilder.Append($"\n{timeStamp:0.0000},"); 
 
             
             for (int i = 0; i < TrackedBodies.Count; i++)

@@ -3970,7 +3970,6 @@ MonoBehaviour:
   _useClosestPointAsGrabSource: 0
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
-  _physicsGrabbable: {fileID: 0}
 --- !u!114 &458113089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3989,7 +3988,6 @@ MonoBehaviour:
   _data: {fileID: 0}
   _pointableElement: {fileID: 7548242889292933767}
   _rigidbody: {fileID: 1157730623675188767}
-  _physicsGrabbable: {fileID: 0}
   _resetGrabOnGrabsUpdated: 1
   _scoringModifier:
     _positionRotationWeight: 0.5
@@ -10692,7 +10690,6 @@ MonoBehaviour:
   _useClosestPointAsGrabSource: 0
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
-  _physicsGrabbable: {fileID: 0}
 --- !u!114 &1441507881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10711,7 +10708,6 @@ MonoBehaviour:
   _data: {fileID: 0}
   _pointableElement: {fileID: 8671737501012514769}
   _rigidbody: {fileID: 8671737501012514765}
-  _physicsGrabbable: {fileID: 0}
   _resetGrabOnGrabsUpdated: 1
   _scoringModifier:
     _positionRotationWeight: 0.5
@@ -29563,6 +29559,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 277166682497623939, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_text
+      value: I felt like the weight of my own body had changed.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2141893751619007841, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2209828890138639723, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -29679,6 +29683,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4287710279368506643, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5046609796511051783, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_Camera
       value: 
@@ -29687,6 +29695,10 @@ PrefabInstance:
       propertyPath: participantLog
       value: 
       objectReference: {fileID: 344292364}
+    - target: {fileID: 6094999276925345564, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_text
+      value: I felt like the width of my own body had changed.
+      objectReference: {fileID: 0}
     - target: {fileID: 6334170642678292874, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -29731,6 +29743,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6850958625293044237, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7655108062041255502, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.65
@@ -29762,6 +29778,10 @@ PrefabInstance:
     - target: {fileID: 8465652761795607163, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8565032726810566714, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648913830366221437, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog
