@@ -5,6 +5,7 @@ using PlayStructure;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Linq;
+using Oculus.Interaction.Samples;
 
 namespace PlayStructure
 {
@@ -316,6 +317,25 @@ namespace PlayStructure
                     // Set them under the substructure in the hierarchy.
                     owningPiece.transform.parent = substructure.transform;
                     otherAP.owningPiece.transform.parent = substructure.transform;
+                    
+                    ///<Summary>
+                    ///JR: Added the below so that the Respawn on Drop per tube does not interfere with the substructure respawn
+                    ///</Summary>
+                    owningPiece.GetComponent<RespawnOnDrop>().enabled = false;
+                   
+
+                    //RespawnOnDrop[] respawnScripts = substructure.GetComponentsInChildren<RespawnOnDrop>(true);
+                    //Debug.Log($"Found these RespawnOnDropped Scripts {respawnScripts.Length}");
+
+                    //foreach (RespawnOnDrop respawn in respawnScripts)
+                    //{
+                        
+                    //    respawn.enabled = false;
+
+                    //    Debug.Log("Turning off RespawnOnDrop on: " + respawn.gameObject.name);
+                    //}
+
+
                     // Bump up the substructure if needed
                     //if (owningPiece.transform.position.y < .99f || otherAP.owningPiece.transform.position.y < .99f)
                     //{

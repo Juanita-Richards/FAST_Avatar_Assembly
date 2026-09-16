@@ -51,7 +51,6 @@ MonoBehaviour:
   _data: {fileID: 0}
   _pointableElement: {fileID: 7156885447094692087}
   _rigidbody: {fileID: 2274564734810305466}
-  _physicsGrabbable: {fileID: 0}
   _resetGrabOnGrabsUpdated: 1
   _scoringModifier:
     _positionRotationWeight: 0.5
@@ -96,7 +95,6 @@ MonoBehaviour:
   _useClosestPointAsGrabSource: 0
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
-  _physicsGrabbable: {fileID: 0}
 --- !u!1 &887812205368911565
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,11 +171,12 @@ GameObject:
   - component: {fileID: 1835438000932500397}
   - component: {fileID: 2274564734810305466}
   - component: {fileID: 2749472654774185222}
-  - component: {fileID: 3771813120433025598}
   - component: {fileID: 7672075494217506145}
   - component: {fileID: 7156885447094692087}
   - component: {fileID: 2226557792441220249}
   - component: {fileID: -7588614894401671482}
+  - component: {fileID: 1773860567254429509}
+  - component: {fileID: 1012473406047827544}
   m_Layer: 6
   m_Name: tube (yellow)
   m_TagString: Tube
@@ -272,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812f951558d03514ab0c71d1c062fa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mBuildingPieceID: -1
+  _mBuildingPieceID: 2
   _pieceType: 0
   _pieceColor: 2
   _attachPoints:
@@ -357,23 +356,6 @@ CapsuleCollider:
   m_Height: 0.345
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3771813120433025598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565459309965905656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 692003a12bb848c4497b786f520fb4fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minHeightOfCenter: 0.7
-  timeUnderMinToReset: 1
-  onlyCountIfNotHeld: 1
-  startRotation: {x: 0, y: 0, z: 0, w: 0}
-  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &7672075494217506145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsOffShortlyAfterStart: 1
   timeToWait: 0.1
-  toggleCollidersAlso: 0
+  toggleCollidersAlso: 1
 --- !u!114 &7156885447094692087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 0}
+  _pointable: {fileID: 2166688979415115056}
   _whenRelease:
     m_PersistentCalls:
       m_Calls: []
@@ -486,13 +468,13 @@ MonoBehaviour:
   _whenUnselect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1835438000932500397}
+        m_TargetAssemblyTypeName: PlayStructure.BuildingPiece, FAB
+        m_MethodName: CheckForNearbySnapsAndSnap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -504,3 +486,33 @@ MonoBehaviour:
   _whenCancel:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1773860567254429509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565459309965905656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7570cac6c5a3baf45ba0eb35a9217345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _label: PIPE_YELLOW_3
+--- !u!114 &1012473406047827544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565459309965905656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction.Samples::Oculus.Interaction.Samples.RespawnOnDrop
+  _yThresholdForRespawn: 0.2
+  _whenRespawned:
+    m_PersistentCalls:
+      m_Calls: []
+  _sleepFrames: 5

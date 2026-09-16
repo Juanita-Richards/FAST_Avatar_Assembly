@@ -14,11 +14,12 @@ public class HandleBuildCompletion : MonoBehaviour
     public GameObject Questionnaire;
     public Timer timerLog;
     public GameObject timerVisual;
+    public Motion motionLogger;
 
 
     public void DoComplete()
     {
-        //motionLogger.StopTrackingOff();
+        motionLogger.StopTrackingOff();
         foreach (var g in gameObjectsToHideImmediately)
         {
             HideMesh(g);

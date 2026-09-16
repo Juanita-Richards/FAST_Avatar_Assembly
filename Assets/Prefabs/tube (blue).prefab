@@ -76,10 +76,12 @@ GameObject:
   - component: {fileID: 1835438000932500397}
   - component: {fileID: 2274564734810305466}
   - component: {fileID: 2749472654774185222}
-  - component: {fileID: 1244420090892326828}
   - component: {fileID: 6839087949603322270}
   - component: {fileID: 6017858283961266018}
   - component: {fileID: 5640848829067405491}
+  - component: {fileID: 8565666752914428562}
+  - component: {fileID: 2531470550037830093}
+  - component: {fileID: 173766703064811320}
   m_Layer: 6
   m_Name: tube (blue)
   m_TagString: Tube
@@ -138,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 133e21f1157dac240b1345db495bebc7, type: 2}
+  - {fileID: 2100000, guid: bb8cbdee20a961f4694fdb2c1bc24ee5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -174,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812f951558d03514ab0c71d1c062fa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mBuildingPieceID: -1
+  _mBuildingPieceID: 1
   _pieceType: 0
   _pieceColor: 4
   _attachPoints:
@@ -259,23 +261,6 @@ CapsuleCollider:
   m_Height: 0.345
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1244420090892326828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565459309965905656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 692003a12bb848c4497b786f520fb4fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minHeightOfCenter: 0.7
-  timeUnderMinToReset: 1
-  onlyCountIfNotHeld: 1
-  startRotation: {x: 0, y: 0, z: 0, w: 0}
-  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6839087949603322270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsOffShortlyAfterStart: 1
   timeToWait: 0.1
-  toggleCollidersAlso: 0
+  toggleCollidersAlso: 1
 --- !u!114 &6017858283961266018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +345,82 @@ MonoBehaviour:
   _whenCancel:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8565666752914428562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565459309965905656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
+  _pointable: {fileID: 8626923183272570073}
+  _whenRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnhover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnselect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835438000932500397}
+        m_TargetAssemblyTypeName: PlayStructure.BuildingPiece, FAB
+        m_MethodName: CheckForNearbySnapsAndSnap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenMove:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenCancel:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2531470550037830093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565459309965905656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7570cac6c5a3baf45ba0eb35a9217345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _label: PIPE_BLUE_4
+--- !u!114 &173766703064811320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565459309965905656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction.Samples::Oculus.Interaction.Samples.RespawnOnDrop
+  _yThresholdForRespawn: 0.2
+  _whenRespawned:
+    m_PersistentCalls:
+      m_Calls: []
+  _sleepFrames: 5
 --- !u!1 &7971825438671041142
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +472,6 @@ MonoBehaviour:
   _data: {fileID: 0}
   _pointableElement: {fileID: 6017858283961266018}
   _rigidbody: {fileID: 2274564734810305466}
-  _physicsGrabbable: {fileID: 0}
   _resetGrabOnGrabsUpdated: 1
   _scoringModifier:
     _positionRotationWeight: 0.5
@@ -456,4 +516,3 @@ MonoBehaviour:
   _useClosestPointAsGrabSource: 0
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
-  _physicsGrabbable: {fileID: 0}

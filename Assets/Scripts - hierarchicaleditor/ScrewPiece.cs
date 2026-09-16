@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using PlayStructure;
 using System.Linq;
 using UnityEngine;
+using Oculus.Interaction.Samples;
 
 namespace PlayStructure
 {
@@ -56,6 +57,21 @@ namespace PlayStructure
 
                 // move it in the hierarchy to where it belongs:
                 transform.parent = ap.attachTransform;
+
+                ///<summary>
+                ///JR: Added the respawn.enabled false
+                ///</summary>
+
+                var respawnOnDrop = GetComponent<RespawnOnDrop>();
+
+                if (respawnOnDrop != null)
+                {
+                   respawnOnDrop.enabled = false;
+                    Debug.Log($"Disabled RespawnOnDrop for {gameObject.name}");
+
+
+                }
+
                 transform.localPosition = new Vector3(0.002f, 0f, 0f);
                 transform.localRotation = Quaternion.Euler(90f, 0f, 180f);
 

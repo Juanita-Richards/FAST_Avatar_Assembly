@@ -84,11 +84,11 @@ public class TurnOffRespawn : MonoBehaviour
         foreach (AttachPoint attachPoint in buildingPiece.attachPoints)
         {
             if (attachPoint == null) continue;
-            
+            Debug.Log("Turnedd OFF");
             if (attachPoint.currentAttachState == AttachPoint.AttachState.LOOSE_LOCK || attachPoint.currentAttachState == AttachPoint.AttachState.FULL_LOCK || attachPoint.currentAttachState == AttachPoint.AttachState.PARTIAL_LOCK)
             {
-                GetComponent<TurnOffRespawn>().enabled = false;
-                GetComponent<ReplaceDropped>().enabled = false;
+                this.GetComponent<TurnOffRespawn>().enabled = false;
+                this.GetComponent<ReplaceDropped>().enabled = false;
             }
         }
 
