@@ -15977,7 +15977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5719176086084310628}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.53729963, z: 0, w: 0.8433915}
+  m_LocalRotation: {x: 0, y: 0.953717, z: 0, w: 0.30070582}
   m_LocalPosition: {x: -0.589, y: 1.0339, z: 2.973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15985,7 +15985,7 @@ Transform:
   - {fileID: 7325652230457514642}
   - {fileID: 458113087}
   m_Father: {fileID: 1813385363166086564}
-  m_LocalEulerAnglesHint: {x: 0, y: 65, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 145, z: 0}
 --- !u!1001 &558157359181274475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16839,19 +16839,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: C_3WAY_BLACK_0
---- !u!114 &1524296130875137374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5109031178474836589}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7570cac6c5a3baf45ba0eb35a9217345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _label: PIPE_RED_8
 --- !u!114 &1600672719489613269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22727,25 +22714,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1565459309965905656, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1524296130875137374}
-    - targetCorrespondingSourceObject: {fileID: 1565459309965905656, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5109031178474836599}
-    - targetCorrespondingSourceObject: {fileID: 1565459309965905656, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5109031178474836609}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
 --- !u!4 &5109031178474836588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2229968316047873090, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
-  m_PrefabInstance: {fileID: 5109031178474836587}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5109031178474836589 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1565459309965905656, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
   m_PrefabInstance: {fileID: 5109031178474836587}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &5109031178474836596 stripped
@@ -22753,75 +22726,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1835438000932500397, guid: 3532ba655dae4fd4e946cbc8f4fe1dc0, type: 3}
   m_PrefabInstance: {fileID: 5109031178474836587}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5109031178474836589}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 812f951558d03514ab0c71d1c062fa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5109031178474836599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5109031178474836589}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 668476744}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5109031178474836596}
-        m_TargetAssemblyTypeName: PlayStructure.BuildingPiece, FAB
-        m_MethodName: CheckForNearbySnapsAndSnap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5109031178474836609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5109031178474836589}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction.Samples::Oculus.Interaction.Samples.RespawnOnDrop
-  _yThresholdForRespawn: 0.2
-  _whenRespawned:
-    m_PersistentCalls:
-      m_Calls: []
-  _sleepFrames: 5
 --- !u!114 &5258806375156378610
 MonoBehaviour:
   m_ObjectHideFlags: 0
