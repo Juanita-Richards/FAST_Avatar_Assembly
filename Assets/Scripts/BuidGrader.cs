@@ -561,7 +561,7 @@ public class BuidGrader : MonoBehaviour
     // Debug Report
     // ============================
 
-    private void PrintResult(GradeResult result)
+    public void PrintResult(GradeResult result)
     {
         Debug.Log("=======================================");
 
@@ -599,6 +599,11 @@ public class BuidGrader : MonoBehaviour
     [ContextMenu("Grade Structure")]
 
     private void GradeFromInspector()
+    {
+        GradeBuild();
+    }
+
+    private void Start()
     {
         GradeBuild();
     }
