@@ -3,95 +3,44 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using PlayStructure;
-using Unity.VisualScripting;
-using UnityEngine.UIElements;
 
-/// <summary>
-/// Grades a reconstructed participant build against a target build
-/// 
-/// AttachPoint indices are not compared.
-/// 
-/// The grading process:
-/// 
-/// 1. NxM piece comparison
-///     - Piece typw
-///     - Piece color
-///     
-/// 2. Establish one-to-one piece correspondence
-/// 
-/// 3. Compare connectivity between the matched pieces
-/// 
-/// 4. Compare relative spatial orientation
-/// 
-/// </summary>
-
-public class BuidGrader : MonoBehaviour
+public class BuildGrader : MonoBehaviour
 {
-    //Build
+    // ============================================================
+    // BUILD ROOTS
+    // ============================================================
+
     [Header("Build Containers")]
 
-    [Tooltip("Parent GameObject containing the target BuildingPieces")]
-    [SerializeField]
-    private Transform targetBuildRoot;
+    [Tooltip("Parent GameObject containing the TARGET structure")]
+    [SerializeField] private Transform targetBuildRoot;
 
-    [Tooltip("Parent GameObject containing the reconstructed participant BuildingPieces.")]
-    [SerializeField]
-    private Transform participantBuildRoot;
-
-    //Wieght
-    [Header("Piece Matching Weights")]
-
-    [Tooltip("Weight given to matching PieceType")]
-    [SerializeField]
-    private float pieceTypeWeight = 1.0f;
-
-    [Tooltip("Weight given to matching PieceColor")]
-    [SerializeField]
-    private float pieceColorWeight = 1.0f;
-
-    [Header("Final Accuracy Weights")]
-
-    [Range(0f, 1f)]
-    [SerializeField]
-    private float pieceAccuracyWeight = 0.40f;
-
-    [Range(0f, 1f)]
-    [SerializeField]
-    private float connectionAccuracyWeight = 0.40f;
-
-    [Range(0f, 1f)]
-    [SerializeField]
-    private float orientationAccuracyWeight = 0.20f;
-
-    [Header("Orientation")]
-    [SerializeField]
-    private float orientationTolerance = 15f;
+    [Tooltip("Parent GameObject containing the PARTICIPANT structure")]
+    [SerializeField] private Transform participantBuildRoot;
 
 
-    /// <summary>
-    /// Represents one matched participant piece and target piece
-    /// </summary>
-    /// 
+    // ============================================================
+    // PIECE MATCH
+    // ============================================================
 
     [Serializable]
-
     public class PieceMatch
     {
         public BuildingPiece participantPiece;
         public BuildingPiece targetPiece;
 
-        public float pieceMatchScore;
+        // Distance between the two normalized structural positions.
+        public float positionDistance;
 
-        public bool typeMatches, colorMatches;
-
-        public bool connectionCorrect;
-        public bool orientationCorrect;
+        public bool colorCorrect;
+        public bool connectorCorrect;
     }
 
-    /// <summary>
-    /// Complete grading result
-    /// </summary>
-    /// 
+
+    // ============================================================
+    // GRADE RESULT
+    // ============================================================
+
     [Serializable]
     public class GradeResult
     {
@@ -100,510 +49,983 @@ public class BuidGrader : MonoBehaviour
 
         public int matchedPieceCount;
 
-        public int correctTypes, correctColors;
+        public int missingPieces;
+        public int extraPieces;
+
+
+        // --------------------------------------------------------
+        // TUBE COLOR
+        // --------------------------------------------------------
+
+        public int targetTubeCount;
+        public int correctTubeColors;
+        public float colorAccuracy;
+
+
+        // --------------------------------------------------------
+        // CONNECTORS
+        // --------------------------------------------------------
+
+        public int targetConnectorCount;
+        public int correctConnectors;
+        public float connectorAccuracy;
+
+
+        // --------------------------------------------------------
+        // CONNECTIONS
+        // --------------------------------------------------------
 
         public int targetConnectionCount;
-        public int correctConnectionCount;
-
-        public int orientationChecks;
-        public int correctOrientation;
-
-        public int missingPieces, extraPieces;
-
-        public float pieceAccuracy;
+        public int correctConnections;
         public float connectionAccuracy;
-        public float orientationAccuracy;
 
-        public float finalAccuracy;
+
+        // --------------------------------------------------------
+        // MATCHES
+        // --------------------------------------------------------
 
         public List<PieceMatch> matches = new List<PieceMatch>();
-
     }
 
-    /// <summary>
-    /// Used internally during N x M comparison.
-    /// </summary>
 
-    private class CandidateMatch
+    // ============================================================
+    // N x M POSITION CANDIDATE
+    // ============================================================
+
+    private class PositionCandidate
     {
         public BuildingPiece participant;
         public BuildingPiece target;
 
+        public Vector3 participantPosition;
+        public Vector3 targetPosition;
 
-        public float score;
-
-        public bool typeMatches;
-        public bool colorMatches;
+        public float distance;
     }
 
-    /// <summary>
-    /// Public Grading Function
-    /// </summary>
+
+    // ============================================================
+    // MAIN GRADING FUNCTION
+    // ============================================================
 
     public GradeResult GradeBuild()
     {
-        Debug.Log("=================================");
-        Debug.Log("STARTING STRUCTURE GRADING");
-        Debug.Log("=================================");
+        Debug.Log("================================================");
 
-        //--------------------------------------------
-        // Step 1: Get all pieces from both structures
-        //--------------------------------------------
+        Debug.Log("FAST STRUCTURE GRADING");
 
-        List<BuildingPiece> targetPieces = targetBuildRoot.GetComponentsInChildren<BuildingPiece>(true).ToList();
+        Debug.Log("================================================");
 
-        List<BuildingPiece> participantPieces = participantBuildRoot.GetComponentsInChildren<BuildingPiece>(true).ToList();
 
-        Debug.Log($"Target contains {targetPieces.Count} pieces");
-        Debug.Log($"Target contains {participantPieces.Count} pieces");
+        // ========================================================
+        // VALIDATION
+        // ========================================================
+
+        if (targetBuildRoot == null)
+        {
+            Debug.LogError("Target Build Root has not been assigned.");
+
+            return null;
+        }
+
+
+        if (participantBuildRoot == null)
+        {
+            Debug.LogError("Participant Build Root has not been assigned.");
+
+            return null;
+        }
+
+
+        // ========================================================
+        // GET PIECES
+        // ========================================================
+
+        List<BuildingPiece> targetPieces =targetBuildRoot.GetComponentsInChildren<BuildingPiece>(true).Where(IsGradablePiece).ToList();
+
+
+        List<BuildingPiece> participantPieces = participantBuildRoot.GetComponentsInChildren<BuildingPiece>(true).Where(IsGradablePiece).ToList();
+
 
         GradeResult result = new GradeResult();
 
+
         result.targetPieceCount = targetPieces.Count;
+
+
         result.participantPieceCount = participantPieces.Count;
 
-        //--------------------------------------------
-        // Step 2: N x M Piece Comparison
-        //--------------------------------------------
 
-        List<CandidateMatch> candidates = GenerateCandidateMatches(participantPieces, targetPieces);
-
-        //--------------------------------------------
-        // Step 3: one-to-one comparison
-        //--------------------------------------------
-
-        result.matches = EstablishPieceCorrespondence(candidates);
-
-        result.matchedPieceCount = result.matches.Count;
-
-        //--------------------------------------------
-        // Step 4: Determine missing / extra pieces.
-        //--------------------------------------------
-
-        result.missingPieces = Mathf.Max(0, targetPieces.Count - result.matches.Count);
-        result.extraPieces = Mathf.Max(0, participantPieces.Count - result.matchedPieceCount);
-
-        //--------------------------------------------
-        // Step 5: Calculate piece accuracy
-        //--------------------------------------------
-
-        CalculatePieceAccuracy(result, targetPieces.Count);
-
-        //--------------------------------------------
-        // Step 6: Compare connectivity.
-        //--------------------------------------------
-
-        CalculateConnectionAccuracy(result);
+        Debug.Log($"Target Pieces: {targetPieces.Count}");
 
 
-        //--------------------------------------------
-        // Step 7: Compare orientation
-        //--------------------------------------------
-        CalculateOrientationAccuracy(result);
+        Debug.Log($"Participant Pieces: {participantPieces.Count}");
 
-        //--------------------------------------------
-        // Step 8: Compare orientation
-        //--------------------------------------------
-        CalculateFinalAccuracy(result);
 
-        //--------------------------------------------
-        // Step 9: Compare orientation
-        //--------------------------------------------
+        // ========================================================
+        // STEP 1: ESTABLISH CORRESPONDENCE USING RELATIVE SPATIAL POSITION
+        // ========================================================
+
+        result.matches = EstablishSpatialCorrespondence(participantPieces,targetPieces);
+
+
+        result.matchedPieceCount =result.matches.Count;
+
+
+        result.missingPieces = Mathf.Max(0, targetPieces.Count - result.matchedPieceCount);
+
+
+        result.extraPieces = Mathf.Max(0,participantPieces.Count - result.matchedPieceCount);
+
+
+        // ========================================================
+        // STEP 2: GRADE COLORS
+        // ========================================================
+
+        CalculateColorAccuracy(result,targetPieces);
+
+
+        // ========================================================
+        // STEP 3: GRADE CONNECTORS
+        // ========================================================
+
+        CalculateConnectorAccuracy(result,targetPieces);
+
+
+        // ========================================================
+        // STEP 4: GRADE CONNECTIONS
+        // ========================================================
+
+        CalculateConnectionAccuracy(result,targetPieces);
+
+        // ========================================================
+        // PRINT RESULTS
+        // ========================================================
+
         PrintResult(result);
+
 
         return result;
     }
 
-    //============================================
-    // N x M comparison
-    //============================================
 
-    private List<CandidateMatch> GenerateCandidateMatches(List<BuildingPiece> targetPieces, List<BuildingPiece> participantPieces)
-    {
-        List<CandidateMatch> candidates = new List<CandidateMatch>();
+    // ============================================================
+    // SPATIAL CORRESPONDENCE
+    //
+    // IMPORTANT:
+    //
+    // This is where "respective structural position" is determined.
+    //
+    // We do NOT use:
+    //
+    //      Tube color
+    //      Connector PieceType
+    //      Correctness
+    //
+    // We use relative spatial position.
+    // ============================================================
 
-        //Participant piece N
-        foreach (BuildingPiece participant in participantPieces)
-        {
-            //compared against every target piece M
-            foreach (BuildingPiece target in targetPieces)
-            {
-                CandidateMatch candidateMatch = ComparePiece(participant, target);
-
-                candidates.Add(candidateMatch);
-            }
-        }
-
-        Debug.Log($"Generated {candidates.Count} N x M comparisons");
-
-        return candidates;
-
-    }
-
-    //============================================
-    // Individual Piece Comparison
-    //============================================
-    private CandidateMatch ComparePiece(BuildingPiece participant, BuildingPiece target)
-    {
-        CandidateMatch candidate = new CandidateMatch();
-        candidate.participant = participant;
-        candidate.target = target;
-
-        float score = 0f;
-
-        // --------------------------
-        // Piece Type
-        // --------------------------
-
-        candidate.typeMatches = participant.pieceType == target.pieceType;
-
-        if (candidate.typeMatches)
-        {
-            score += pieceTypeWeight;
-        }
-
-        // --------------------------
-        // Piece Color
-        // --------------------------
-
-        candidate.colorMatches = participant.pieceColor == target.pieceColor;
-
-        if (candidate.colorMatches)
-        {
-            score += pieceColorWeight;
-        }
-
-        candidate.score = score;
-
-        return candidate;
-
-    }
-
-    //============================================
-    // One-to-One Piece Matching
-    //============================================
-
-    private List<PieceMatch> EstablishPieceCorrespondence(List<CandidateMatch> candidates)
+    private List<PieceMatch> EstablishSpatialCorrespondence(List<BuildingPiece> participantPieces,List<BuildingPiece> targetPieces)
     {
         List<PieceMatch> matches = new List<PieceMatch>();
 
-        HashSet<BuildingPiece> usedParticipantPieces = new HashSet<BuildingPiece>();
 
-        HashSet<BuildingPiece> usedTargetPieces = new HashSet<BuildingPiece>();
+        // ========================================================
+        // Calculate normalized positions for each structure.
+        // ========================================================
 
-        //Highest scoring candidate first
-        List<CandidateMatch> sortedCandidates = candidates.OrderByDescending(c => c.score).ToList();
+        Dictionary<BuildingPiece, Vector3> targetPositions = CalculateNormalizedPositions(targetPieces, targetBuildRoot);
 
-        foreach (CandidateMatch candidate in sortedCandidates)
-        {
-            // Participant piece already assigned
-            if (usedParticipantPieces.Contains(candidate.participant)) continue;
+        Dictionary<BuildingPiece, Vector3> participantPositions = CalculateNormalizedPositions(participantPieces, participantBuildRoot);
 
-            // Target piece already assigned
-            if (usedTargetPieces.Contains(candidate.target)) continue;
+        // ========================================================
+        // Match tubes independently.
+        // ========================================================
 
-            // A piece with completely different type and color should NOT automatically become a match.
-            if (candidate.score <= 0f) continue;
+        List<BuildingPiece> targetTubes = targetPieces.Where(IsTube).ToList();
 
-            PieceMatch match = new PieceMatch();
 
-            match.participantPiece = candidate.participant;
-            match.targetPiece = candidate.target;
-            match.pieceMatchScore = candidate.score;
-            match.typeMatches = candidate.typeMatches;
-            match.colorMatches = candidate.colorMatches;
+        List<BuildingPiece> participantTubes = participantPieces.Where(IsTube).ToList();
 
-            matches.Add(match);
 
-            usedParticipantPieces.Add(candidate.participant);
-            usedTargetPieces.Add(candidate.target);
-            
-        }
+        List<PieceMatch> tubeMatches = MatchCategoryByPosition(participantTubes, targetTubes, participantPositions, targetPositions);
+ 
+        matches.AddRange(tubeMatches);
+
+
+        // ========================================================
+        // Match connectors independently.
+        //
+        // IMPORTANT:
+        //
+        // C_ELBOW and C_3WAY are NOT separated here.
+        //
+        // They are all just connector positions.
+        //
+        // Exact connector type is graded AFTER correspondence.
+        // ========================================================
+
+        List<BuildingPiece> targetConnectors = targetPieces.Where(IsConnector).ToList();
+
+
+        List<BuildingPiece> participantConnectors = participantPieces.Where(IsConnector).ToList();
+
+
+        List<PieceMatch> connectorMatches = MatchCategoryByPosition(participantConnectors,targetConnectors,participantPositions,targetPositions);
+
+
+        matches.AddRange(connectorMatches);
+
 
         return matches;
     }
-    //============================================
-    // PIECE ACCURACY
-    //============================================
 
-    private void CalculatePieceAccuracy(GradeResult result, int targetPieceCount) 
+
+    // ============================================================
+    // NORMALIZED POSITIONS
+    //
+    // Raw Unity world positions cannot be compared directly because
+    // the target and participant structures may be located in
+    // different places in the scene.
+    //
+    // Therefore:
+    //
+    // 1. Convert each piece to build-root local space.
+    // 2. Find the center of that structure.
+    // 3. Center all positions around zero.
+    // 4. Normalize by the structure's overall size.
+    //
+    // This means:
+    //
+    // "upper-left position in Build A"
+    //
+    // can be compared with
+    //
+    // "upper-left position in P1"
+    //
+    // even if the two build roots are far apart in world space.
+    // ============================================================
+
+    private Dictionary<BuildingPiece, Vector3>CalculateNormalizedPositions(List<BuildingPiece> pieces,Transform buildRoot)
     {
-        result.correctTypes = result.matches.Count(m => m.typeMatches);
-        result.correctColors = result.matches.Count(m => m.colorMatches);
+        Dictionary<BuildingPiece, Vector3> result = new Dictionary<BuildingPiece, Vector3>();
 
-        if (targetPieceCount == 0)
+
+        if (pieces.Count == 0)
         {
-            result.pieceAccuracy = 0f;
-            return;
+            return result;
         }
 
-        float typeAccuracy = (float)result.correctTypes / targetPieceCount;
-        float colorAccuracy = (float)result.correctColors / targetPieceCount;
 
-        //Type and color contribute equally here
-        result.pieceAccuracy = (typeAccuracy + colorAccuracy) / 2f;
+        // ========================================================
+        // Convert every piece to local build coordinates.
+        // ========================================================
 
-    }
+        Dictionary<BuildingPiece, Vector3> localPositions = new Dictionary<BuildingPiece, Vector3>();
 
-    private void CalculateConnectionAccuracy(GradeResult result)
-    {
-        int correctConnections = 0;
-        int totalTargetConnections = 0;
-
-        //Used so that A-B and B-A aren't counted twice
-        HashSet<string> checkedTargetConnections = new HashSet<string>();
-
-        foreach (PieceMatch match in result.matches)
+        foreach (BuildingPiece piece in pieces)
         {
-            BuildingPiece targetPiece = match.targetPiece;
+            Vector3 localPosition = buildRoot.InverseTransformPoint(piece.transform.position);
 
-            foreach (AttachPoint targetAP in targetPiece.attachPoints)
+
+            localPositions.Add(piece,localPosition);
+        }
+
+        // ========================================================
+        // Find center of structure.
+        // ========================================================
+
+        Vector3 center = Vector3.zero;
+
+
+        foreach (Vector3 position in localPositions.Values)
+        {
+            center += position;
+        }
+
+        center /= localPositions.Count;
+
+
+        // ========================================================
+        // Find structure size.
+        //
+        // We use the maximum distance from the center.
+        // ========================================================
+
+        float structureRadius = 0f;
+
+
+        foreach (Vector3 position in localPositions.Values)
+        {
+            float distance = Vector3.Distance(position, center);
+
+
+            if (distance > structureRadius)
             {
-                // No connection here??
-                if (targetAP.attachedAttachPoint == null) continue;
-
-                BuildingPiece connectedTargetPiece = targetAP.attachedAttachPoint.owningPiece;
-
-                //create an order-independent connection key.
-                string connectionKey = CreateConnectionKey(targetPiece, connectedTargetPiece);
-
-                //Don't count the same connection twice
-                if (checkedTargetConnections.Contains(connectionKey)) continue;
-
-                checkedTargetConnections.Add(connectionKey);
-
-                totalTargetConnections++;
-
-                //Find which participant piece corresponds to the other target piece
-                PieceMatch connectedMatch = 
-                    result.matches.FirstOrDefault(m => m.targetPiece == connectedTargetPiece);
-
-                if (connectedMatch == null) continue;
-
-
-                BuildingPiece expectedParticipantNeighbor = connectedMatch.participantPiece;
-
-                // ------------------------------------------------
-                // IMPORTANT:
-                //
-                // We DO NOT care which AttachPoint index was used.
-                //
-                // We only ask:
-                //
-                // "Is this participant piece connected to the
-                // participant piece corresponding to the target
-                // neighbor?"
-                // ------------------------------------------------
-
-                bool participantHasConnection = ArePiecesConnected(match.participantPiece, expectedParticipantNeighbor);
-
-                if (participantHasConnection)
-                {
-                    correctConnections++;
-                }
-
+                structureRadius =  distance;
             }
         }
 
-        result.targetConnectionCount = totalTargetConnections;
-        result.correctConnectionCount = correctConnections;
 
-        if (totalTargetConnections == 0)
+        // Prevent division by zero.
+        if (structureRadius < 0.0001f)
         {
-            result.connectionAccuracy = 1f;
+            structureRadius = 1f;
         }
-        else
+
+
+        // ========================================================
+        // Normalize positions.
+        // ========================================================
+
+        foreach (KeyValuePair<BuildingPiece, Vector3> pair in localPositions)
         {
-            result.connectionAccuracy = (float)correctConnections / totalTargetConnections;
+            Vector3 normalizedPosition = (pair.Value - center) / structureRadius;
+
+
+            result.Add(pair.Key, normalizedPosition);
+        }
+
+
+        return result;
+    }
+
+
+    // ============================================================
+    // N x M CATEGORY POSITION MATCHING
+    //
+    // Every participant position is compared against every target
+    // position in the SAME GENERAL CATEGORY.
+    //
+    // Tube -> tube
+    //
+    // Connector -> connector
+    //
+    // We then find the global one-to-one assignment with the
+    // smallest TOTAL positional distance.
+    //
+    // This is different from greedy matching.
+    // ============================================================
+
+    private List<PieceMatch> MatchCategoryByPosition(List<BuildingPiece> participantPieces, List<BuildingPiece> targetPieces, Dictionary<BuildingPiece, Vector3> participantPositions,
+        Dictionary<BuildingPiece, Vector3> targetPositions)
+    {
+        List<PieceMatch> bestMatches = new List<PieceMatch>();
+
+
+        if (participantPieces.Count == 0 || targetPieces.Count == 0)
+        {
+            return bestMatches;
+        }
+
+
+        // ========================================================
+        // If participant has more pieces than target, we assign
+        // target positions to a subset of participant pieces.
+        //
+        // If target has more pieces than participant, missing target
+        // positions simply remain unmatched.
+        // ========================================================
+
+        int requiredMatches = Mathf.Min(participantPieces.Count, targetPieces.Count);
+
+
+        float bestTotalDistance = float.MaxValue;
+
+
+        List<PieceMatch> currentMatches = new List<PieceMatch>();
+
+
+        HashSet<BuildingPiece> usedTargets = new HashSet<BuildingPiece>();
+
+
+        SearchBestSpatialAssignment(participantPieces,targetPieces,participantPositions,targetPositions,0,requiredMatches,
+            usedTargets,currentMatches,0f,ref bestTotalDistance,ref bestMatches);
+
+
+        return bestMatches;
+    }
+
+
+    // ============================================================
+    // GLOBAL ASSIGNMENT SEARCH
+    //
+    // Because FAST structures contain a small number of pieces,
+    // we can search possible one-to-one mappings and choose the
+    // mapping with the lowest TOTAL normalized spatial distance.
+    //
+    // No color or connector type enters this calculation.
+    // ============================================================
+
+    private void SearchBestSpatialAssignment(List<BuildingPiece> participantPieces,List<BuildingPiece> targetPieces,Dictionary<BuildingPiece, Vector3> participantPositions,
+        Dictionary<BuildingPiece, Vector3> targetPositions, int participantIndex, int requiredMatches, HashSet<BuildingPiece> usedTargets, List<PieceMatch> currentMatches,
+        float currentDistance, ref float bestTotalDistance, ref List<PieceMatch> bestMatches)
+    {
+        // ========================================================
+        // PRUNING
+        //
+        // If this partial assignment is already worse than our
+        // best complete assignment, stop searching this branch.
+        // ========================================================
+
+        if (currentDistance >= bestTotalDistance)
+        {
+            return;
+        }
+
+
+        // ========================================================
+        // Complete assignment.
+        // ========================================================
+
+        if (currentMatches.Count == requiredMatches)
+        {
+            if (currentDistance < bestTotalDistance)
+            {
+                bestTotalDistance = currentDistance;
+
+
+                bestMatches = currentMatches.Select(match => new PieceMatch{
+                                    participantPiece = match.participantPiece, targetPiece = match.targetPiece,positionDistance = match.positionDistance
+                }).ToList();
+            }
+
+
+            return;
+        }
+
+
+        // No participant pieces remain.
+        if (participantIndex >= participantPieces.Count)
+        {
+            return;
+        }
+
+
+        // ========================================================
+        // Check whether enough participant pieces remain to reach
+        // requiredMatches.
+        // ========================================================
+
+        int participantPiecesRemaining = participantPieces.Count - participantIndex;
+
+
+        int matchesStillNeeded = requiredMatches - currentMatches.Count;
+
+
+        if (participantPiecesRemaining < matchesStillNeeded)
+        {
+            return;
+        }
+
+
+        BuildingPiece participant = participantPieces[participantIndex];
+
+
+        Vector3 participantPosition = participantPositions[participant];
+
+
+        // ========================================================
+        // OPTION 1
+        //
+        // Match this participant piece with each unused target.
+        // ========================================================
+
+        foreach (BuildingPiece target in targetPieces)
+        {
+            if (usedTargets.Contains(target)) continue;
+
+            Vector3 targetPosition = targetPositions[target];
+
+
+            float distance = Vector3.Distance(participantPosition, targetPosition);
+
+
+            PieceMatch match = new PieceMatch();
+
+
+            match.participantPiece = participant;
+
+
+            match.targetPiece = target;
+
+
+            match.positionDistance = distance;
+
+
+            usedTargets.Add(target);
+
+
+            currentMatches.Add(match);
+
+
+            SearchBestSpatialAssignment(participantPieces,targetPieces,participantPositions,targetPositions,participantIndex + 1,requiredMatches,usedTargets,
+                currentMatches,currentDistance + distance,ref bestTotalDistance,ref bestMatches);
+
+
+            currentMatches.RemoveAt(currentMatches.Count - 1);
+
+
+            usedTargets.Remove(target);
+        }
+
+
+        // ========================================================
+        // OPTION 2
+        //
+        // If there are extra participant pieces, this participant
+        // piece may be skipped.
+        // ========================================================
+
+        if (participantPieces.Count > targetPieces.Count)
+        {
+            SearchBestSpatialAssignment(participantPieces,targetPieces,participantPositions,targetPositions,
+                participantIndex + 1,requiredMatches,usedTargets,currentMatches,currentDistance,ref bestTotalDistance,ref bestMatches);
         }
     }
 
 
+    // ============================================================
+    // TUBE COLOR ACCURACY
+    // ============================================================
+
+    private void CalculateColorAccuracy(GradeResult result,List<BuildingPiece> targetPieces)
+    {
+        List<BuildingPiece> targetTubes = targetPieces.Where(IsTube).ToList();
+
+        result.targetTubeCount =targetTubes.Count;
+
+        result.correctTubeColors = 0;
+
+        foreach (BuildingPiece targetTube in targetTubes)
+        {
+            PieceMatch match = FindMatchForTarget(result,targetTube);
+
+
+            if (match == null) continue;
+
+
+            if (!IsTube(match.participantPiece)) continue;
+
+
+            bool correct = match.participantPiece.pieceColor == targetTube.pieceColor;
+
+
+            match.colorCorrect = correct;
+
+
+            if (correct)
+            {
+                result.correctTubeColors++;
+            }
+        }
+
+
+        if (result.targetTubeCount == 0)
+        {
+            result.colorAccuracy = 0f;
+        }
+        else
+        {
+            result.colorAccuracy = (float)result.correctTubeColors / result.targetTubeCount;
+        }
+    }
+
+
+    // ============================================================
+    // CONNECTOR ACCURACY
+    // ============================================================
+
+    private void CalculateConnectorAccuracy(GradeResult result,List<BuildingPiece> targetPieces)
+    {
+        List<BuildingPiece> targetConnectors =targetPieces.Where(IsConnector).ToList();
+
+
+        result.targetConnectorCount =targetConnectors.Count;
+
+
+        result.correctConnectors =0;
+
+
+        foreach (BuildingPiece targetConnector in targetConnectors)
+        {
+            PieceMatch match = FindMatchForTarget(result,targetConnector);
+
+
+            if (match == null) continue;
+
+
+            if (!IsConnector(match.participantPiece)) continue;
+
+
+            bool correct = match.participantPiece.pieceType == targetConnector.pieceType;
+
+
+            match.connectorCorrect = correct;
+
+
+            if (correct) result.correctConnectors++;
+        }
+
+
+        if (result.targetConnectorCount == 0)
+        {
+            result.connectorAccuracy = 0f;
+        }
+        else
+        {
+            result.connectorAccuracy = (float)result.correctConnectors / result.targetConnectorCount;
+        }
+    }
+
+
+    // ============================================================
+    // CONNECTION ACCURACY
+    //
+    // A target tube <-> connector connection receives credit only
+    // when:
+    //
+    // 1. Corresponding participant tube exists.
+    // 2. Tube color is correct.
+    // 3. Corresponding participant connector exists.
+    // 4. Connector type is correct.
+    // 5. Those participant pieces are actually connected.
+    // ============================================================
+
+    private void CalculateConnectionAccuracy(GradeResult result, List<BuildingPiece> targetPieces)
+    {
+        int correct = 0;
+
+
+        int total = 0;
+
+
+        HashSet<string> checkedTargetConnections = new HashSet<string>();
+
+
+        foreach (BuildingPiece targetPiece in targetPieces)
+        {
+            foreach (AttachPoint targetAP in targetPiece.attachPoints)
+            {
+                if (targetAP == null) continue;
+
+
+                if (targetAP.attachedAttachPoint == null) continue;
+
+
+                BuildingPiece targetNeighbor =targetAP.attachedAttachPoint.owningPiece;
+
+
+                if (targetNeighbor == null) continue;
+
+
+                string key = CreateConnectionKey(targetPiece,targetNeighbor);
+
+
+                if (checkedTargetConnections.Contains(key)) continue;
+               
+
+
+                checkedTargetConnections.Add(key);
+
+
+                BuildingPiece targetTube = null;
+
+
+                BuildingPiece targetConnector = null;
+
+
+                // =================================================
+                // Target piece is tube, neighbor is connector.
+                // =================================================
+
+                if (IsTube(targetPiece) && IsConnector(targetNeighbor))
+                {
+                    targetTube = targetPiece;
+
+
+                    targetConnector = targetNeighbor;
+                }
+
+
+                // =================================================
+                // Target piece is connector, neighbor is tube.
+                // =================================================
+
+                else if (IsConnector(targetPiece) && IsTube(targetNeighbor))
+                {
+                    targetTube = targetNeighbor;
+
+
+                    targetConnector = targetPiece;
+                }
+
+
+                else
+                {
+                    continue;
+                }
+
+
+                // =================================================
+                // This is one required target connection.
+                // =================================================
+
+                total++;
+
+
+                PieceMatch tubeMatch = FindMatchForTarget(result,targetTube);
+
+
+                PieceMatch connectorMatch = FindMatchForTarget(result,targetConnector);
+
+
+                if (tubeMatch == null ||connectorMatch == null) continue;
+
+
+                BuildingPiece participantTube = tubeMatch.participantPiece;
+
+
+                BuildingPiece participantConnector = connectorMatch.participantPiece;
+
+
+                // =================================================
+                // CORRECT TUBE CATEGORY
+                // =================================================
+
+                if (!IsTube(participantTube)) continue;
+
+                // =================================================
+                // CORRECT TUBE COLOR
+                // =================================================
+
+                if (participantTube.pieceColor != targetTube.pieceColor) continue;
+
+                // =================================================
+                // CORRECT CONNECTOR CATEGORY
+                // =================================================
+
+                if (!IsConnector(participantConnector)) continue;
+
+
+                // =================================================
+                // CORRECT CONNECTOR TYPE
+                // =================================================
+
+                if (participantConnector.pieceType != targetConnector.pieceType) continue;
+
+
+                // =================================================
+                // ACTUAL CONNECTION
+                // =================================================
+
+                if (!ArePiecesConnected(participantTube,participantConnector)) continue;
+
+
+                // =================================================
+                // EVERYTHING IS CORRECT.
+                // =================================================
+
+                correct++;
+            }
+        }
+
+
+        result.targetConnectionCount = total;
+
+
+        result.correctConnections = correct;
+
+
+        result.connectionAccuracy = total == 0 ? 0f: (float)correct / total;
+    }
+
+
+    // ============================================================
+    // IS GRADABLE PIECE
+    // ============================================================
+
+    private bool IsGradablePiece(BuildingPiece piece)
+    {
+        return IsTube(piece) ||  IsConnector(piece);
+    }
+
+
+    // ============================================================
+    // IS TUBE
+    // ============================================================
+
+    private bool IsTube(BuildingPiece piece)
+    {
+        if (piece == null) return false;
+
+
+        return piece.pieceType == PieceType.PIPE;
+    }
+
+
+    // ============================================================
+    // IS CONNECTOR
+    // ============================================================
+
+    private bool IsConnector(BuildingPiece piece)
+    {
+        if (piece == null) return false;
+
+
+        switch (piece.pieceType)
+        {
+            case PieceType.C_2WAY:
+            case PieceType.C_ELBOW:
+            case PieceType.C_TEE:
+            case PieceType.C_3WAY:
+            case PieceType.C_4WAY:
+            case PieceType.C_5WAY:
+
+                return true;
+
+
+            default:
+
+                return false;
+        }
+    }
+
+
+    // ============================================================
+    // FIND MATCH FOR TARGET
+    // ============================================================
+
+    private PieceMatch FindMatchForTarget(GradeResult result,BuildingPiece target)
+    {
+        return result.matches.FirstOrDefault(match => match.targetPiece == target);
+    }
+
+
+    // ============================================================
+    // ARE PIECES CONNECTED
+    // ============================================================
+
     private bool ArePiecesConnected(BuildingPiece pieceA, BuildingPiece pieceB)
     {
+        if (pieceA == null || pieceB == null) return false;
+
         foreach (AttachPoint attachPoint in pieceA.attachPoints)
         {
+            if (attachPoint == null) continue;
+
+
             if (attachPoint.attachedAttachPoint == null) continue;
 
+
             BuildingPiece connectedPiece = attachPoint.attachedAttachPoint.owningPiece;
+
 
             if (connectedPiece == pieceB) return true;
 
         }
 
+
         return false;
     }
-   
-    // ============================
-    // Connection Key
-    // ============================
 
-    private string CreateConnectionKey(BuildingPiece a, BuildingPiece b)
+
+    // ============================================================
+    // CONNECTION KEY
+    // ============================================================
+
+    private string CreateConnectionKey(BuildingPiece a,BuildingPiece b)
     {
         int idA = a.GetInstanceID();
+
+
         int idB = b.GetInstanceID();
+
 
         if (idA < idB)
         {
             return idA + "_" + idB;
         }
 
+
         return idB + "_" + idA;
     }
 
 
-    // ============================
-    // Orientation Accuracy
-    // ============================
-    private void CalculateOrientationAccuracy(GradeResult result)
+    // ============================================================
+    // PRINT RESULTS
+    // ============================================================
+
+    private void PrintResult(GradeResult result)
     {
-        int correct = 0;
-        int checks = 0;
+        Debug.Log("================================================");
 
-        HashSet<string> checkConnections = new HashSet<string>();
 
-        foreach (PieceMatch match in result.matches)
+        Debug.Log("STRUCTURE GRADING RESULTS");
+
+
+        Debug.Log("================================================");
+
+
+        Debug.Log($"TUBE COLORS: {result.correctTubeColors} / {result.targetTubeCount} {result.colorAccuracy * 100f:F2}%)");
+
+
+        Debug.Log($"CONNECTORS: {result.correctConnectors} / {result.targetConnectorCount} ({result.connectorAccuracy * 100f:F2}%)");
+
+
+        Debug.Log($"CONNECTIONS: {result.correctConnections} / {result.targetConnectionCount} ({result.connectionAccuracy * 100f:F2}%)");
+
+
+        Debug.Log("================================================");
+
+
+        Debug.Log("N x M SPATIAL CORRESPONDENCE:");
+
+
+        foreach (PieceMatch match in result.matches.OrderBy(match => match.positionDistance))
         {
-            BuildingPiece targetPiece = match.targetPiece;
-
-            foreach (AttachPoint targetAP in targetPiece.attachPoints)
+            if (IsTube(match.targetPiece))
             {
-                if (targetAP.attachedAttachPoint == null) continue;
+                Debug.Log($"[TUBE] " +
+                    $"Participant: {match.participantPiece.name} " +
+                    $"({match.participantPiece.pieceColor}) " +
+                    $"-> " +
+                    $"Target: {match.targetPiece.name} " +
+                    $"({match.targetPiece.pieceColor}) " +
+                    $"| Position Distance: " +
+                    $"{match.positionDistance:F4} " +
+                    $"| Color Correct: " +
+                    $"{match.colorCorrect}");
+            }
 
-                BuildingPiece targetNeighbor = targetAP.attachedAttachPoint.owningPiece;
 
-                string key = CreateConnectionKey(targetPiece, targetNeighbor);
-
-                if (checkConnections.Contains(key)) continue;
-
-                checkConnections.Add(key);
-
-                PieceMatch neighborMatch = result.matches.FirstOrDefault(m => m.targetPiece == targetNeighbor);
-
-                if (neighborMatch == null) continue;
-
-                BuildingPiece participantPiece = match.participantPiece;
-                BuildingPiece participantNeighbor = neighborMatch.participantPiece;
-
-                //They must be connected before orientation makes sense
-                if (!ArePiecesConnected(participantPiece, participantNeighbor)) continue;
-              
-                checks++;
-
-                bool orientationCorrect = CompareRelativeOrientation(participantPiece, participantNeighbor, targetPiece, targetNeighbor);
-
-                if (orientationCorrect)
-                {
-                    correct++;
-                }
-
+            else if (IsConnector(match.targetPiece))
+            {
+                Debug.Log(
+                    $"[CONNECTOR] " +
+                    $"Participant: {match.participantPiece.name} " +
+                    $"({match.participantPiece.pieceType}) " +
+                    $"-> " +
+                    $"Target: {match.targetPiece.name} " +
+                    $"({match.targetPiece.pieceType}) " +
+                    $"| Position Distance: " +
+                    $"{match.positionDistance:F4} " +
+                    $"| Connector Correct: " +
+                    $"{match.connectorCorrect}");
             }
         }
 
-        result.orientationChecks = checks;
-        result.correctOrientation = correct;
 
-        if (checks == 0)
-        {
-            result.orientationAccuracy = 0f;
-        }
-
-        else
-        {
-            result.orientationAccuracy = (float)correct / checks;
-        }
+        Debug.Log("================================================");
     }
 
 
-    // ============================
-    // Relative Orientation
-    // ============================
-    private bool CompareRelativeOrientation(BuildingPiece participantA, BuildingPiece participantB, BuildingPiece targetA, BuildingPiece targetB)
-    {
-        // ---------------------------------------
-        // Calculate B's rotationn relative to A
-        // This means rotating the entire structure in world space
-        // will not automatically cause an error
-        // --------------------------------------
-
-        Quaternion participantRelativeRotation = Quaternion.Inverse(participantA.transform.rotation) * participantB.transform.rotation;
-
-        Quaternion targetRelativeRotation = Quaternion.Inverse(targetA.transform.rotation) * targetB.transform.rotation;
-
-        float angleDifference = Quaternion.Angle(participantRelativeRotation, targetRelativeRotation);
-
-        return angleDifference <= orientationTolerance;
-    }
-
-    // ============================
-    // Final Score
-    // ============================
-    private void CalculateFinalAccuracy(GradeResult result)
-    {
-        float totalWeight = pieceAccuracyWeight + connectionAccuracyWeight + orientationAccuracyWeight;
-
-        if (totalWeight <= 0f)
-        {
-            result.finalAccuracy = 0f;
-            return;
-        }
-
-        float weightedScore = result.pieceAccuracy * pieceAccuracyWeight;
-
-        weightedScore += result.pieceAccuracy * connectionAccuracyWeight;
-
-        weightedScore += result.connectionAccuracy * orientationAccuracyWeight;
-
-        result.finalAccuracy = weightedScore / totalWeight;
-    }
-
-    // ============================
-    // Debug Report
-    // ============================
-
-    public void PrintResult(GradeResult result)
-    {
-        Debug.Log("=======================================");
-
-        Debug.Log("STRUCTURE GRADING RESULTS");
-        
-        Debug.Log("=======================================");
-
-        Debug.Log($"Target Pieces: {result.targetPieceCount}");
-        Debug.Log($"Participant Pieces: {result.participantPieceCount}");
-        Debug.Log($"Matched Pieces: {result.matchedPieceCount}");
-        Debug.Log($"Missing Pieces: {result.missingPieces}");
-        Debug.Log($"Extra Pieces: {result.extraPieces}");
-        Debug.Log($"Correct Types: {result.correctTypes} / {result.targetPieceCount}");
-        Debug.Log($"Correct Colors: {result.correctColors} / {result.targetPieceCount}");
-        Debug.Log($"Connections: {result.correctConnectionCount} / {result.targetConnectionCount}");
-        Debug.Log($"Orientation: {result.correctOrientation} / {result.orientationChecks}");
-        Debug.Log($"Piece Accuracy: {result.pieceAccuracy * 100f:F2}% ");
-        Debug.Log($"Connection Accuracy: {result.connectionAccuracy * 100f:F2}% ");
-        Debug.Log($"Orientation Accuracy: {result.orientationAccuracy * 100f:F2}% ");
-        Debug.Log($"FINAL STRUCTURAL ACCURACY: {result.finalAccuracy * 100f:F2}%");
-        Debug.Log("===========================================");
-
-        //Print individual correspondence
-        foreach (PieceMatch match in result.matches)
-        {
-            Debug.Log($"Participant [{match.participantPiece.name}]" +
-                $"-> Target [{match.targetPiece.name}]" +
-                $"Type: [{match.typeMatches}]" +
-                $"Color: [{match.colorMatches}]"); 
-
-        }
-
-    }
+    // ============================================================
+    // RUN FROM INSPECTOR
+    // ============================================================
 
     [ContextMenu("Grade Structure")]
-
-    private void GradeFromInspector()
-    {
-        GradeBuild();
-    }
-
-    private void Start()
+    public void GradeFromInspector()
     {
         GradeBuild();
     }
