@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
     public float timerCountDown;
     public bool timeStarted;
     public float reset;
+    public GameObject structureImage, timerVisual;
+    public PlayInstructions playInstructions;
     //public float minimumTime = 2f;
     //public GameObject timerVisual;
 
@@ -63,6 +65,10 @@ public class Timer : MonoBehaviour
         if (timerCountDown <= 0)
         {
             timerCountDown = 0f;
+            structureImage.SetActive(false);
+            timerVisual.SetActive(false);
+            TurnTimerOff();
+            
         }
 
         DisplayTime(timerCountDown);
