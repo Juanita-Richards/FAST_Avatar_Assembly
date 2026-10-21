@@ -2617,6 +2617,10 @@ PrefabInstance:
       propertyPath: _pointableElement
       value: 
       objectReference: {fileID: 316081555}
+    - target: {fileID: 4445531778734931833, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6069612043565969482, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: _mBuildingPieceID
       value: -15
@@ -12933,7 +12937,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788406870}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7570cac6c5a3baf45ba0eb35a9217345, type: 3}
   m_Name: 
@@ -12968,7 +12972,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788406870}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
   m_Name: 
@@ -13014,7 +13018,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788406870}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
   m_Name: 
@@ -13303,6 +13307,7 @@ MonoBehaviour:
   timerLog: {fileID: 0}
   timerVisual: {fileID: 0}
   motionLogger: {fileID: 0}
+  interactionCue: {fileID: 0}
 --- !u!1 &1865545413
 GameObject:
   m_ObjectHideFlags: 0
@@ -17255,6 +17260,10 @@ PrefabInstance:
       propertyPath: _pointableElement
       value: 
       objectReference: {fileID: 6568785873552780217}
+    - target: {fileID: 4445531778734931833, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6069612043565969482, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: _mBuildingPieceID
       value: 2
@@ -18166,7 +18175,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7353420482329531311}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7570cac6c5a3baf45ba0eb35a9217345, type: 3}
   m_Name: 
@@ -25246,7 +25255,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8014424272648416569}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7570cac6c5a3baf45ba0eb35a9217345, type: 3}
   m_Name: 
@@ -25428,6 +25437,10 @@ PrefabInstance:
       propertyPath: _pointableElement
       value: 
       objectReference: {fileID: 4215354829326745966}
+    - target: {fileID: 4445531778734931833, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6069612043565969482, guid: 72d30e3aa06c378439d580b8612cbe2d, type: 3}
       propertyPath: _mBuildingPieceID
       value: -6
@@ -27287,7 +27300,7 @@ GameObject:
   - component: {fileID: 1157730623675188767}
   - component: {fileID: 7548242889292933766}
   - component: {fileID: 7548242889292933767}
-  - component: {fileID: 7548242889292933768}
+  - component: {fileID: 7548242889292933769}
   m_Layer: 0
   m_Name: substructure
   m_TagString: Untagged
@@ -27550,7 +27563,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572872250838518854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
   m_Name: 
@@ -28586,7 +28599,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4477972832754171829, guid: 12d3c9840c2eaf24eb52e6c26be8fdf9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -29858,7 +29872,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7353420482329531311}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
   m_Name: 
@@ -30308,7 +30322,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5719176086084310628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 692003a12bb848c4497b786f520fb4fd, type: 3}
   m_Name: 
@@ -30340,7 +30354,7 @@ MonoBehaviour:
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
   _forceKinematicDisabled: 0
---- !u!114 &7548242889292933768
+--- !u!114 &7548242889292933769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30349,14 +30363,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5719176086084310628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
+  m_Script: {fileID: 11500000, guid: d893278193c95e2449a309b6633f0be6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction.Samples::Oculus.Interaction.Samples.RespawnOnDrop
+  m_EditorClassIdentifier: FAB::TurnOffRespawn
+  Hint: {fileID: 2109356286}
   _yThresholdForRespawn: 0.2
   _whenRespawned:
     m_PersistentCalls:
       m_Calls: []
-  _sleepFrames: 5
+  _sleepFrames: 0
 --- !u!1 &7589311393961993101
 GameObject:
   m_ObjectHideFlags: 0
@@ -31063,7 +31078,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8014424272648416569}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
   m_Name: 
@@ -31250,7 +31265,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8048746136565841864}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
   m_Name: 

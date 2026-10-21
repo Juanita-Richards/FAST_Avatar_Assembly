@@ -112,7 +112,7 @@ public class SubstructurePositioningHint : MonoBehaviour
             Destroy(hintTransform.GetChild(0).gameObject);
         }
         // add hint recursive to our hintTransform, copying from substructure.
-        //AddHintRecursive(hintTransform, substructure); -- JB 5/29/26 I commented it out
+        AddHintRecursive(hintTransform, substructure); //-- JB 5/29/26 I commented it out
     }
 
     private void AddHintRecursive(Transform copyTo, Transform copyFrom)

@@ -110,7 +110,7 @@ public class Motion : MonoBehaviour
             //Add Label definition here
 
             timeStamp += Time.deltaTime;
-            stringBuilder.Append($"\n{timeStamp:0.0000},"); 
+            stringBuilder.Append($"{timeStamp:0.0000},"); 
 
             
             for (int i = 0; i < TrackedBodies.Count; i++)
@@ -129,7 +129,7 @@ public class Motion : MonoBehaviour
                 Quaternion quaternion = _rightJointTransforms[i].transform.rotation;
                 Vector3 euler = _rightJointTransforms[i].transform.localRotation.eulerAngles;
                 float[] sixDegrees = SixDConversions.To6D(quaternion); //convert the Quaternion values to 6DoF
-                stringBuilder.Append($"{_rightJointTransforms[i].transform.position.x:0.0000},{_leftJointTransforms[i].transform.position.y:0.0000},{_rightJointTransforms[i].transform.position.z:0.0000},{_rightJointTransforms[i].transform.rotation.x:0.0000}, {_rightJointTransforms[i].transform.rotation.y:0.0000}, {_rightJointTransforms[i].transform.rotation.z:0.0000},{_rightJointTransforms[i].transform.rotation.w:0.0000},");
+                stringBuilder.Append($"{_rightJointTransforms[i].transform.position.x:0.0000},{_rightJointTransforms[i].transform.position.y:0.0000},{_rightJointTransforms[i].transform.position.z:0.0000},{_rightJointTransforms[i].transform.rotation.x:0.0000}, {_rightJointTransforms[i].transform.rotation.y:0.0000}, {_rightJointTransforms[i].transform.rotation.z:0.0000},{_rightJointTransforms[i].transform.rotation.w:0.0000},");
                 stringBuilder.Append($"{sixDegrees[0]:0.0000}, {sixDegrees[1]:0.0000},{sixDegrees[2]:0.0000},{sixDegrees[3]:0.0000}, {sixDegrees[4]:0.0000}, {sixDegrees[5]:0.0000},");
                 stringBuilder.Append($"{euler.x:0.0000}, {euler.y:0.0000}, {euler.z:0.0000},");
             }
@@ -143,7 +143,7 @@ public class Motion : MonoBehaviour
                 stringBuilder.Append($"{sixDegrees[0]:0.0000}, {sixDegrees[1]:0.0000},{sixDegrees[2]:0.0000},{sixDegrees[3]:0.0000}, {sixDegrees[4]:0.0000}, {sixDegrees[5]:0.0000},");
                 stringBuilder.Append($"{euler.x:0.0000}, {euler.y:0.0000}, {euler.z:0.0000},");
             }
-
+            stringBuilder.AppendLine();
         }
         //writing to the disk 
         writingTime -= Time.deltaTime;
