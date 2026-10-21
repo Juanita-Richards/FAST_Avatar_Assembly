@@ -117,7 +117,7 @@ namespace PlayStructure
             Debug.LogWarning($"manually resetting the AttachPoints for {name}- ideally these should be" +
                              " set in prefab, not generated for consistency!");
             //
-            //attachPoints = GenAttachPoints();  
+            attachPoints = GenAttachPoints();  
         }
 
         public List<Transform> attachPointTransforms => attachPoints.Select(x => x.attachTransform).ToList();

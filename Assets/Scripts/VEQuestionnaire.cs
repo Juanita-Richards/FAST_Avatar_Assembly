@@ -1,9 +1,12 @@
-﻿using Oculus.Platform.Models;
+﻿//using Meta.XR.ImmersiveDebugger.UserInterface.Generic;
+using Oculus.Platform.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
+using UnityEngine.UI;
+using System.Collections;
 
 
 public class VEQuestionnaire : MonoBehaviour
@@ -48,9 +51,30 @@ public class VEQuestionnaire : MonoBehaviour
             questions[counter].SetActive(false);
             questions[counter + 1].SetActive(true);
 
+            StartCoroutine(LockQuestionButtons(questions[counter + 1]));
         }
 
         counter++;
+    }
+
+    private IEnumerator LockQuestionButtons(GameObject question)
+    {
+        //Find all buttons on the newly displayed question
+        Button[] buttons = question.GetComponentsInChildren<Button>();
+
+        // Disable them
+        foreach (Button button in buttons)
+        {
+            button.interactable = false;
+        }
+
+        yield return new WaitForSeconds(3f);
+
+        //enable them again
+        foreach (Button button in buttons)
+        {
+            button.interactable = true;
+        }
     }
 
     private float Average(int start, int count)
@@ -86,10 +110,7 @@ public class VEQuestionnaire : MonoBehaviour
         logPath = $"FASTA_VEQ.csv";
 
         //Create directory FIRST
-        string directoryPath = Path.Combine(
-            "Questionnaire"
-            //"VEQ" //-- this makes another folder
-        );
+        string directoryPath = Path.Combine("Questionnaire");
 
         Directory.CreateDirectory(directoryPath);
 
@@ -105,7 +126,7 @@ public class VEQuestionnaire : MonoBehaviour
                 writer.WriteLine(
                     "PID #,Cohort ,AC1,AC2,AC3,AC4,AC_AVERAGE," +
                     "CO1,CO2,CO3,CO4,CO_AVERAGE," +
-                    "CH1,CH2,CH3,CH4,CH_AVERAGE"
+                    "CH1,CH2,CH3,CH4,CH_AVERAGE,"
                 );
             }
 
@@ -114,7 +135,7 @@ public class VEQuestionnaire : MonoBehaviour
                 $"{PIDS}, {cohort}," +
                 $"{answers[0]},{answers[1]},{answers[2]},{answers[3]},{average_one}," +
                 $"{answers[4]},{answers[5]},{answers[6]},{answers[7]},{average_two}," +
-                $"{answers[8]},{answers[9]},{answers[10]},{answers[11]},{average_three}";
+                $"{answers[8]},{answers[9]},{answers[10]},{answers[11]},{average_three},";
 
             writer.WriteLine(row);
         }

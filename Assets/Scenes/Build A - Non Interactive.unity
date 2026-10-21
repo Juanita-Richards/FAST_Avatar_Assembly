@@ -1019,11 +1019,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95350700}
   m_CullTransparentMesh: 1
---- !u!1 &99090176 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4148778239110795873, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1979148959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &146994686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,7 +1496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &192726000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1566,30 +1561,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 99090176}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 5460625626903072260}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1551250493}
         m_TargetAssemblyTypeName: Oculus.Interaction.PointableCanvasModule, Oculus.Interaction
         m_MethodName: set_enabled
@@ -1601,42 +1572,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 256349115}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1971633010}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5630521138050346382}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &192726002
 MonoBehaviour:
@@ -1913,7 +1848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &256349116
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3184,10 +3119,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Motion
   TrackedBodies:
   - {fileID: 2137157770}
+  leftOpenXRHand: {fileID: 0}
+  rightOpenXRHand: {fileID: 0}
   PID: {fileID: 205829138729814377}
   Cohort: {fileID: 7085962628238714918}
   Build: {fileID: 7686795772140154649}
   startTracking: 0
+  _leftJointTransforms: []
+  _rightJointTransforms: []
 --- !u!114 &344292363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3207,6 +3146,7 @@ MonoBehaviour:
   reset: 0
   structureImage: {fileID: 374674342}
   timerVisual: {fileID: 1072857207561435238}
+  pcm_event: {fileID: 1551250491}
 --- !u!114 &344292364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3239,7 +3179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &374674343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3258,7 +3198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.565, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!54 &380418657 stripped
@@ -10951,7 +10891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.6157, y: 0.3772}
+  m_AnchoredPosition: {x: -0.08, y: 0.3772}
   m_SizeDelta: {x: 2.4192, y: 1.6648}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1474326111
@@ -13535,7 +13475,8 @@ MonoBehaviour:
   Questionnaire: {fileID: 5460625626903072260}
   timerLog: {fileID: 344292363}
   timerVisual: {fileID: 1072857207561435238}
-  motionLogger: {fileID: 0}
+  motionLogger: {fileID: 344292362}
+  interactionCue: {fileID: 930088469}
 --- !u!1 &1865545413
 GameObject:
   m_ObjectHideFlags: 0
@@ -14136,7 +14077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1971633011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14217,7 +14158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.346, y: 1.447}
+  m_AnchoredPosition: {x: 0.721, y: 1.447}
   m_SizeDelta: {x: 1.9044, y: 1.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1979148959
@@ -14264,13 +14205,17 @@ PrefabInstance:
       propertyPath: _centerEyeCamera
       value: 
       objectReference: {fileID: 1021265147}
+    - target: {fileID: 3903482226883268838, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4148778239110795873, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: m_Name
       value: OVRInteractionComprehensive
       objectReference: {fileID: 0}
     - target: {fileID: 4148778239110795873, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4397664628265918113, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28963,7 +28908,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.645, y: -0.601}
+  m_AnchoredPosition: {x: -0.08, y: -0.601}
   m_SizeDelta: {x: -0.6635, y: -0.4214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5192658126604449757
@@ -29396,7 +29341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.346, y: 1.447}
+  m_AnchoredPosition: {x: 0.715, y: 1.447}
   m_SizeDelta: {x: 1.9044, y: 1.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5287506966760912598

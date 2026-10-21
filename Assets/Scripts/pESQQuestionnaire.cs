@@ -1,11 +1,13 @@
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEditor.Analytics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class pESQQuestionnaire : MonoBehaviour
 {
@@ -45,9 +47,31 @@ public class pESQQuestionnaire : MonoBehaviour
         {
             questions[counter].SetActive(false);
             questions[counter + 1].SetActive(true);
+
+            StartCoroutine(LockQuestionButtons(questions[counter + 1]));
         }
 
         counter++;
+    }
+
+    private IEnumerator LockQuestionButtons(GameObject question)
+    {
+        //Find all buttons on the newly displayed question
+        Button[] buttons = question.GetComponentsInChildren<Button>();
+
+        // Disable them
+        foreach (Button button in buttons)
+        {
+            button.interactable = false;
+        }
+
+        yield return new WaitForSeconds(3f);
+
+        //enable them again
+        foreach (Button button in buttons)
+        {
+            button.interactable = true;
+        }
     }
 
     public void pESQtoCSV()
@@ -77,6 +101,10 @@ public class pESQQuestionnaire : MonoBehaviour
                 writer.WriteLine("PID #, Cohort, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8," +
                     "Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16");
             }
+
+            // Self-location Q1, Q6, Q7
+            // Agency: Q3, Q8, Q9
+            // BO: Q2, Q4 inverted, Q5 inverted, Q10
 
             string row = $"{PIDS}, {cohort}," +
             $"{answers[0]}, {answers[1]}, {answers[2]}, {answers[3]}, {answers[4]}, {answers[5]}, {answers[6]}, {answers[7]},"+

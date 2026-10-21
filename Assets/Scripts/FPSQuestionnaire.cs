@@ -1,9 +1,9 @@
-﻿using Meta.XR.ImmersiveDebugger.UserInterface;
-using Oculus.Platform.Models;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.ParticleSystem;
 
 public class FPSQuestionnaire : MonoBehaviour
@@ -61,11 +61,31 @@ public class FPSQuestionnaire : MonoBehaviour
         {
             questions[counter].SetActive(false);
             questions[counter + 1].SetActive(true);
+
+            StartCoroutine(LockQuestionButtons(questions[counter + 1]));
         }
         counter++;
     }
+    private IEnumerator LockQuestionButtons(GameObject question)
+    {
+        //Find all buttons on the newly displayed question
+        Button[] buttons = question.GetComponentsInChildren<Button>();
 
-   
+        // Disable them
+        foreach (Button button in buttons)
+        {
+            button.interactable = false;
+        }
+
+        yield return new WaitForSeconds(3f);
+
+        //enable them again
+        foreach (Button button in buttons)
+        {
+            button.interactable = true;
+        }
+    }
+
 
     public void FPSToCSV()
     {
@@ -87,15 +107,25 @@ public class FPSQuestionnaire : MonoBehaviour
 
         bool fileExists = File.Exists(fullpath);
 
+        var IPS = (answers[0] + answers[1] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8]) / 8;
+        var SPS = (answers[2] + answers[3] + answers[7]) / 3;
+        var DPS = (answers[0] + answers[1] + answers[2] + answers[3] + answers[6] + answers[7] + answers[9]) / 7;
+        var TPS = 0;
+       
+
         using (var writer = new StreamWriter(fullpath, append: true))
         {
             // Write header only once
             if (!fileExists)
             {
-                writer.WriteLine("PID #, Cohort,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10");
+                writer.WriteLine("PID #, Cohort,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Interaction Presence, Scenario Presence, Display Presence, Total Presence,");
             }
             //trial
-            string row = $"{PIDS}, {cohort}," + string.Join(",", answers);
+            foreach (var answer in answers)
+            {
+                TPS = (TPS + answer) / 10;
+            }
+            string row = $"{PIDS}, {cohort}," + string.Join(",", answers) + $",{IPS}, {SPS}, {DPS}, {TPS}";
             writer.WriteLine(row);
         }
         //trial
