@@ -551,42 +551,6 @@ MonoBehaviour:
   attachMode: 1
   instructionSet: {fileID: 11400000, guid: a702e22f15db6934ea08069cc166c90f, type: 2}
   buildInstructions:
-  - toAttach: {fileID: 2817368194193759399}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: -1.0000001, y: 0.0000000842937, z: 0.000000043711395, w: 0}
-    fromAttach: {fileID: 3801521313395688186}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: 1.0000001, y: -0.0000000842937, z: -0.000000043711395, w: 0}
-  - toAttach: {fileID: 5093803473440023794}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -0.00000005960466, y: -1.0000001, z: 0.000000029802322, w: -0.000000029802319}
-    fromAttach: {fileID: 3801521313395688186}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: 0.00000005960466, y: 1.0000001, z: -0.000000029802322, w: -0.000000029802319}
-  - toAttach: {fileID: 2194784625849621082}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.00000006322027, w: 0.000000021073436}
-    fromAttach: {fileID: 5093803473440023794}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.00000006322027, w: 0.000000021073436}
-  - toAttach: {fileID: 5388475478585470233}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 8.966645e-15, y: -1, z: -9.91671e-15, w: -0.000000043711392}
-    fromAttach: {fileID: 2194784625849621082}
-    _mFromAttach_apIndex: 2
-    fromAttach_rotation: {x: -8.966645e-15, y: 1, z: 9.91671e-15, w: -0.000000043711392}
-  - toAttach: {fileID: 4002685649104648425}
-    _mToAttach_apIndex: 2
-    toAttach_rotation: {x: 7.8489024e-17, y: -1, z: 1.3188218e-16, w: -0.00000004371138}
-    fromAttach: {fileID: 5388475478585470233}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -7.8489024e-17, y: 1, z: -1.3188218e-16, w: -0.00000004371138}
-  - toAttach: {fileID: 7321850882722497912}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -0.70710677, y: -0.7071068, z: 0.000000054491377, w: -0.00000006833354}
-    fromAttach: {fileID: 4002685649104648425}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: 0.70710677, y: 0.7071068, z: -0.000000054491377, w: -0.00000006833354}
   - toAttach: {fileID: 7515244023531705635}
     _mToAttach_apIndex: 0
     toAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.00000006502809, w: 0.0000000018078152}
@@ -599,24 +563,36 @@ MonoBehaviour:
     fromAttach: {fileID: 7515244023531705635}
     _mFromAttach_apIndex: 2
     fromAttach_rotation: {x: -5.5020457e-15, y: 0.99999994, z: 2.6794032e-15, w: -0.000000043711385}
-  - toAttach: {fileID: 5704276680204867339}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.000000030908623, w: -0.00000003090862}
-    fromAttach: {fileID: 2817368194193759399}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.000000030908623, w: -0.00000003090862}
   - toAttach: {fileID: 2420475653842832362}
     _mToAttach_apIndex: 0
     toAttach_rotation: {x: -1, y: 0.000000043711395, z: 0.000000043711395, w: 9.992007e-16}
     fromAttach: {fileID: 7515244023531705635}
     _mFromAttach_apIndex: 1
     fromAttach_rotation: {x: 1, y: -0.000000043711395, z: -0.000000043711395, w: 9.992007e-16}
+  - toAttach: {fileID: 5704276680204867339}
+    _mToAttach_apIndex: 1
+    toAttach_rotation: {x: -1.0000001, y: 0.000000029802333, z: -0.000000029802326, w: -0.000000059604638}
+    fromAttach: {fileID: 7321850882722497912}
+    _mFromAttach_apIndex: 0
+    fromAttach_rotation: {x: 1.0000001, y: -0.000000029802333, z: 0.000000029802326, w: -0.000000059604638}
+  - toAttach: {fileID: 5704276680204867339}
+    _mToAttach_apIndex: 0
+    toAttach_rotation: {x: 7.8489024e-17, y: -1.0000001, z: 0, w: -0.000000043711395}
+    fromAttach: {fileID: 5388475478585470233}
+    _mFromAttach_apIndex: 0
+    fromAttach_rotation: {x: -7.8489024e-17, y: 1.0000001, z: -0, w: -0.000000043711395}
   - toAttach: {fileID: 8902764027749397012}
     _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -6.698506e-16, y: -1, z: 5.107026e-15, w: -0.000000043711392}
-    fromAttach: {fileID: 5704276680204867339}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: 6.698506e-16, y: 1, z: -5.107026e-15, w: -0.000000043711392}
+    toAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.000000002509333, w: -0.0000000011062967}
+    fromAttach: {fileID: 4002685649104648425}
+    _mFromAttach_apIndex: 0
+    fromAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.000000002509333, w: -0.0000000011062967}
+  - toAttach: {fileID: 2817368194193759399}
+    _mToAttach_apIndex: 0
+    toAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.00000003090862, w: -0.00000003090862}
+    fromAttach: {fileID: 4002685649104648425}
+    _mFromAttach_apIndex: 2
+    fromAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.00000003090862, w: -0.00000003090862}
   editorSnapAttachDistance: 0.1
   currentAttachmentsChanged: 1
 --- !u!4 &682450512
@@ -2829,52 +2805,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1939101878448915760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8125000411663121852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 2016254361605917556}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5704276680204867339}
-        m_TargetAssemblyTypeName: PlayStructure.BuildingPiece, FAB
-        m_MethodName: CheckForNearbySnapsAndSnap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!136 &2008096997334830365
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2914,7 +2844,7 @@ MonoBehaviour:
   _maxInteractors: -1
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
-  _pointableElement: {fileID: 2549217366085510928}
+  _pointableElement: {fileID: 0}
   _rigidbody: {fileID: 5618250569460735145}
   _resetGrabOnGrabsUpdated: 1
   _scoringModifier:
@@ -3066,14 +2996,14 @@ MonoBehaviour:
   _pieceType: 5
   _pieceColor: 0
   _attachPoints:
-  - name: Attached to tube (yellow)
+  - name: unattached
     owningPiece: {fileID: 2194784625849621082}
     attachTransform: {fileID: 6651580537296809089}
     _mAlignSymmetry: 2
-    _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 5093803473440023794}
-    _mOtherBuildingPieceAttachPointIndex: 1
-    thisToOther: {x: -0.7071068, y: -0.7071068, z: 0.00000006322027, w: 0.000000021073436}
+    _mCurrentAttachState: 0
+    _mOtherBuildingPiece: {fileID: 0}
+    _mOtherBuildingPieceAttachPointIndex: -1
+    thisToOther: {x: 0, y: 0, z: 0, w: 1}
     configurableJoint: {fileID: 0}
   - name: unattached
     owningPiece: {fileID: 2194784625849621082}
@@ -3084,14 +3014,14 @@ MonoBehaviour:
     _mOtherBuildingPieceAttachPointIndex: -1
     thisToOther: {x: 0.7071068, y: -0.7071068, z: -0.00000003231165, w: 1}
     configurableJoint: {fileID: 0}
-  - name: Attached to tube (green)
+  - name: unattached
     owningPiece: {fileID: 2194784625849621082}
     attachTransform: {fileID: 4574390126631992616}
     _mAlignSymmetry: 2
-    _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 5388475478585470233}
-    _mOtherBuildingPieceAttachPointIndex: 1
-    thisToOther: {x: -8.966645e-15, y: 1, z: 9.91671e-15, w: -0.000000043711392}
+    _mCurrentAttachState: 0
+    _mOtherBuildingPiece: {fileID: 0}
+    _mOtherBuildingPieceAttachPointIndex: -1
+    thisToOther: {x: 0, y: 0, z: 0, w: 1}
     configurableJoint: {fileID: 0}
   symmetries:
   - eulerRotOffCanonical: {x: 0, y: 0, z: 0}
@@ -3154,52 +3084,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: PIPE_BLUE_4
---- !u!114 &2273823255298426957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7592252327319517229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 4136911963101612491}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7321850882722497912}
-        m_TargetAssemblyTypeName: PlayStructure.BuildingPiece, FAB
-        m_MethodName: CheckForNearbySnapsAndSnap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &2347488177911659336
 Transform:
   m_ObjectHideFlags: 0
@@ -3405,29 +3289,6 @@ Transform:
   - {fileID: 5353294470451636673}
   m_Father: {fileID: 458392335447833240}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2549217366085510928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8125000411663121852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f86b14a27b52f4f9298c33015b5c26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.Grabbable
-  _transferOnSecondSelection: 0
-  _addNewPointsToFront: 0
-  _forwardElement: {fileID: 0}
-  _oneGrabTransformer: {fileID: 0}
-  _twoGrabTransformer: {fileID: 0}
-  _targetTransform: {fileID: 8901958945567237894}
-  _maxGrabPoints: -1
-  _rigidbody: {fileID: 0}
-  _kinematicWhileSelected: 1
-  _throwWhenUnselected: 1
-  _forceKinematicDisabled: 0
 --- !u!1 &2565645284621694880
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,23 +3443,23 @@ MonoBehaviour:
   _pieceType: 0
   _pieceColor: 1
   _attachPoints:
-  - name: Attached to conn_Elbow
+  - name: Attached to conn_3way
     owningPiece: {fileID: 2817368194193759399}
     attachTransform: {fileID: 3723411236056142262}
     _mAlignSymmetry: 2
     _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 5704276680204867339}
-    _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: 0.7071068, y: 0.7071068, z: -0.000000030908623, w: -0.00000003090862}
+    _mOtherBuildingPiece: {fileID: 4002685649104648425}
+    _mOtherBuildingPieceAttachPointIndex: 2
+    thisToOther: {x: 0.7071068, y: 0.7071068, z: -0.00000003090862, w: -0.00000003090862}
     configurableJoint: {fileID: 0}
-  - name: Attached to conn_Elbow
+  - name: unattached
     owningPiece: {fileID: 2817368194193759399}
     attachTransform: {fileID: 8014228297729629775}
     _mAlignSymmetry: 2
-    _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 3801521313395688186}
-    _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: -1.0000001, y: 0.0000000842937, z: 0.000000043711395, w: 0}
+    _mCurrentAttachState: 0
+    _mOtherBuildingPiece: {fileID: 0}
+    _mOtherBuildingPieceAttachPointIndex: -1
+    thisToOther: {x: 0, y: 0, z: 0, w: 1}
     configurableJoint: {fileID: 0}
   symmetries:
   - eulerRotOffCanonical: {x: 0, y: 0, z: 0}
@@ -3806,7 +3667,6 @@ GameObject:
   - component: {fileID: 1750091141266899468}
   - component: {fileID: 1883176874836638695}
   - component: {fileID: 7168993133154703166}
-  - component: {fileID: 6704456678357389714}
   - component: {fileID: 8440191697009818174}
   m_Layer: 6
   m_Name: tube (red)
@@ -4045,52 +3905,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3658313751600153219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8125000411663121852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 8202157671215617161}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5704276680204867339}
-        m_TargetAssemblyTypeName: PlayStructure.BuildingPiece, FAB
-        m_MethodName: CheckForNearbySnapsAndSnap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &3665995492836436527
 Transform:
   m_ObjectHideFlags: 0
@@ -4266,23 +4080,23 @@ MonoBehaviour:
   _pieceType: 3
   _pieceColor: 0
   _attachPoints:
-  - name: Attached to tube (red)
+  - name: unattached
     owningPiece: {fileID: 3801521313395688186}
     attachTransform: {fileID: 1395483320016246793}
     _mAlignSymmetry: 2
-    _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 2817368194193759399}
-    _mOtherBuildingPieceAttachPointIndex: 1
-    thisToOther: {x: 1.0000001, y: -0.0000000842937, z: -0.000000043711395, w: 0}
+    _mCurrentAttachState: 0
+    _mOtherBuildingPiece: {fileID: 0}
+    _mOtherBuildingPieceAttachPointIndex: -1
+    thisToOther: {x: 0, y: 0, z: 0, w: 1}
     configurableJoint: {fileID: 0}
-  - name: Attached to tube (yellow)
+  - name: unattached
     owningPiece: {fileID: 3801521313395688186}
     attachTransform: {fileID: 5749324628251170800}
     _mAlignSymmetry: 2
-    _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 5093803473440023794}
-    _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: 0.00000005960466, y: 1.0000001, z: -0.000000029802322, w: -0.000000029802319}
+    _mCurrentAttachState: 0
+    _mOtherBuildingPiece: {fileID: 0}
+    _mOtherBuildingPieceAttachPointIndex: -1
+    thisToOther: {x: 0, y: 0, z: 0, w: 1}
     configurableJoint: {fileID: 0}
   symmetries:
   - eulerRotOffCanonical: {x: 0, y: 0, z: 0}
@@ -4437,14 +4251,14 @@ MonoBehaviour:
   _pieceType: 5
   _pieceColor: 0
   _attachPoints:
-  - name: Attached to tube (red)
+  - name: Attached to tube (yellow)
     owningPiece: {fileID: 4002685649104648425}
     attachTransform: {fileID: 8482033849970495026}
     _mAlignSymmetry: 2
     _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 7321850882722497912}
+    _mOtherBuildingPiece: {fileID: 8902764027749397012}
     _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: 0.70710677, y: 0.7071068, z: -0.000000054491377, w: -0.00000006833354}
+    thisToOther: {x: -0.7071068, y: 0.7071068, z: 0.000000002509333, w: -0.0000000011062967}
     configurableJoint: {fileID: 0}
   - name: Attached to tube (blue)
     owningPiece: {fileID: 4002685649104648425}
@@ -4455,14 +4269,14 @@ MonoBehaviour:
     _mOtherBuildingPieceAttachPointIndex: 0
     thisToOther: {x: 0.70710677, y: 0.70710677, z: -0.000000025080402, w: -0.000000046774154}
     configurableJoint: {fileID: 0}
-  - name: Attached to tube (green)
+  - name: Attached to tube (red)
     owningPiece: {fileID: 4002685649104648425}
     attachTransform: {fileID: 1621975418160209819}
     _mAlignSymmetry: 2
     _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 5388475478585470233}
+    _mOtherBuildingPiece: {fileID: 2817368194193759399}
     _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: 7.8489024e-17, y: -1, z: 1.3188218e-16, w: -0.00000004371138}
+    thisToOther: {x: -0.7071068, y: -0.7071068, z: 0.00000003090862, w: -0.00000003090862}
     configurableJoint: {fileID: 0}
   symmetries:
   - eulerRotOffCanonical: {x: 0, y: 0, z: 0}
@@ -4973,23 +4787,23 @@ MonoBehaviour:
   _pieceType: 0
   _pieceColor: 2
   _attachPoints:
-  - name: Attached to conn_Elbow
+  - name: unattached
     owningPiece: {fileID: 5093803473440023794}
     attachTransform: {fileID: 5910315894394792419}
     _mAlignSymmetry: 2
-    _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 3801521313395688186}
-    _mOtherBuildingPieceAttachPointIndex: 1
-    thisToOther: {x: -0.00000005960466, y: -1.0000001, z: 0.000000029802322, w: -0.000000029802319}
+    _mCurrentAttachState: 0
+    _mOtherBuildingPiece: {fileID: 0}
+    _mOtherBuildingPieceAttachPointIndex: -1
+    thisToOther: {x: 0, y: 0, z: 0, w: 1}
     configurableJoint: {fileID: 0}
-  - name: Attached to conn_3way
+  - name: unattached
     owningPiece: {fileID: 5093803473440023794}
     attachTransform: {fileID: 1049862199853639194}
     _mAlignSymmetry: 2
-    _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 2194784625849621082}
-    _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: 0.7071068, y: 0.7071068, z: -0.00000006322027, w: 0.000000021073436}
+    _mCurrentAttachState: 0
+    _mOtherBuildingPiece: {fileID: 0}
+    _mOtherBuildingPieceAttachPointIndex: -1
+    thisToOther: {x: 0, y: 0, z: 0, w: 1}
     configurableJoint: {fileID: 0}
   symmetries:
   - eulerRotOffCanonical: {x: 0, y: 0, z: 0}
@@ -5011,7 +4825,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8125000411663121852}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeb09e4f18fd0954796cd0b766d28fa4, type: 3}
   m_Name: 
@@ -5195,23 +5009,23 @@ MonoBehaviour:
   _pieceType: 0
   _pieceColor: 3
   _attachPoints:
-  - name: Attached to conn_3way
+  - name: Attached to conn_Elbow
     owningPiece: {fileID: 5388475478585470233}
     attachTransform: {fileID: 6805728886816071688}
     _mAlignSymmetry: 2
     _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 4002685649104648425}
-    _mOtherBuildingPieceAttachPointIndex: 2
-    thisToOther: {x: -7.8489024e-17, y: 1, z: -1.3188218e-16, w: -0.00000004371138}
+    _mOtherBuildingPiece: {fileID: 5704276680204867339}
+    _mOtherBuildingPieceAttachPointIndex: 0
+    thisToOther: {x: -7.8489024e-17, y: 1.0000001, z: -0, w: -0.000000043711395}
     configurableJoint: {fileID: 0}
-  - name: Attached to conn_3way
+  - name: unattached
     owningPiece: {fileID: 5388475478585470233}
     attachTransform: {fileID: 209059745554018289}
     _mAlignSymmetry: 2
-    _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 2194784625849621082}
-    _mOtherBuildingPieceAttachPointIndex: 2
-    thisToOther: {x: 8.966645e-15, y: -1, z: -9.91671e-15, w: -0.000000043711392}
+    _mCurrentAttachState: 0
+    _mOtherBuildingPiece: {fileID: 0}
+    _mOtherBuildingPieceAttachPointIndex: -1
+    thisToOther: {x: 0, y: 0, z: 0, w: 1}
     configurableJoint: {fileID: 0}
   symmetries:
   - eulerRotOffCanonical: {x: 0, y: 0, z: 0}
@@ -5399,23 +5213,23 @@ MonoBehaviour:
   _pieceType: 3
   _pieceColor: 0
   _attachPoints:
-  - name: Attached to tube (red)
+  - name: Attached to tube (green)
     owningPiece: {fileID: 5704276680204867339}
     attachTransform: {fileID: 7545181644675354104}
     _mAlignSymmetry: 2
     _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 2817368194193759399}
+    _mOtherBuildingPiece: {fileID: 5388475478585470233}
     _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: -0.7071068, y: -0.7071068, z: 0.000000030908623, w: -0.00000003090862}
+    thisToOther: {x: 7.8489024e-17, y: -1.0000001, z: 0, w: -0.000000043711395}
     configurableJoint: {fileID: 0}
-  - name: Attached to tube (yellow)
+  - name: Attached to tube (red)
     owningPiece: {fileID: 5704276680204867339}
     attachTransform: {fileID: 3756470878707237377}
     _mAlignSymmetry: 2
     _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 8902764027749397012}
+    _mOtherBuildingPiece: {fileID: 7321850882722497912}
     _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: 6.698506e-16, y: 1, z: -5.107026e-15, w: -0.000000043711392}
+    thisToOther: {x: -1.0000001, y: 0.000000029802333, z: -0.000000029802326, w: -0.000000059604638}
     configurableJoint: {fileID: 0}
   symmetries:
   - eulerRotOffCanonical: {x: 0, y: 0, z: 0}
@@ -5836,52 +5650,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6704456678357389714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3159315425199268338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.PointableUnityEventWrapper
-  _pointable: {fileID: 8929651132500103188}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2817368194193759399}
-        m_TargetAssemblyTypeName: PlayStructure.BuildingPiece, FAB
-        m_MethodName: CheckForNearbySnapsAndSnap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6720447513394395043
 GameObject:
   m_ObjectHideFlags: 0
@@ -6347,14 +6115,14 @@ MonoBehaviour:
   _pieceType: 0
   _pieceColor: 1
   _attachPoints:
-  - name: Attached to conn_3way
+  - name: Attached to conn_Elbow
     owningPiece: {fileID: 7321850882722497912}
     attachTransform: {fileID: 8154060890358548585}
     _mAlignSymmetry: 2
     _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 4002685649104648425}
-    _mOtherBuildingPieceAttachPointIndex: 0
-    thisToOther: {x: -0.70710677, y: -0.7071068, z: 0.000000054491377, w: -0.00000006833354}
+    _mOtherBuildingPiece: {fileID: 5704276680204867339}
+    _mOtherBuildingPieceAttachPointIndex: 1
+    thisToOther: {x: 1.0000001, y: -0.000000029802333, z: 0.000000029802326, w: -0.000000059604638}
     configurableJoint: {fileID: 0}
   - name: Attached to conn_3way
     owningPiece: {fileID: 7321850882722497912}
@@ -6386,8 +6154,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7908935235808378486}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000000842937, y: 1, z: 0.00000016292068, w: 0.0000000015645419}
-  m_LocalPosition: {x: -0.39500004, y: 0.014000058, z: 0.39499998}
+  m_LocalRotation: {x: 0.7071068, y: 0.70710677, z: 0.000000071949174, w: 0.00000009663823}
+  m_LocalPosition: {x: 0, y: 0.014000177, z: 0.39499998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6552,7 +6320,6 @@ GameObject:
   - component: {fileID: 6542797293101030355}
   - component: {fileID: 6388178518327894584}
   - component: {fileID: 2447808249832902369}
-  - component: {fileID: 2273823255298426957}
   - component: {fileID: 4009514589872038881}
   m_Layer: 6
   m_Name: tube (red)
@@ -6933,9 +6700,6 @@ GameObject:
   - component: {fileID: 5290257374959291658}
   - component: {fileID: 4192727208758654310}
   - component: {fileID: 1210239508893677274}
-  - component: {fileID: 2549217366085510928}
-  - component: {fileID: 1939101878448915760}
-  - component: {fileID: 3658313751600153219}
   - component: {fileID: 5117097563976597471}
   m_Layer: 6
   m_Name: conn_Elbow
@@ -7012,7 +6776,7 @@ MonoBehaviour:
   _maxInteractors: -1
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
-  _pointableElement: {fileID: 2549217366085510928}
+  _pointableElement: {fileID: 0}
   _rigidbody: {fileID: 5618250569460735145}
   _grabSource: {fileID: 0}
   _useClosestPointAsGrabSource: 0
@@ -7445,8 +7209,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8125000411663121852}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0.000000043711392, w: 0.000000043711395}
-  m_LocalPosition: {x: 0, y: 0.014000058, z: 0.39499998}
+  m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: 0.00000011409601, w: 0.00000011630863}
+  m_LocalPosition: {x: -0.39500004, y: 0.014000058, z: 0.39499998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7471,14 +7235,14 @@ MonoBehaviour:
   _pieceType: 0
   _pieceColor: 2
   _attachPoints:
-  - name: Attached to conn_Elbow
+  - name: Attached to conn_3way
     owningPiece: {fileID: 8902764027749397012}
     attachTransform: {fileID: 8014581109588557573}
     _mAlignSymmetry: 2
     _mCurrentAttachState: 1
-    _mOtherBuildingPiece: {fileID: 5704276680204867339}
-    _mOtherBuildingPieceAttachPointIndex: 1
-    thisToOther: {x: -6.698506e-16, y: -1, z: 5.107026e-15, w: -0.000000043711392}
+    _mOtherBuildingPiece: {fileID: 4002685649104648425}
+    _mOtherBuildingPieceAttachPointIndex: 0
+    thisToOther: {x: 0.7071068, y: -0.7071068, z: -0.000000002509333, w: -0.0000000011062967}
     configurableJoint: {fileID: 0}
   - name: 
     owningPiece: {fileID: 8902764027749397012}

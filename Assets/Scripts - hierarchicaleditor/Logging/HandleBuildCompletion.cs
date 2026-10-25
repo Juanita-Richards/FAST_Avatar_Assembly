@@ -17,7 +17,7 @@ public class HandleBuildCompletion : MonoBehaviour
     public GameObject Questionnaire;
     public Timer timerLog;
     public GameObject timerVisual;
-    public Motion motionLogger;
+    //public Motion motionLogger;
     
     private bool taskCompleted = false;
 
@@ -43,11 +43,15 @@ public class HandleBuildCompletion : MonoBehaviour
 
         taskCompleted = true;
 
+        secondsUntilDisableGameObjects = Mathf.Max(0f, timerLog.timerCountDown); //turn off if Ryan doesn't want it
+
+        Debug.Log($"Participant completed with {secondsUntilDisableGameObjects} seconds remaining");
+
         //participant finishes normally
 
-        timerLog.TurnTimerOff();
+        //timerLog.TurnTimerOff(); //-- turns off right when the structure is complete
 
-        motionLogger.StopTrackingOff();
+        //motionLogger.StopTrackingOff(); -- this is being handled in the last questionnaire
 
         foreach (var g in gameObjectsToHideImmediately)
         {
@@ -76,8 +80,8 @@ public class HandleBuildCompletion : MonoBehaviour
         //Stop interaction cue
         if (interactionCue != null) interactionCue.SetActive(false);
 
-        //Stop tracking 
-        motionLogger.StopTrackingOff();
+        //Stop tracking - refer to pESQ 'Done' Button
+       //motionLogger.StopTrackingOff();
         experimentManager.StopLogging();
 
         //Hide stuff
