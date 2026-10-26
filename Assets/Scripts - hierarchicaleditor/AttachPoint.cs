@@ -308,6 +308,7 @@ namespace PlayStructure
                         GameObject.Destroy(thisRigidbody);
                     }
 
+                    
                     MetaXRCompatibility.RemoveGrabComponents(otherAP.owningPiece.gameObject);
                     var otherRigidbody = otherAP.owningPiece.GetComponent<Rigidbody>();
                     if (otherRigidbody != null)
@@ -323,18 +324,6 @@ namespace PlayStructure
                     ///</Summary>
                     owningPiece.GetComponent<RespawnOnDrop>().enabled = false;
                    
-
-                    //RespawnOnDrop[] respawnScripts = substructure.GetComponentsInChildren<RespawnOnDrop>(true);
-                    //Debug.Log($"Found these RespawnOnDropped Scripts {respawnScripts.Length}");
-
-                    //foreach (RespawnOnDrop respawn in respawnScripts)
-                    //{
-                        
-                    //    respawn.enabled = false;
-
-                    //    Debug.Log("Turning off RespawnOnDrop on: " + respawn.gameObject.name);
-                    //}
-
 
                     // Bump up the substructure if needed
                     //if (owningPiece.transform.position.y < .99f || otherAP.owningPiece.transform.position.y < .99f)

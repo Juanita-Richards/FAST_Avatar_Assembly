@@ -16328,7 +16328,7 @@ Transform:
   m_GameObject: {fileID: 2109356286}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.46, y: -0.398, z: 0.085}
+  m_LocalPosition: {x: -0.46, y: -0.398, z: 0.152}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23731,6 +23731,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3638609257697816191, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638609257697816191, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638609257697816191, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638609257697816191, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638609257697816191, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4452282373543847999, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -23798,6 +23818,10 @@ PrefabInstance:
     - target: {fileID: 6797412394769333664, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
       value: StopTrackingOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655108062041255502, guid: f136216364c4f984d925f57f38004c4d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.279
       objectReference: {fileID: 0}
     - target: {fileID: 7750519340542303436, guid: f136216364c4f984d925f57f38004c4d, type: 3}
       propertyPath: participantLog

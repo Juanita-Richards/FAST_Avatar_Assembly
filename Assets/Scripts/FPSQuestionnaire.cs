@@ -110,7 +110,7 @@ public class FPSQuestionnaire : MonoBehaviour
         var IPS = (answers[0] + answers[1] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8]) / 8;
         var SPS = (answers[2] + answers[3] + answers[7]) / 3;
         var DPS = (answers[0] + answers[1] + answers[2] + answers[3] + answers[6] + answers[7] + answers[9]) / 7;
-        var TPS = 0;
+        var TPS = (answers[0] + answers[1] + answers[2] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8] + answers[9]) / 10;
        
 
         using (var writer = new StreamWriter(fullpath, append: true))
@@ -120,11 +120,7 @@ public class FPSQuestionnaire : MonoBehaviour
             {
                 writer.WriteLine("PID #, Cohort,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Interaction Presence, Scenario Presence, Display Presence, Total Presence,");
             }
-            //trial
-            foreach (var answer in answers)
-            {
-                TPS = (TPS + answer) / 10;
-            }
+         
             string row = $"{PIDS}, {cohort}," + string.Join(",", answers) + $",{IPS}, {SPS}, {DPS}, {TPS}";
             writer.WriteLine(row);
         }
