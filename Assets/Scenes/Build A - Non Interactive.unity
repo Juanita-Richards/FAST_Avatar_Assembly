@@ -2802,6 +2802,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: C_3WAY_BLACK_2
+--- !u!1 &317404746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6147449420076126351, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+  m_PrefabInstance: {fileID: 1979148959}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &322712236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2984,8 +2989,8 @@ GameObject:
   m_Component:
   - component: {fileID: 344292360}
   - component: {fileID: 344292362}
-  - component: {fileID: 344292363}
   - component: {fileID: 344292364}
+  - component: {fileID: 344292365}
   m_Layer: 0
   m_Name: Conditon Manager
   m_TagString: Untagged
@@ -3023,6 +3028,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Motion
   TrackedBodies:
   - {fileID: 2137157770}
+  - {fileID: 317404746}
+  - {fileID: 2003572522}
   leftOpenXRHand: {fileID: 0}
   rightOpenXRHand: {fileID: 0}
   PID: {fileID: 205829138729814377}
@@ -3031,26 +3038,6 @@ MonoBehaviour:
   startTracking: 0
   _leftJointTransforms: []
   _rightJointTransforms: []
---- !u!114 &344292363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344292359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90c2938872312d846991501804e4bde4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Timer
-  timer: {fileID: 8240625473174127543}
-  timerVisualtext: {fileID: 8240625473174127543}
-  timerCountDown: 2
-  timeStarted: 0
-  reset: 0
-  structureImage: {fileID: 374674342}
-  timerVisual: {fileID: 1830218633335337255}
-  pcm_event: {fileID: 1551250491}
 --- !u!114 &344292364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3068,6 +3055,21 @@ MonoBehaviour:
   PID_dropdown: {fileID: 205829138729814377}
   build_dropdown: {fileID: 7686795772140154649}
   isController: {fileID: 529756073228110668}
+--- !u!114 &344292365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344292359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a538ae75bab1bc4fbe91d77053eaaf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FAB::TimerCountUp
+  timer: {fileID: 0}
+  timerCountDown: 0
+  timeStarted: 0
 --- !u!1 &374674342
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,78 +4507,72 @@ MonoBehaviour:
   attachMode: 1
   instructionSet: {fileID: 11400000, guid: 00aedf88b5f7eeb43977cf10522573dd, type: 2}
   buildInstructions:
-  - toAttach: {fileID: 7740674519656038289}
+  - toAttach: {fileID: 1890345750164420128}
     _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.000000030908623, w: -0.00000003090862}
-    fromAttach: {fileID: 1208381281134332202}
+    toAttach_rotation: {x: 1, y: -0.000000014901158, z: -0.000000014901158, w: -0.000000014901158}
+    fromAttach: {fileID: 4754266706030686305}
     _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.000000030908623, w: -0.00000003090862}
-  - toAttach: {fileID: 3750549623815147243}
+    fromAttach_rotation: {x: -1, y: 0.000000014901158, z: 0.000000014901158, w: -0.000000014901158}
+  - toAttach: {fileID: 7198654654169678223}
     _mToAttach_apIndex: 0
-    toAttach_rotation: {x: 1.0000001, y: -0.0000000842937, z: -0.000000043711395, w: 0}
-    fromAttach: {fileID: 1208381281134332202}
+    toAttach_rotation: {x: -2.7755576e-15, y: -1, z: 3.0477474e-16, w: -0.000000043711392}
+    fromAttach: {fileID: 4754266706030686305}
     _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: -1.0000001, y: 0.0000000842937, z: 0.000000043711395, w: 0}
-  - toAttach: {fileID: 5560207034739410648}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 0.70710677, y: 0.70710677, z: -0.000000025080402, w: -0.000000046774154}
-    fromAttach: {fileID: 5399126505970807411}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -0.70710677, y: -0.70710677, z: 0.000000025080402, w: -0.000000046774154}
-  - toAttach: {fileID: 3750549623815147243}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 0.00000005960466, y: 1.0000001, z: -0.000000029802322, w: -0.000000029802319}
-    fromAttach: {fileID: 1968444326340852288}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -0.00000005960466, y: -1.0000001, z: 0.000000029802322, w: -0.000000029802319}
-  - toAttach: {fileID: 7780147121010622850}
+    fromAttach_rotation: {x: 2.7755576e-15, y: 1, z: -3.0477474e-16, w: -0.000000043711392}
+  - toAttach: {fileID: 3790575350093811905}
     _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.00000006322027, w: 0.000000021073436}
-    fromAttach: {fileID: 1968444326340852288}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.00000006322027, w: 0.000000021073436}
-  - toAttach: {fileID: 5837110052604927366}
+    toAttach_rotation: {x: 0, y: -1.0000001, z: 0, w: -0.000000029802326}
+    fromAttach: {fileID: 7740451095294528248}
+    _mFromAttach_apIndex: 0
+    fromAttach_rotation: {x: -0, y: 1.0000001, z: -0, w: -0.000000029802326}
+  - toAttach: {fileID: 6708735805094821624}
     _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 8.966645e-15, y: -1, z: -9.91671e-15, w: -0.000000043711392}
-    fromAttach: {fileID: 7780147121010622850}
+    toAttach_rotation: {x: 1.0000001, y: -0.0000000842937, z: -0.000000043711395, w: -1.2277258e-15}
+    fromAttach: {fileID: 7740451095294528248}
+    _mFromAttach_apIndex: 1
+    fromAttach_rotation: {x: -1.0000001, y: 0.0000000842937, z: 0.000000043711395, w: -1.2277258e-15}
+  - toAttach: {fileID: 3790575350093811905}
+    _mToAttach_apIndex: 1
+    toAttach_rotation: {x: 0.70710677, y: 0.7071068, z: -0.000000022881236, w: -0.000000040339035}
+    fromAttach: {fileID: 2767018292908472110}
+    _mFromAttach_apIndex: 0
+    fromAttach_rotation: {x: -0.70710677, y: -0.7071068, z: 0.000000022881236, w: -0.000000040339035}
+  - toAttach: {fileID: 7951540951004418770}
+    _mToAttach_apIndex: 1
+    toAttach_rotation: {x: -0.7071068, y: 0.70710677, z: 0.000000007932775, w: 0.000000014543689}
+    fromAttach: {fileID: 2767018292908472110}
+    _mFromAttach_apIndex: 1
+    fromAttach_rotation: {x: 0.7071068, y: -0.70710677, z: -0.000000007932775, w: 0.000000014543689}
+  - toAttach: {fileID: 7198654654169678223}
+    _mToAttach_apIndex: 1
+    toAttach_rotation: {x: 6.250219e-15, y: -1, z: -4.802712e-16, w: -0.00000004371139}
+    fromAttach: {fileID: 2767018292908472110}
     _mFromAttach_apIndex: 2
-    fromAttach_rotation: {x: -8.966645e-15, y: 1, z: 9.91671e-15, w: -0.000000043711392}
-  - toAttach: {fileID: 5560207034739410648}
+    fromAttach_rotation: {x: -6.250219e-15, y: 1, z: 4.802712e-16, w: -0.00000004371139}
+  - toAttach: {fileID: 6708735805094821624}
     _mToAttach_apIndex: 0
-    toAttach_rotation: {x: 0.70710677, y: 0.7071068, z: -0.000000054491377, w: -0.00000006833354}
-    fromAttach: {fileID: 53301441214325059}
+    toAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.000000031357214, w: -0.000000030460036}
+    fromAttach: {fileID: 2641769040101537008}
     _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -0.70710677, y: -0.7071068, z: 0.000000054491377, w: -0.00000006833354}
-  - toAttach: {fileID: 8024810626905122217}
+    fromAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.000000031357214, w: -0.000000030460036}
+  - toAttach: {fileID: 4087622991000440316}
     _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.00000006502809, w: 0.0000000018078152}
-    fromAttach: {fileID: 53301441214325059}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.00000006502809, w: 0.0000000018078152}
-  - toAttach: {fileID: 8024810626905122217}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 1, y: -0.000000043711395, z: -0.000000043711395, w: 9.992007e-16}
-    fromAttach: {fileID: 4782231302732333677}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -1, y: 0.000000043711395, z: 0.000000043711395, w: 9.992007e-16}
-  - toAttach: {fileID: 5560207034739410648}
+    toAttach_rotation: {x: -0.00000002980231, y: -1, z: 0.00000002980232, w: -0.00000002980232}
+    fromAttach: {fileID: 2641769040101537008}
+    _mFromAttach_apIndex: 2
+    fromAttach_rotation: {x: 0.00000002980231, y: 1, z: -0.00000002980232, w: -0.00000002980232}
+  - toAttach: {fileID: 3173959769156007571}
     _mToAttach_apIndex: 2
-    toAttach_rotation: {x: 7.8489024e-17, y: -1, z: 1.3188218e-16, w: -0.00000004371138}
-    fromAttach: {fileID: 5837110052604927366}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -7.8489024e-17, y: 1, z: -1.3188218e-16, w: -0.00000004371138}
-  - toAttach: {fileID: 3753783239557051960}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 5.5020457e-15, y: -0.99999994, z: -2.6794032e-15, w: -0.000000043711385}
-    fromAttach: {fileID: 8024810626905122217}
-    _mFromAttach_apIndex: 2
-    fromAttach_rotation: {x: -5.5020457e-15, y: 0.99999994, z: 2.6794032e-15, w: -0.000000043711385}
-  - toAttach: {fileID: 7740674519656038289}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 6.698506e-16, y: 1, z: -5.107026e-15, w: -0.000000043711392}
-    fromAttach: {fileID: 4888399472413700064}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -6.698506e-16, y: -1, z: 5.107026e-15, w: -0.000000043711392}
+    toAttach_rotation: {x: -7.1054274e-15, y: 1, z: 1.3397012e-15, w: -0.00000004371139}
+    fromAttach: {fileID: 225387348094807405}
+    _mFromAttach_apIndex: 1
+    fromAttach_rotation: {x: 7.1054274e-15, y: -1, z: -1.3397012e-15, w: -0.00000004371139}
+  - toAttach: {fileID: 3173959769156007571}
+    _mToAttach_apIndex: 0
+    toAttach_rotation: {x: 0.7071069, y: 0.7071068, z: -0.000000029802326, w: -0.000000071949174}
+    fromAttach: {fileID: 1890345750164420128}
+    _mFromAttach_apIndex: 1
+    fromAttach_rotation: {x: -0.7071069, y: -0.7071068, z: 0.000000029802326, w: -0.000000071949174}
   editorSnapAttachDistance: 0.1
   currentAttachmentsChanged: 1
 --- !u!4 &682450512
@@ -7761,6 +7757,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 3583
       objectReference: {fileID: 0}
@@ -7773,11 +7789,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: isInsightPassthroughEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: enableCoreMetricsDevelopment
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: requestBodyTrackingPermissionOnStartup
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: requestPassthroughCameraAccessPermissionOnStartup
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 20000010189485334, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
@@ -13116,7 +13140,7 @@ MonoBehaviour:
   experimentManager: {fileID: 2138745200360017905}
   secondsUntilDisableGameObjects: 10
   Questionnaire: {fileID: 4518236627013891192}
-  timerLog: {fileID: 344292363}
+  timerLog: {fileID: 0}
   timerVisual: {fileID: 1830218633335337255}
   interactionCue: {fileID: 930088469}
 --- !u!1 &1865545413
@@ -14130,6 +14154,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996362474}
   m_CullTransparentMesh: 1
+--- !u!1 &2003572522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8702425413754196323, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+  m_PrefabInstance: {fileID: 1979148959}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2009761540
 GameObject:
   m_ObjectHideFlags: 0
@@ -81075,7 +81104,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 344292363}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Timer, Assembly-CSharp
         m_MethodName: TurnTimerOn
         m_Mode: 1
@@ -92140,7 +92169,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 344292363}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Timer, FAB
         m_MethodName: TurnTimerOn
         m_Mode: 1
@@ -92164,7 +92193,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 344292363}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Timer, FAB
         m_MethodName: TurnTimerOn
         m_Mode: 1
@@ -114532,17 +114561,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8240625473174127543 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7723985256660848651, guid: 8f76aab511c4bb647a56bf3cf8a93ea2, type: 3}
-  m_PrefabInstance: {fileID: 1832277440820122556}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!222 &8241172891654731365
 CanvasRenderer:
   m_ObjectHideFlags: 0

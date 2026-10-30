@@ -8,8 +8,7 @@ public class TimerCountUp : MonoBehaviour
     public TextMeshProUGUI timer;
     public float timerCountDown;
     public bool timeStarted;
-    public float reset;
-    public float minimumTime = 2f;
+    
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

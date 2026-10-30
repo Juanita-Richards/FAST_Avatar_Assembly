@@ -156,46 +156,23 @@ public class Motion : MonoBehaviour
     }
 
 
-    //public void RightHandFingers()
-    //{
-
-    //    timeStamp += Time.deltaTime;
-    //    stringBuilder.AppendLine($"\n{timeStamp:0.0000},");
-
-    //    for (int i = 0; i < _rightJointTransforms.Count; i++)
-    //    {
-    //        Quaternion quaternion = _rightJointTransforms[i].transform.rotation;
-    //        Vector3 euler = _rightJointTransforms[i].transform.localRotation.eulerAngles;
-    //        float[] sixDegrees = SixDConversions.To6D(quaternion); //convert the Quaternion values to 6DoF
-    //        stringBuilder.Append($"{_rightJointTransforms[i].transform.position.x:0.0000},{_leftJointTransforms[i].transform.position.y:0.0000},{_rightJointTransforms[i].transform.position.z:0.0000},{_rightJointTransforms[i].transform.rotation.x:0.0000}, {_rightJointTransforms[i].transform.rotation.y:0.0000}, {_rightJointTransforms[i].transform.rotation.z:0.0000},{_rightJointTransforms[i].transform.rotation.w:0.0000},");
-    //        stringBuilder.Append($"{sixDegrees[0]:0.0000}, {sixDegrees[1]:0.0000},{sixDegrees[2]:0.0000},{sixDegrees[3]:0.0000}, {sixDegrees[4]:0.0000}, {sixDegrees[5]:0.0000},");
-    //        stringBuilder.Append($"{euler.x:0.0000}, {euler.y:0.0000}, {euler.z:0.0000},");
-    //    }
-    //}
-
-    //public void LeftHandFingers()
-    //{
-
-    //    timeStamp += Time.deltaTime;
-    //    stringBuilder.AppendLine($"\n{timeStamp:0.0000},");
-
-    //    for (int i = 0; i < _leftJointTransforms.Count; i++)
-    //    {
-    //        Quaternion quaternion = _leftJointTransforms[i].transform.rotation;
-    //        Vector3 euler = _leftJointTransforms[i].transform.localRotation.eulerAngles;
-    //        float[] sixDegrees = SixDConversions.To6D(quaternion); //convert the Quaternion values to 6DoF
-    //        stringBuilder.Append($"{_leftJointTransforms[i].transform.position.x:0.0000},{_leftJointTransforms[i].transform.position.y:0.0000},{_leftJointTransforms[i].transform.position.z:0.0000},{_leftJointTransforms[i].transform.rotation.x:0.0000}, {_leftJointTransforms[i].transform.rotation.y:0.0000}, {_leftJointTransforms[i].transform.rotation.z:0.0000},{_leftJointTransforms[i].transform.rotation.w:0.0000},");
-    //        stringBuilder.Append($"{sixDegrees[0]:0.0000}, {sixDegrees[1]:0.0000},{sixDegrees[2]:0.0000},{sixDegrees[3]:0.0000}, {sixDegrees[4]:0.0000}, {sixDegrees[5]:0.0000},");
-    //        stringBuilder.Append($"{euler.x:0.0000}, {euler.y:0.0000}, {euler.z:0.0000},");
-    //    }
-    //}
-
     public void StopTrackingOff()
     {
         //turn the logging off
         startTracking = false;
-        Debug.Log("tracking stopped");
-        writer.Close();
+
+        if (writer != null)
+        {
+            writer.Write(stringBuilder.ToString());
+            stringBuilder.Clear();
+
+            writer.Flush();
+            writer.Close();
+
+            writer = null;
+        }
+
+        Debug.Log("Tracking stopped and CSV saved.");
     }
 
    

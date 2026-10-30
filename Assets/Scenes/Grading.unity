@@ -3230,7 +3230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29869497cd2ec304abff642e419837bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OptimalStructureVRReconstructor3
-  fileName: Build_A_vs_Pilot_1_A.txt
+  fileName: Build_B_vs_Pilot_1_B.txt
   usePersistentDataPath: 0
   comparisonFolderName: FAST_Comparisons
   redTubePrefab: {fileID: 6397883221424477957}
@@ -3245,7 +3245,7 @@ MonoBehaviour:
   reconstructionPositionTolerance: 0.35
   reconstructionRotationToleranceDegrees: 10
   reconstructionAxisToleranceDegrees: 10
-  targetBuildRoot: {fileID: 8691302677276401512}
+  targetBuildRoot: {fileID: 4705834035339725764}
   verboseReconstructionLog: 1
 --- !u!114 &2009159070
 MonoBehaviour:
@@ -3259,8 +3259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dda8cdddca241f41ba89f892ce1faac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OptimalStructureComparison2
-  targetBuildRoot: {fileID: 8691302677276401512}
-  participantBuildRoot: {fileID: 1304715843418313782}
+  targetBuildRoot: {fileID: 4705834035339725764}
+  participantBuildRoot: {fileID: 3572860325269545175}
   gradingSettings:
     normalizedPositionTolerance: 0.35
     orientationToleranceDegrees: 10
@@ -3282,8 +3282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e34b70f4afad47a099e0dd60993c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildGrader2
-  targetBuildRoot: {fileID: 8691302677276401512}
-  participantBuildRoot: {fileID: 1304715843418313782}
+  targetBuildRoot: {fileID: 4705834035339725764}
+  participantBuildRoot: {fileID: 3572860325269545175}
   gradingSettings:
     normalizedPositionTolerance: 0.35
     orientationToleranceDegrees: 10
@@ -3318,7 +3318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5310f7c28ef1004394083dcc6fa23d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OptimalStructureVisualizer
-  fileName: Build_A_vs_Pilot_1_A.txt
+  fileName: Build_B_vs_Pilot_1_B.txt
   targetMarkerSize: 0.04
   participantMarkerSize: 0.03
   orientationLineLength: 0.15
@@ -18060,7 +18060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &3041322845270650812
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20310,7 +20310,7 @@ Transform:
   m_GameObject: {fileID: 6787516264421446513}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.41266748, z: -0, w: 0.91088176}
-  m_LocalPosition: {x: -1.387, y: 0.99716, z: 3.314}
+  m_LocalPosition: {x: -1.387, y: 1.018, z: 3.314}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28581,7 +28581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &5088096325220626390
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -33739,7 +33739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &6122197401785303657
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -36948,7 +36948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6792023023233432026
 Transform:
   m_ObjectHideFlags: 0
@@ -47961,8 +47961,6 @@ GameObject:
   - component: {fileID: 3823992745528204604}
   - component: {fileID: 5249306454430432623}
   - component: {fileID: 7607011330467013530}
-  - component: {fileID: 9097693012204137052}
-  - component: {fileID: 9097693012204137051}
   m_Layer: 6
   m_Name: tube (blue)
   m_TagString: Tube
@@ -47970,135 +47968,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!153 &9097693012204137051
-ConfigurableJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9097693012204137050}
-  serializedVersion: 4
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0.025000013, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
-  m_SecondaryAxis: {x: 0, y: 1, z: 0}
-  m_XMotion: 0
-  m_YMotion: 0
-  m_ZMotion: 0
-  m_AngularXMotion: 0
-  m_AngularYMotion: 0
-  m_AngularZMotion: 0
-  m_LinearLimitSpring:
-    spring: 0
-    damper: 0
-  m_LinearLimit:
-    limit: 0
-    bounciness: 0
-    contactDistance: 0
-  m_AngularXLimitSpring:
-    spring: 0
-    damper: 0
-  m_LowAngularXLimit:
-    limit: 0
-    bounciness: 0
-    contactDistance: 0
-  m_HighAngularXLimit:
-    limit: 0
-    bounciness: 0
-    contactDistance: 0
-  m_AngularYZLimitSpring:
-    spring: 0
-    damper: 0
-  m_AngularYLimit:
-    limit: 0
-    bounciness: 0
-    contactDistance: 0
-  m_AngularZLimit:
-    limit: 0
-    bounciness: 0
-    contactDistance: 0
-  m_TargetPosition: {x: 0, y: 0, z: 0}
-  m_TargetVelocity: {x: 0, y: 0, z: 0}
-  m_XDrive:
-    serializedVersion: 4
-    positionSpring: 0
-    positionDamper: 0
-    maximumForce: 3.4028233e+38
-    useAcceleration: 0
-  m_YDrive:
-    serializedVersion: 4
-    positionSpring: 0
-    positionDamper: 0
-    maximumForce: 3.4028233e+38
-    useAcceleration: 0
-  m_ZDrive:
-    serializedVersion: 4
-    positionSpring: 0
-    positionDamper: 0
-    maximumForce: 3.4028233e+38
-    useAcceleration: 0
-  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
-  m_RotationDriveMode: 0
-  m_AngularXDrive:
-    serializedVersion: 4
-    positionSpring: 0
-    positionDamper: 0
-    maximumForce: 3.4028233e+38
-    useAcceleration: 0
-  m_AngularYZDrive:
-    serializedVersion: 4
-    positionSpring: 0
-    positionDamper: 0
-    maximumForce: 3.4028233e+38
-    useAcceleration: 0
-  m_SlerpDrive:
-    serializedVersion: 4
-    positionSpring: 0
-    positionDamper: 0
-    maximumForce: 3.4028233e+38
-    useAcceleration: 0
-  m_ProjectionMode: 1
-  m_ProjectionDistance: 0.1
-  m_ProjectionAngle: 180
-  m_ConfiguredInWorldSpace: 0
-  m_SwapBodies: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
---- !u!54 &9097693012204137052
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9097693012204137050}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &9098947850667958416
 GameObject:
   m_ObjectHideFlags: 0
