@@ -6,9 +6,6 @@ using System.IO;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using TMPro.Examples;
-
-
 
 public class ParticipantLog : MonoBehaviour
 {
@@ -34,7 +31,7 @@ public class ParticipantLog : MonoBehaviour
         if (!File.Exists(log_path))
         {
             using StreamWriter writer = File.CreateText(log_path);
-            writer.WriteLine("ParticipantID, Gender, Cohort,Build, ControllerOn,date-time, Time");
+            writer.WriteLine("ParticipantID, Gender, Cohort,Build, ControllerOn,date-time,");
 
             writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {build},{isControllerValue},{dateTime}");
             writer.Close();

@@ -11,7 +11,6 @@ public class FPSQuestionnaire : MonoBehaviour
     public static FPSQuestionnaire Instance;
 
     //pids and trial
-
     public ParticipantLog participantLog;
 
 
@@ -30,6 +29,8 @@ public class FPSQuestionnaire : MonoBehaviour
 
     [SerializeField]
     public List<GameObject> questions = new List<GameObject>();
+
+    
 
     private void Awake()
     {
@@ -126,6 +127,9 @@ public class FPSQuestionnaire : MonoBehaviour
         }
         //trial
         Debug.Log($"Saved trial {PIDS}_{cohort} to CSV.");
+
+        //Call Phase 3 for the passthrough condition 
+        Motion.Instance.StartPhase3();
     }
 
     public void ResetAnswers()

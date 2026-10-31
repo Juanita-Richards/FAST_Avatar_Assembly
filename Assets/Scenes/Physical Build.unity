@@ -692,12 +692,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 344292359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a538ae75bab1bc4fbe91d77053eaaf6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b3105752d169e54d8b9e210e79a552f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: FAB::TimerCountUp
+  m_EditorClassIdentifier: Assembly-CSharp::TimerCountUp
   timer: {fileID: 0}
-  timerCountDown: 0
+  timerCountUp: 0
   timeStarted: 0
+  pLog: {fileID: 344292364}
 --- !u!4 &384581767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 913164154583988484, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
@@ -805,121 +806,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4891020783473868205, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
   m_PrefabInstance: {fileID: 1979148959}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &682450510
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 682450512}
-  - component: {fileID: 682450511}
-  m_Layer: 0
-  m_Name: 'BuildStructure[Singleton]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &682450511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682450510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 129fdaebd27296b43be31005c84b2946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attachMode: 1
-  instructionSet: {fileID: 11400000, guid: 00aedf88b5f7eeb43977cf10522573dd, type: 2}
-  buildInstructions:
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: 1, y: -0.000000014901158, z: -0.000000014901158, w: -0.000000014901158}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -1, y: 0.000000014901158, z: 0.000000014901158, w: -0.000000014901158}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -2.7755576e-15, y: -1, z: 3.0477474e-16, w: -0.000000043711392}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: 2.7755576e-15, y: 1, z: -3.0477474e-16, w: -0.000000043711392}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: 0, y: -1.0000001, z: 0, w: -0.000000029802326}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -0, y: 1.0000001, z: -0, w: -0.000000029802326}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 1.0000001, y: -0.0000000842937, z: -0.000000043711395, w: -1.2277258e-15}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: -1.0000001, y: 0.0000000842937, z: 0.000000043711395, w: -1.2277258e-15}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 0.70710677, y: 0.7071068, z: -0.000000022881236, w: -0.000000040339035}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -0.70710677, y: -0.7071068, z: 0.000000022881236, w: -0.000000040339035}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: -0.7071068, y: 0.70710677, z: 0.000000007932775, w: 0.000000014543689}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: 0.7071068, y: -0.70710677, z: -0.000000007932775, w: 0.000000014543689}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 1
-    toAttach_rotation: {x: 6.250219e-15, y: -1, z: -4.802712e-16, w: -0.00000004371139}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 2
-    fromAttach_rotation: {x: -6.250219e-15, y: 1, z: 4.802712e-16, w: -0.00000004371139}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.000000031357214, w: -0.000000030460036}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 0
-    fromAttach_rotation: {x: -0.7071068, y: -0.7071068, z: 0.000000031357214, w: -0.000000030460036}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: -0.00000002980231, y: -1, z: 0.00000002980232, w: -0.00000002980232}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 2
-    fromAttach_rotation: {x: 0.00000002980231, y: 1, z: -0.00000002980232, w: -0.00000002980232}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 2
-    toAttach_rotation: {x: -7.1054274e-15, y: 1, z: 1.3397012e-15, w: -0.00000004371139}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: 7.1054274e-15, y: -1, z: -1.3397012e-15, w: -0.00000004371139}
-  - toAttach: {fileID: 0}
-    _mToAttach_apIndex: 0
-    toAttach_rotation: {x: 0.7071069, y: 0.7071068, z: -0.000000029802326, w: -0.000000071949174}
-    fromAttach: {fileID: 0}
-    _mFromAttach_apIndex: 1
-    fromAttach_rotation: {x: -0.7071069, y: -0.7071068, z: 0.000000029802326, w: -0.000000071949174}
-  editorSnapAttachDistance: 0.1
-  currentAttachmentsChanged: 1
---- !u!4 &682450512
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682450510}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &707585853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8134147063905535828, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
@@ -1125,7 +1011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1000109531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7827,6 +7713,9 @@ MonoBehaviour:
     - m_Text: C
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: D
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9040,7 +8929,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1551250492}
-  - {fileID: 682450512}
   - {fileID: 1021265144}
   - {fileID: 344292360}
   - {fileID: 210287435}

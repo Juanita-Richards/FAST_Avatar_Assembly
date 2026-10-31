@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,22 +32,48 @@ public class Motion : MonoBehaviour
     private string log_path;
     public bool startTracking;
     private float writingTime = 60.0f;
-    private float timeStamp = 0;
+    private float timestamp = 0;
 
+    public int phaseCount = 1;
+
+    //Timers for builds
+    public TimerCountUp countUpTimer; //BUILD A
+    public Timer countDownTimer; //Build B,C
+
+    private float phaseTime = 0f;
 
     //This for finger tracking
     public List<Transform> _leftJointTransforms = new List<Transform>();
     public List<Transform> _rightJointTransforms = new List<Transform>();
 
-
+    private void Awake()
+    {
+        Instance = this; //don't think I rreally need it
+    }
     // Start is called before the first frame update
     void Start()
     {
         stringBuilder = new StringBuilder();
+
+
+        //Build A
+        //When the count-up viewing timer stops
+        //Phase 1 is finished and Phase 2 begins
+        if (countUpTimer != null)
+        {
+            countUpTimer.OnTimerStopped += StartPhase2;
+        }
+
+        if (countDownTimer != null)
+        {
+            countDownTimer.OnTimerExpired += StartPhase2;
+        }
     }
 
     public void StartTrackingOn()
     {
+        
+
         startTracking = true;
 
 
@@ -67,7 +94,7 @@ public class Motion : MonoBehaviour
             string fullPath = Path.Combine(directory, fileName);
 
             //string headers = "Timestamp, TimeElapsed,"; //placeholder for now
-            string headers = "TimeStamp,";
+            string headers = "Timestamp,Phase,Phasetime,";
             for (int i = 0; i < TrackedBodies.Count; i++)
             {
                 string bodyparts = TrackedBodies[i].name;
@@ -109,8 +136,10 @@ public class Motion : MonoBehaviour
         {
             //Add Label definition here
 
-            timeStamp += Time.deltaTime;
-            stringBuilder.Append($"{timeStamp:0.0000},"); 
+            timestamp += Time.deltaTime;
+            phaseTime += Time.deltaTime;
+            
+            stringBuilder.Append($"{timestamp:0.0000},{phaseCount},{phaseTime:0.0000},"); 
 
             
             for (int i = 0; i < TrackedBodies.Count; i++)
@@ -175,5 +204,41 @@ public class Motion : MonoBehaviour
         Debug.Log("Tracking stopped and CSV saved.");
     }
 
-   
+    public void StartPhase1()
+    {
+        SetPhase(1);
+    }
+
+    public void StartPhase2()
+    {
+        SetPhase(2);
+    }
+    public void StartPhase3()
+    {
+        SetPhase(3);
+
+        if (countUpTimer != null)
+        {
+            countUpTimer.StartBuildD();
+        }
+    }
+
+    public void SetPhase(int phase)
+    {
+        if (phase < 1 || phase > 3)
+        {
+            Debug.LogWarning($"Invalid phase:{phase}");
+            return;
+        }
+        //don't restart the same phase
+        if (phaseCount == phase) return;
+
+        phaseCount = phase;
+
+        //Reset timer that measures how long participant has been in this particular phase
+        phaseTime = 0f;
+
+        Debug.Log($"FAST Phase has been changed to {phaseCount}");
+       
+    }
 }

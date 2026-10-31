@@ -51,7 +51,7 @@ public class HandleBuildCompletion : MonoBehaviour
 
         //timerLog.TurnTimerOff(); //-- turns off right when the structure is complete
 
-        //motionLogger.StopTrackingOff(); -- this is being handled in the last questionnaire
+        //motionLogger.StopTrackingOff(); -- this is being handled in the last questionnaire (Done Button) - FPS
 
         foreach (var g in gameObjectsToHideImmediately)
         {
