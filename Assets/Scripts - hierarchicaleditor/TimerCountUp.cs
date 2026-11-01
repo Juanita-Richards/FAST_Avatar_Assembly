@@ -81,7 +81,7 @@ public class TimerCountUp : MonoBehaviour
 
     public void StartBuildD()
     {
-        if (stage != TimingStage.Questionnaire)
+        if (stage == TimingStage.BuildD)
             return;
 
         stage = TimingStage.BuildD;
@@ -154,6 +154,11 @@ public class TimerCountUp : MonoBehaviour
         Debug.Log("Build Times are saved is saved");
     }
 
-   
+
+    private void OnApplicationQuit()
+    {
+        FinishBuildD();
+        Motion.Instance.StopTrackingOff();
+    }
 
 }
