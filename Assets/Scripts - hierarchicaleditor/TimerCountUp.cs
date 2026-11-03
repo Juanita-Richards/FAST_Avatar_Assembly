@@ -155,7 +155,7 @@ public class TimerCountUp : MonoBehaviour
     }
 
 
-    private void OnApplicationQuit()
+    public void OnApplicationQuit()
     {
         FinishBuildD();
         Motion.Instance.StopTrackingOff();

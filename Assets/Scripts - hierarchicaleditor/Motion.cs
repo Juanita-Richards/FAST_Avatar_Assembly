@@ -216,6 +216,11 @@ public class Motion : MonoBehaviour
     public void StartPhase3()
     {
         SetPhase(3);
+    }
+
+    public void StartPhase4()
+    {
+        SetPhase(4);
 
         if (countUpTimer != null)
         {
@@ -225,7 +230,7 @@ public class Motion : MonoBehaviour
 
     public void SetPhase(int phase)
     {
-        if (phase < 1 || phase > 3)
+        if (phase < 1 || phase > 4)
         {
             Debug.LogWarning($"Invalid phase:{phase}");
             return;

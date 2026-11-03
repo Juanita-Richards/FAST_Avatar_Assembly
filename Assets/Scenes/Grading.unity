@@ -2299,10 +2299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dda8cdddca241f41ba89f892ce1faac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OptimalStructureComparison2
-  targetBuildRoot: {fileID: 8691302677276401512}
-  participantBuildRoot: {fileID: 1304715843418313782}
+  targetBuildRoot: {fileID: 4705834035339725764}
+  participantBuildRoot: {fileID: 1631795233383927694}
   gradingSettings:
-    normalizedPositionTolerance: 0
+    normalizedPositionTolerance: 0.35
     orientationToleranceDegrees: 10
     axisToleranceDegrees: 10
     alignWholeBuildRotation: 1
@@ -2326,13 +2326,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e34b70f4afad47a099e0dd60993c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildGrader2
-  targetBuildRoot: {fileID: 8691302677276401512}
-  participantBuildRoot: {fileID: 1304715843418313782}
+  targetBuildRoot: {fileID: 4705834035339725764}
+  participantBuildRoot: {fileID: 1631795233383927694}
   gradingSettings:
     normalizedPositionTolerance: 0.35
     orientationToleranceDegrees: 10
     axisToleranceDegrees: 10
-    alignWholeBuildRotation: 0
+    alignWholeBuildRotation: 1
     correspondenceAmbiguityThreshold: 0.03
     coAlignCorrespondences: 1
     coAlignSolveRotation: 1
@@ -17004,7 +17004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &3041322845270650812
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27525,7 +27525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &5088096325220626390
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -34346,7 +34346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &6446191876374550777
 GameObject:
   m_ObjectHideFlags: 0
@@ -45804,7 +45804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &8910932483538061052
 MonoBehaviour:
   m_ObjectHideFlags: 0
