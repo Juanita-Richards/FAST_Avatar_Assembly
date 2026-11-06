@@ -51,7 +51,7 @@ public class VEQuestionnaire : MonoBehaviour
             questions[counter].SetActive(false);
             questions[counter + 1].SetActive(true);
 
-            //StartCoroutine(LockQuestionButtons(questions[counter + 1]));
+            StartCoroutine(LockQuestionButtons(questions[counter + 1]));
         }
 
         counter++;
