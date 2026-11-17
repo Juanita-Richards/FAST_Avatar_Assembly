@@ -26,18 +26,13 @@ public class OptimalStructureComparisons : MonoBehaviour
         foreach(char c in Path.GetInvalidFileNameChars())s=s.Replace(c,'_');
         return s.Replace(' ','_');
     }
-    // Application.persistentDataPath is where SaveResult writes; both the save and the
-    // "show folder" menu item resolve through here so they can never disagree.
+    // Project-relative directory, as requested. No persistentDataPath.
     private string ComparisonFolderPath()
     {
-        string name = string.IsNullOrEmpty(comparisonFolderName)
-            ? "FAST_Comparisons"
-            : comparisonFolderName.Trim();
-
-        return Path.Combine(Application.persistentDataPath,
-            "FAST_Structure", "Grade 1", name);
+        string name = string.IsNullOrWhiteSpace(comparisonFolderName)
+            ? "FAST_Comparisons" : comparisonFolderName.Trim();
+        return Path.Combine("FAST_Structure", "Grade 1", name);
     }
-
 
     public FASTSharedGrading.Result GenerateComparison()
     {
@@ -73,8 +68,7 @@ public class OptimalStructureComparisons : MonoBehaviour
             return;
         }
 
-        //string folder=ComparisonFolderPath();
-        string folder = Path.Combine("FAST_Structure", "Grade 1", comparisonFolderName.Trim());
+        string folder = ComparisonFolderPath();
         Directory.CreateDirectory(folder);
         string file=Safe(targetBuildRoot.name)+"_vs_"+Safe(participantBuildRoot.name);
         if(addTimestampToFileName)file+="_"+DateTime.Now.ToString("yyyyMMdd_HHmmss");
@@ -83,7 +77,23 @@ public class OptimalStructureComparisons : MonoBehaviour
         sb.AppendLine("FAST_OPTIMAL_STRUCTURE_COMPARISON");
         sb.AppendLine("TargetRoot="+targetBuildRoot.name);
         sb.AppendLine("ParticipantRoot="+participantBuildRoot.name);
-        sb.AppendLine("AlignmentMode="+(gradingSettings.alignWholeBuildRotation?"BestFitRotation":"TranslationOnly"));
+        sb.AppendLine("AlignmentMode=ExhaustiveConnectorAnchors24Orientations");
+        sb.AppendLine("AlignmentCandidatesEvaluated="+r.alignmentCandidatesEvaluated);
+        sb.AppendLine("WinningTargetConnector="+r.winningTargetAnchor);
+        sb.AppendLine("WinningParticipantConnector="+r.winningParticipantAnchor);
+        sb.AppendLine("WinningTargetConnectorHierarchy="+r.winningTargetAnchorPath);
+        sb.AppendLine("WinningParticipantConnectorHierarchy="+r.winningParticipantAnchorPath);
+        sb.AppendLine("WinningTargetConnectorIndex="+r.winningTargetConnectorIndex);
+        sb.AppendLine("WinningTargetChildIndex="+r.winningTargetChildIndex);
+        sb.AppendLine("WinningParticipantConnectorIndex="+r.winningParticipantConnectorIndex);
+        sb.AppendLine("WinningParticipantChildIndex="+r.winningParticipantChildIndex);
+        sb.AppendLine("WinningTargetConnectorInstanceID="+r.winningTargetAnchorInstanceID);
+        sb.AppendLine("WinningParticipantConnectorInstanceID="+r.winningParticipantAnchorInstanceID);
+        sb.AppendLine("WinningTargetConnectorWorldPosition="+V(r.winningTargetAnchorWorldPosition));
+        sb.AppendLine("WinningParticipantConnectorWorldPosition="+V(r.winningParticipantAnchorWorldPosition));
+        sb.AppendLine("WinningOrientationIndex="+r.winningOrientationIndex);
+        sb.AppendLine("AlignmentResidualSum="+F(r.alignmentResidualSum));
+        sb.AppendLine("NormalizedPositionTolerance="+F(gradingSettings.PositionTolerance));
         sb.AppendLine("AlignmentRotation="+Q(r.alignmentRotation));
         sb.AppendLine("AlignmentTranslation="+V(r.alignmentTranslation));
         sb.AppendLine("TargetUnit="+F(r.targetUnit));
@@ -101,6 +111,11 @@ public class OptimalStructureComparisons : MonoBehaviour
         sb.AppendLine("ConnectorAccuracyPercent="+F(r.ConnectorPercent));
         sb.AppendLine("OrientationAccuracyPercent="+F(r.OrientationPercent));
         sb.AppendLine("ConnectionAccuracyPercent="+F(r.ConnectionPercent));
+        sb.AppendLine("IndependentConnectionScoring=True");
+        sb.AppendLine("StructuralAxisErrorDegrees="+F(r.structuralAxisError));
+        sb.AppendLine("StructuralAxisCorrect="+r.structuralAxisCorrect);
+        foreach (var line in r.diagnosticLog) sb.AppendLine("DIAGNOSTIC="+line);
+        foreach (var line in r.connectionLog) sb.AppendLine("CONNECTION="+line);
         foreach(var m in r.matches)
         {
             sb.AppendLine("MATCH");
@@ -141,9 +156,7 @@ public class OptimalStructureComparisons : MonoBehaviour
     [ContextMenu("Show Comparison Folder")]
     public void ShowComparisonFolder()
     {
-        // Must match what SaveResult() actually writes to, and must be the full path:
-        // a relative path here would resolve against the editor's working directory,
-        // not against Application.persistentDataPath where the file really lands.
+        // Identical project-relative directory used by SaveResult().
         string folder = ComparisonFolderPath();
 
         Debug.Log("FAST comparison folder: " + folder);

@@ -1,193 +1,82 @@
 FAST_OPTIMAL_STRUCTURE_COMPARISON
 TargetRoot=Build B
 ParticipantRoot=Pilot 3 B
-
+AlignmentMode=ExhaustiveConnectorAnchors24Orientations
+AlignmentCandidatesEvaluated=480
+WinningTargetConnector=conn_3way
+WinningParticipantConnector=conn_3way
+WinningOrientationIndex=19
+AlignmentResidualSum=8.203577E-06
+NormalizedPositionTolerance=0.35
+AlignmentRotation=1.00000024,4.39795639E-12,8.42937E-08,-4.285351E-12
+AlignmentTranslation=2.98023224E-08,0,1.49011612E-08
+TargetUnit=0.1975
+ParticipantUnit=0.1975
+UnitsComparable=True
 TargetPieces=12
 ParticipantPieces=11
-MatchedPieces=11
-MissingPieces=1
-ExtraPieces=0
-
-StructurePositionTolerance=0
-OrientationToleranceDegrees=0
-CorrectStructuralPositions=0
+MatchedPieces=8
+MissingPieces=4
+ExtraPieces=3
+CorrectStructuralPositions=8
 TargetStructuralPositions=12
-StructureAccuracyPercent=0
-MeanPositionError=0.223189861
-RMSPositionError=0.240885153
-NormalizedStructureError=0.453191429
-
-TubeColorCorrect=2
-TubeColorTotal=7
-TubeColorAccuracyPercent=28.5714283
-ConnectorCorrect=3
-ConnectorTotal=5
-ConnectorAccuracyPercent=60
-OrientationCorrect=5
-OrientationTotal=12
-OrientationAccuracyPercent=41.6666679
-ConnectionCorrect=2
-ConnectionTotal=11
-ConnectionAccuracyPercent=18.181818
-
-AlignmentMode=TranslationOnly
-AlignmentRotation=0,0,0,1
-AlignmentTranslation=0.08977255,-0.0179448426,-0.2872737
-
+StructureAccuracyPercent=66.6666641
+TubeColorAccuracyPercent=42.8571434
+ConnectorAccuracyPercent=40
+OrientationAccuracyPercent=8.333333
+ConnectionAccuracyPercent=63.636364
+IndependentConnectionScoring=True
+StructuralAxisErrorDegrees=180
+StructuralAxisCorrect=False
+DIAGNOSTIC=[ANCHOR SEARCH] 480 candidate rotations; winner target=conn_3way, participant=conn_3way, orientationIndex=19, overlap=8/12, residualSum=0.0000
+DIAGNOSTIC=[MISSING] tube (blue)
+DIAGNOSTIC=[MISSING] conn_3way
+DIAGNOSTIC=[MISSING] tube (green)
+DIAGNOSTIC=[MISSING] tube (blue)
+DIAGNOSTIC=[EXTRA/UNMATCHED] tube (green)
+DIAGNOSTIC=[EXTRA/UNMATCHED] tube (yellow)
+DIAGNOSTIC=[EXTRA/UNMATCHED] tube (blue)
+DIAGNOSTIC=[PAIR] target=tube (yellow) (PIPE/YELLOW) participant=tube (yellow) (PIPE/YELLOW) posErrNormalized=0.0000 posOK=True rotErr=180.00 rotOK=False colorOK=True connectorOK=False ambiguous=False
+DIAGNOSTIC=[PAIR] target=conn_3way (C_3WAY/BLACK) participant=conn_3way (C_3WAY/BLACK) posErrNormalized=0.0000 posOK=True rotErr=120.00 rotOK=False colorOK=False connectorOK=True ambiguous=False
+DIAGNOSTIC=[PAIR] target=conn_Elbow (C_ELBOW/BLACK) participant=conn_Elbow (C_ELBOW/BLACK) posErrNormalized=0.0000 posOK=True rotErr=0.00 rotOK=True colorOK=False connectorOK=True ambiguous=False
+DIAGNOSTIC=[PAIR] target=tube (red) (PIPE/RED) participant=tube (red) (PIPE/RED) posErrNormalized=0.0000 posOK=True rotErr=180.00 rotOK=False colorOK=True connectorOK=False ambiguous=False
+DIAGNOSTIC=[PAIR] target=conn_3way (C_3WAY/BLACK) participant=conn_Elbow (C_ELBOW/BLACK) posErrNormalized=0.0000 posOK=True rotErr=n/a rotOK=False colorOK=False connectorOK=False ambiguous=False
+DIAGNOSTIC=[PAIR] target=tube (green) (PIPE/GREEN) participant=tube (green) (PIPE/GREEN) posErrNormalized=0.0000 posOK=True rotErr=180.00 rotOK=False colorOK=True connectorOK=False ambiguous=False
+DIAGNOSTIC=[PAIR] target=conn_Elbow (C_ELBOW/BLACK) participant=conn_3way (C_3WAY/BLACK) posErrNormalized=0.0000 posOK=True rotErr=n/a rotOK=False colorOK=False connectorOK=False ambiguous=False
+DIAGNOSTIC=[PAIR] target=tube (yellow) (PIPE/YELLOW) participant=tube (blue) (PIPE/BLUE) posErrNormalized=0.0000 posOK=True rotErr=180.00 rotOK=False colorOK=False connectorOK=False ambiguous=False
+CONNECTION=[CONNECTION] tube (blue) <-> conn_3way: missing mapped tube
+CONNECTION=[CONNECTION] tube (yellow) <-> conn_3way: PASS
+CONNECTION=[CONNECTION] tube (yellow) <-> conn_Elbow: PASS
+CONNECTION=[CONNECTION] tube (red) <-> conn_Elbow: PASS
+CONNECTION=[CONNECTION] tube (red) <-> conn_3way: PASS
+CONNECTION=[CONNECTION] tube (green) <-> conn_3way: PASS
+CONNECTION=[CONNECTION] tube (green) <-> conn_Elbow: PASS
+CONNECTION=[CONNECTION] tube (yellow) <-> conn_Elbow: PASS
+CONNECTION=[CONNECTION] tube (yellow) <-> conn_3way: missing mapped connector
+CONNECTION=[CONNECTION] tube (blue) <-> conn_3way: missing mapped tube
+CONNECTION=[CONNECTION] tube (green) <-> conn_3way: missing mapped tube
 MATCH
-TargetName=tube (green)
+TargetName=tube (yellow)
 ParticipantName=tube (yellow)
 TargetType=PIPE
 ParticipantType=PIPE
-TargetColor=GREEN
+TargetColor=YELLOW
 ParticipantColor=YELLOW
-TargetPosition=0.592500031,-1.06811058E-08,-0.395000041
-OriginalParticipantPosition=0.19749999,4.1298243E-08,-1.0673255E-07
-AlignedParticipantPosition=0.287272543,-0.0179448016,-0.287273824
-TargetRotation=-0.50000006,0.49999997,-0.50000006,0.49999994
-OriginalParticipantRotation=-0.49999997,0.5000001,0.49999997,-0.50000006
-AlignedParticipantRotation=-0.49999997,0.5000001,0.49999997,-0.50000006
-PositionError=0.324177057
-PositionCorrect=False
+TargetPosition=0.19750002,-4.045079E-08,9.344618E-08
+OriginalParticipantPosition=0.19749999,4.390638E-08,1.33367379E-08
+AlignedParticipantPosition=0.19750002,-4.39046843E-08,4.47034836E-08
+TargetRotation=-0.49999997,0.50000006,0.5,-0.50000006
+OriginalParticipantRotation=-0.49999997,0.5000001,0.5,-0.50000006
+AlignedParticipantRotation=-0.500000238,-0.5000002,0.5000002,0.50000006
+PositionError=2.67133117E-07
+PositionCorrect=True
 OrientationErrorDegrees=180
 OrientationCorrect=False
-StructuralPositionCorrect=False
-ColorCorrect=False
-ConnectorCorrect=False
-END_MATCH
-
-MATCH
-TargetName=tube (blue)
-ParticipantName=tube (green)
-TargetType=PIPE
-ParticipantType=PIPE
-TargetColor=BLUE
-ParticipantColor=GREEN
-TargetPosition=-1.78292009E-06,0.000105672421,-0.197510526
-OriginalParticipantPosition=1.26364625E-08,-1.3213139E-08,-0.1975
-AlignedParticipantPosition=0.08977257,-0.0179448556,-0.4847737
-TargetRotation=0.0001177004,0.000117692929,0.7071071,-0.707106531
-OriginalParticipantRotation=-1.12442988E-08,1.12388756E-08,0.7071068,-0.7071068
-AlignedParticipantRotation=-1.12442988E-08,1.12388756E-08,0.7071068,-0.7071068
-PositionError=0.301505178
-PositionCorrect=False
-OrientationErrorDegrees=0
-OrientationCorrect=True
-StructuralPositionCorrect=False
-ColorCorrect=False
-ConnectorCorrect=False
-END_MATCH
-
-MATCH
-TargetName=tube (red)
-ParticipantName=tube (red)
-TargetType=PIPE
-ParticipantType=PIPE
-TargetColor=RED
-ParticipantColor=RED
-TargetPosition=0.395000041,5.352922E-08,-0.19750002
-OriginalParticipantPosition=0.395000041,-2.33194442E-08,0.197500035
-AlignedParticipantPosition=0.4847726,-0.0179448668,-0.08977367
-TargetRotation=9.05154636E-08,1.203089E-07,0.7071068,-0.7071069
-OriginalParticipantRotation=-6.16045E-08,-6.070814E-08,-0.7071068,0.7071067
-AlignedParticipantRotation=-6.16045E-08,-6.070814E-08,-0.7071068,0.7071067
-PositionError=0.141372189
-PositionCorrect=False
-OrientationErrorDegrees=0
-OrientationCorrect=True
-StructuralPositionCorrect=False
+StructuralPositionCorrect=True
 ColorCorrect=True
 ConnectorCorrect=False
+CorrespondenceAmbiguous=False
 END_MATCH
-
-MATCH
-TargetName=tube (green)
-ParticipantName=tube (green)
-TargetType=PIPE
-ParticipantType=PIPE
-TargetColor=GREEN
-ParticipantColor=GREEN
-TargetPosition=0.9875,-7.38626671E-09,-4.19434727E-08
-OriginalParticipantPosition=0.592500031,-8.800998E-08,0.394999921
-AlignedParticipantPosition=0.682272553,-0.01794493,0.107726216
-TargetRotation=0.499999821,-0.5000001,-0.50000006,0.50000006
-OriginalParticipantRotation=0.499999851,-0.5000003,-0.49999997,0.49999997
-AlignedParticipantRotation=0.499999851,-0.5000003,-0.49999997,0.49999997
-PositionError=0.324177057
-PositionCorrect=False
-OrientationErrorDegrees=0
-OrientationCorrect=True
-StructuralPositionCorrect=False
-ColorCorrect=True
-ConnectorCorrect=False
-END_MATCH
-
-MATCH
-TargetName=tube (yellow)
-ParticipantName=tube (blue)
-TargetType=PIPE
-ParticipantType=PIPE
-TargetColor=YELLOW
-ParticipantColor=BLUE
-TargetPosition=0.79,5.057518E-08,-0.197500035
-OriginalParticipantPosition=0.79,-2.98277882E-07,0.19750005
-AlignedParticipantPosition=0.879772544,-0.01794514,-0.0897736549
-TargetRotation=6.161005E-08,6.070426E-08,0.7071068,-0.707106769
-OriginalParticipantRotation=1.48617843E-07,2.08220811E-07,0.7071068,-0.7071067
-AlignedParticipantRotation=1.48617843E-07,2.08220811E-07,0.7071068,-0.7071067
-PositionError=0.141372234
-PositionCorrect=False
-OrientationErrorDegrees=0
-OrientationCorrect=True
-StructuralPositionCorrect=False
-ColorCorrect=False
-ConnectorCorrect=False
-END_MATCH
-
-MATCH
-TargetName=tube (blue)
-ParticipantName=tube (yellow)
-TargetType=PIPE
-ParticipantType=PIPE
-TargetColor=BLUE
-ParticipantColor=YELLOW
-TargetPosition=0.79,0.1975,2.29265424E-08
-OriginalParticipantPosition=0.7900001,0.197499722,0.394999921
-AlignedParticipantPosition=0.879772663,0.17955488,0.107726216
-TargetRotation=-0.4999999,0.4999999,-0.50000006,-0.5000001
-OriginalParticipantRotation=0.5000001,0.49999997,0.50000006,-0.499999881
-AlignedParticipantRotation=0.5000001,0.49999997,0.50000006,-0.499999881
-PositionError=0.141372159
-PositionCorrect=False
-OrientationErrorDegrees=180
-OrientationCorrect=False
-StructuralPositionCorrect=False
-ColorCorrect=False
-ConnectorCorrect=False
-END_MATCH
-
-MATCH
-TargetName=tube (yellow)
-ParticipantName=tube (blue)
-TargetType=PIPE
-ParticipantType=PIPE
-TargetColor=YELLOW
-ParticipantColor=BLUE
-TargetPosition=0.19750002,-1.47726753E-09,-8.388695E-09
-OriginalParticipantPosition=-4.12181578E-08,0.1975,1.05996151E-07
-AlignedParticipantPosition=0.08977251,0.179555163,-0.2872736
-TargetRotation=-0.49999994,0.50000006,0.50000006,-0.50000006
-OriginalParticipantRotation=0.5,-0.5,0.5000001,0.49999994
-AlignedParticipantRotation=0.5,-0.5,0.5000001,0.49999994
-PositionError=0.355487525
-PositionCorrect=False
-OrientationErrorDegrees=119.999992
-OrientationCorrect=False
-StructuralPositionCorrect=False
-ColorCorrect=False
-ConnectorCorrect=False
-END_MATCH
-
 MATCH
 TargetName=conn_3way
 ParticipantName=conn_3way
@@ -197,41 +86,19 @@ TargetColor=BLACK
 ParticipantColor=BLACK
 TargetPosition=0,0,0
 OriginalParticipantPosition=0,0,0
-AlignedParticipantPosition=0.08977255,-0.0179448426,-0.2872737
-TargetRotation=3.15931981E-12,0.7071069,6.46450937E-13,0.7071068
-OriginalParticipantRotation=9.766683E-12,0.7071069,-4.262357E-12,0.7071068
-AlignedParticipantRotation=9.766683E-12,0.7071069,-4.262357E-12,0.7071068
-PositionError=0.3015084
-PositionCorrect=False
-OrientationErrorDegrees=0
-OrientationCorrect=True
-StructuralPositionCorrect=False
+AlignedParticipantPosition=0,8.881784E-16,0
+TargetRotation=-3.60183541E-12,0.7071068,8.140614E-13,0.7071069
+OriginalParticipantRotation=-5.325963E-12,0.7071068,-3.52221182E-12,0.7071069
+AlignedParticipantRotation=0.707107,3.60183649E-12,0.707107067,-8.14061546E-13
+PositionError=3.55271368E-15
+PositionCorrect=True
+OrientationErrorDegrees=119.999962
+OrientationCorrect=False
+StructuralPositionCorrect=True
 ColorCorrect=False
 ConnectorCorrect=True
+CorrespondenceAmbiguous=False
 END_MATCH
-
-MATCH
-TargetName=conn_3way
-ParticipantName=conn_Elbow
-TargetType=C_3WAY
-ParticipantType=C_ELBOW
-TargetColor=BLACK
-ParticipantColor=BLACK
-TargetPosition=0.395000041,-9.19681E-09,-0.395000041
-OriginalParticipantPosition=0.395000041,-3.65330273E-08,2.499329E-08
-AlignedParticipantPosition=0.4847726,-0.01794488,-0.287273675
-TargetRotation=-1.49084372E-07,2.26379573E-08,1.52062777E-14,1
-OriginalParticipantRotation=0.49999997,-0.5000001,-0.49999997,0.50000006
-AlignedParticipantRotation=0.49999997,-0.5000001,-0.49999997,0.50000006
-PositionError=0.1413722
-PositionCorrect=False
-OrientationErrorDegrees=180
-OrientationCorrect=False
-StructuralPositionCorrect=False
-ColorCorrect=False
-ConnectorCorrect=False
-END_MATCH
-
 MATCH
 TargetName=conn_Elbow
 ParticipantName=conn_Elbow
@@ -239,40 +106,128 @@ TargetType=C_ELBOW
 ParticipantType=C_ELBOW
 TargetColor=BLACK
 ParticipantColor=BLACK
-TargetPosition=0.395000041,-2.954535E-09,-1.677739E-08
-OriginalParticipantPosition=0.39500007,-1.00990292E-08,0.395000041
-AlignedParticipantPosition=0.484772623,-0.0179448519,0.107726336
-TargetRotation=-0.50000006,-0.499999881,0.5000001,0.4999999
-OriginalParticipantRotation=0.7071069,0.70710665,-9.251014E-08,9.161913E-08
-AlignedParticipantRotation=0.7071069,0.70710665,-9.251014E-08,9.161913E-08
-PositionError=0.1413722
-PositionCorrect=False
-OrientationErrorDegrees=90.00001
-OrientationCorrect=False
-StructuralPositionCorrect=False
+TargetPosition=0.395000041,3.822839E-08,-5.156586E-08
+OriginalParticipantPosition=0.395000041,-3.139834E-08,2.67207021E-08
+AlignedParticipantPosition=0.39500007,3.14018429E-08,4.47034836E-08
+TargetRotation=-0.50000006,-0.4999999,0.50000006,0.49999997
+OriginalParticipantRotation=0.49999997,-0.5000001,-0.5,0.50000006
+AlignedParticipantRotation=0.500000238,0.5000002,-0.5000002,-0.50000006
+PositionError=5.10433949E-07
+PositionCorrect=True
+OrientationErrorDegrees=0
+OrientationCorrect=True
+StructuralPositionCorrect=True
 ColorCorrect=False
 ConnectorCorrect=True
+CorrespondenceAmbiguous=False
 END_MATCH
-
+MATCH
+TargetName=tube (red)
+ParticipantName=tube (red)
+TargetType=PIPE
+ParticipantType=PIPE
+TargetColor=RED
+ParticipantColor=RED
+TargetPosition=0.395000041,1.834269E-08,-0.19750005
+OriginalParticipantPosition=0.39500007,-3.77549441E-08,0.197500035
+AlignedParticipantPosition=0.39500013,3.77601452E-08,-0.197500139
+TargetRotation=9.05161457E-08,1.20314752E-07,0.7071068,-0.7071069
+OriginalParticipantRotation=-6.160923E-08,-6.071377E-08,-0.7071069,0.7071067
+AlignedParticipantRotation=0.7071069,0.707107067,-1.106108E-09,1.21210874E-07
+PositionError=7.12850749E-07
+PositionCorrect=True
+OrientationErrorDegrees=180
+OrientationCorrect=False
+StructuralPositionCorrect=True
+ColorCorrect=True
+ConnectorCorrect=False
+CorrespondenceAmbiguous=False
+END_MATCH
 MATCH
 TargetName=conn_3way
-ParticipantName=conn_3way
+ParticipantName=conn_Elbow
 TargetType=C_3WAY
+ParticipantType=C_ELBOW
+TargetColor=BLACK
+ParticipantColor=BLACK
+TargetPosition=0.395000041,-1.542503E-09,-0.39500007
+OriginalParticipantPosition=0.39500007,-4.41068551E-08,0.395000041
+AlignedParticipantPosition=0.39500016,4.41137544E-08,-0.395000339
+TargetRotation=-1.49084357E-07,2.2637952E-08,-6.605218E-15,1
+OriginalParticipantRotation=0.707106948,0.70710665,-9.252084E-08,9.161882E-08
+AlignedParticipantRotation=3.20111759E-08,1.521225E-07,0.7071068,-0.7071071
+PositionError=1.60301261E-06
+PositionCorrect=True
+OrientationErrorDegrees=181
+OrientationCorrect=False
+StructuralPositionCorrect=True
+ColorCorrect=False
+ConnectorCorrect=False
+CorrespondenceAmbiguous=False
+END_MATCH
+MATCH
+TargetName=tube (green)
+ParticipantName=tube (green)
+TargetType=PIPE
+ParticipantType=PIPE
+TargetColor=GREEN
+ParticipantColor=GREEN
+TargetPosition=0.592500031,-4.19822754E-08,-0.394999981
+OriginalParticipantPosition=0.592500031,-1.19413016E-07,0.39500007
+AlignedParticipantPosition=0.59250015,1.19421728E-07,-0.395000339
+TargetRotation=-0.50000006,0.49999997,-0.50000006,0.4999999
+OriginalParticipantRotation=0.499999851,-0.5000003,-0.5,0.5
+AlignedParticipantRotation=0.5000002,0.5000002,-0.500000358,-0.49999994
+PositionError=2.037912E-06
+PositionCorrect=True
+OrientationErrorDegrees=179.999985
+OrientationCorrect=False
+StructuralPositionCorrect=True
+ColorCorrect=True
+ConnectorCorrect=False
+CorrespondenceAmbiguous=False
+END_MATCH
+MATCH
+TargetName=conn_Elbow
+ParticipantName=conn_3way
+TargetType=C_ELBOW
 ParticipantType=C_3WAY
 TargetColor=BLACK
 ParticipantColor=BLACK
-TargetPosition=0.79,-5.90901328E-09,-3.35547767E-08
-OriginalParticipantPosition=0.79,-2.85057467E-07,0.39500007
-AlignedParticipantPosition=0.879772544,-0.0179451276,0.107726365
-TargetRotation=3.24667973E-08,-0.7071069,1.51673945E-07,-0.707106769
-OriginalParticipantRotation=2.086163E-07,1,-2.08616484E-07,4.21468833E-08
-AlignedParticipantRotation=2.086163E-07,1,-2.08616484E-07,4.21468833E-08
-PositionError=0.141372249
-PositionCorrect=False
-OrientationErrorDegrees=89.99998
+TargetPosition=0.79,3.669993E-08,-0.3950001
+OriginalParticipantPosition=0.79,-1.94719178E-07,0.39500007
+AlignedParticipantPosition=0.7900001,1.94729679E-07,-0.395000279
+TargetRotation=-0.49999997,0.50000006,0.49999997,-0.50000006
+OriginalParticipantRotation=2.0861674E-07,1,-2.08617266E-07,4.21468727E-08
+AlignedParticipantRotation=-4.214682E-08,2.08613045E-07,1.00000024,-2.08621174E-07
+PositionError=1.33308265E-06
+PositionCorrect=True
+OrientationErrorDegrees=181
 OrientationCorrect=False
-StructuralPositionCorrect=False
+StructuralPositionCorrect=True
 ColorCorrect=False
-ConnectorCorrect=True
+ConnectorCorrect=False
+CorrespondenceAmbiguous=False
 END_MATCH
-
+MATCH
+TargetName=tube (yellow)
+ParticipantName=tube (blue)
+TargetType=PIPE
+ParticipantType=PIPE
+TargetColor=YELLOW
+ParticipantColor=BLUE
+TargetPosition=0.79,5.6650606E-08,-0.197499871
+OriginalParticipantPosition=0.79,-3.0756928E-07,0.19750005
+AlignedParticipantPosition=0.7900001,3.07578233E-07,-0.1975001
+TargetRotation=6.161074E-08,6.07103E-08,0.7071068,-0.707106769
+OriginalParticipantRotation=1.48617829E-07,2.08224947E-07,0.7071069,-0.7071067
+AlignedParticipantRotation=-0.7071069,-0.707107067,1.48617318E-07,-2.0821949E-07
+PositionError=1.73915134E-06
+PositionCorrect=True
+OrientationErrorDegrees=179.999985
+OrientationCorrect=False
+StructuralPositionCorrect=True
+ColorCorrect=False
+ConnectorCorrect=False
+CorrespondenceAmbiguous=False
+END_MATCH
