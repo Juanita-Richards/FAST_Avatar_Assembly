@@ -26,13 +26,16 @@ public class OptimalStructureComparisons : MonoBehaviour
         foreach(char c in Path.GetInvalidFileNameChars())s=s.Replace(c,'_');
         return s.Replace(' ','_');
     }
-    // Project-relative directory, as requested. No persistentDataPath.
+    // Match the existing project-relative comparison output directory.
     private string ComparisonFolderPath()
     {
-        string name = string.IsNullOrWhiteSpace(comparisonFolderName)
-            ? "FAST_Comparisons" : comparisonFolderName.Trim();
+        string name = string.IsNullOrEmpty(comparisonFolderName)
+            ? "FAST_Comparisons"
+            : comparisonFolderName.Trim();
+
         return Path.Combine("FAST_Structure", "Grade 1", name);
     }
+
 
     public FASTSharedGrading.Result GenerateComparison()
     {
@@ -77,23 +80,8 @@ public class OptimalStructureComparisons : MonoBehaviour
         sb.AppendLine("FAST_OPTIMAL_STRUCTURE_COMPARISON");
         sb.AppendLine("TargetRoot="+targetBuildRoot.name);
         sb.AppendLine("ParticipantRoot="+participantBuildRoot.name);
-        sb.AppendLine("AlignmentMode=ExhaustiveConnectorAnchors24Orientations");
-        sb.AppendLine("AlignmentCandidatesEvaluated="+r.alignmentCandidatesEvaluated);
-        sb.AppendLine("WinningTargetConnector="+r.winningTargetAnchor);
-        sb.AppendLine("WinningParticipantConnector="+r.winningParticipantAnchor);
-        sb.AppendLine("WinningTargetConnectorHierarchy="+r.winningTargetAnchorPath);
-        sb.AppendLine("WinningParticipantConnectorHierarchy="+r.winningParticipantAnchorPath);
-        sb.AppendLine("WinningTargetConnectorIndex="+r.winningTargetConnectorIndex);
-        sb.AppendLine("WinningTargetChildIndex="+r.winningTargetChildIndex);
-        sb.AppendLine("WinningParticipantConnectorIndex="+r.winningParticipantConnectorIndex);
-        sb.AppendLine("WinningParticipantChildIndex="+r.winningParticipantChildIndex);
-        sb.AppendLine("WinningTargetConnectorInstanceID="+r.winningTargetAnchorInstanceID);
-        sb.AppendLine("WinningParticipantConnectorInstanceID="+r.winningParticipantAnchorInstanceID);
-        sb.AppendLine("WinningTargetConnectorWorldPosition="+V(r.winningTargetAnchorWorldPosition));
-        sb.AppendLine("WinningParticipantConnectorWorldPosition="+V(r.winningParticipantAnchorWorldPosition));
-        sb.AppendLine("WinningOrientationIndex="+r.winningOrientationIndex);
-        sb.AppendLine("AlignmentResidualSum="+F(r.alignmentResidualSum));
-        sb.AppendLine("NormalizedPositionTolerance="+F(gradingSettings.PositionTolerance));
+        sb.AppendLine("AlignmentMode=OriginalConnectorAnchor24RotationSearchForPropertyScores");
+        sb.AppendLine("StructuralAlignmentMode=ConnectorSpecificConnectedAttachmentGraph");
         sb.AppendLine("AlignmentRotation="+Q(r.alignmentRotation));
         sb.AppendLine("AlignmentTranslation="+V(r.alignmentTranslation));
         sb.AppendLine("TargetUnit="+F(r.targetUnit));
@@ -107,15 +95,34 @@ public class OptimalStructureComparisons : MonoBehaviour
         sb.AppendLine("CorrectStructuralPositions="+r.correctPositions);
         sb.AppendLine("TargetStructuralPositions="+r.targetCount);
         sb.AppendLine("StructureAccuracyPercent="+F(r.PositionPercent));
+        sb.AppendLine("StructuralMatchedPieces="+r.structurallyMatchedPieces);
+        sb.AppendLine("StructuralMissingPieces="+r.structuralMissing);
+        sb.AppendLine("GeometricPositionMatchesForPropertyAlignment="+r.geometricPositionMatches);
+        sb.AppendLine("StructuralCandidatesEvaluated="+r.structuralCandidatesEvaluated);
+        sb.AppendLine("StructuralCandidatesTruncated="+r.structuralCandidatesTruncated);
+        sb.AppendLine("StructuralTargetPivotHierarchy="+r.structuralTargetAnchorPath);
+        sb.AppendLine("StructuralParticipantPivotHierarchy="+r.structuralParticipantAnchorPath);
+        sb.AppendLine("StructuralTargetRotationOption="+r.structuralTargetRotationIndex);
+        sb.AppendLine("StructuralParticipantRotationOption="+r.structuralParticipantRotationIndex);
+        sb.AppendLine("StructuralAlignmentRotation="+Q(r.structuralAlignmentRotation));
+        sb.AppendLine("StructuralAlignmentTranslation="+V(r.structuralAlignmentTranslation));
+        sb.AppendLine("StructuralResidualSum="+F(r.structuralAlignmentResidualSum));
+        foreach (var match in r.structuralMatches)
+        {
+            sb.AppendLine("STRUCTURAL_MATCH");
+            sb.AppendLine("TargetPath="+FASTSharedGrading.AnchorHierarchyPath(targetBuildRoot, match.target.transform));
+            sb.AppendLine("ParticipantPath="+FASTSharedGrading.AnchorHierarchyPath(participantBuildRoot, match.participant.transform));
+            sb.AppendLine("TargetType="+match.target.pieceType);
+            sb.AppendLine("ParticipantType="+match.participant.pieceType);
+            sb.AppendLine("NormalizedPositionError="+F(match.positionError));
+            sb.AppendLine("ConnectorRotationErrorDegrees="+F(match.connectorRotationError));
+            sb.AppendLine("END_STRUCTURAL_MATCH");
+        }
+        sb.AppendLine("PROPERTY_MATCHES_BEGIN");
         sb.AppendLine("TubeColorAccuracyPercent="+F(r.ColorPercent));
         sb.AppendLine("ConnectorAccuracyPercent="+F(r.ConnectorPercent));
         sb.AppendLine("OrientationAccuracyPercent="+F(r.OrientationPercent));
         sb.AppendLine("ConnectionAccuracyPercent="+F(r.ConnectionPercent));
-        sb.AppendLine("IndependentConnectionScoring=True");
-        sb.AppendLine("StructuralAxisErrorDegrees="+F(r.structuralAxisError));
-        sb.AppendLine("StructuralAxisCorrect="+r.structuralAxisCorrect);
-        foreach (var line in r.diagnosticLog) sb.AppendLine("DIAGNOSTIC="+line);
-        foreach (var line in r.connectionLog) sb.AppendLine("CONNECTION="+line);
         foreach(var m in r.matches)
         {
             sb.AppendLine("MATCH");
@@ -135,12 +142,20 @@ public class OptimalStructureComparisons : MonoBehaviour
             sb.AppendLine("PositionCorrect="+m.positionCorrect);
             sb.AppendLine("OrientationErrorDegrees="+F(m.orientationError));
             sb.AppendLine("OrientationCorrect="+m.orientationCorrect);
-            sb.AppendLine("StructuralPositionCorrect="+m.positionCorrect);
+            sb.AppendLine("PropertyGeometricPositionCorrect="+m.positionCorrect);
             sb.AppendLine("ColorCorrect="+m.colorCorrect);
             sb.AppendLine("ConnectorCorrect="+m.connectorCorrect);
             sb.AppendLine("CorrespondenceAmbiguous="+m.ambiguous);
             sb.AppendLine("END_MATCH");
         }
+        sb.AppendLine("PROPERTY_MATCHES_END");
+        sb.AppendLine("STRUCTURAL_DIAGNOSTICS_BEGIN");
+        foreach (var entry in r.diagnosticLog)
+            if (entry.StartsWith("[STRUCTURAL")) sb.AppendLine(entry);
+        sb.AppendLine("STRUCTURAL_DIAGNOSTICS_END");
+        sb.AppendLine("CONNECTION_DETAILS_BEGIN");
+        foreach (var entry in r.connectionLog) sb.AppendLine(entry);
+        sb.AppendLine("CONNECTION_DETAILS_END");
         string path=Path.Combine(folder,file);
         try
         {
@@ -156,8 +171,8 @@ public class OptimalStructureComparisons : MonoBehaviour
     [ContextMenu("Show Comparison Folder")]
     public void ShowComparisonFolder()
     {
-        // Identical project-relative directory used by SaveResult().
-        string folder = ComparisonFolderPath();
+        // Display the resolved path without changing the relative save location.
+        string folder = Path.GetFullPath(ComparisonFolderPath());
 
         Debug.Log("FAST comparison folder: " + folder);
         Debug.Log("Exists: " + Directory.Exists(folder));

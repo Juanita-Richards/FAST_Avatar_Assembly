@@ -16,6 +16,13 @@ public static class FASTSharedGrading
         public bool positionCorrect, orientationCorrect, colorCorrect, connectorCorrect, ambiguous;
     }
 
+    [Serializable] public class StructuralPair
+    {
+        public BuildingPiece target, participant;
+        public float positionError;
+        public float connectorRotationError;
+    }
+
     [Serializable] public class Result
     {
         public int targetCount, participantCount, missing, extra;
@@ -49,6 +56,16 @@ public static class FASTSharedGrading
         public int winningOrientationIndex, alignmentCandidatesEvaluated;
         public float alignmentResidualSum;
         public int structurallyMatchedPieces;
+        // Independent connector/attachment-based structural analysis.
+        // Property scores and the original r.matches list remain untouched.
+        public int geometricPositionMatches, structuralMissing;
+        public int structuralCandidatesEvaluated, structuralCandidatesTruncated;
+        public int structuralTargetRotationIndex, structuralParticipantRotationIndex;
+        public string structuralTargetAnchorPath, structuralParticipantAnchorPath;
+        public Quaternion structuralAlignmentRotation = Quaternion.identity;
+        public Vector3 structuralAlignmentTranslation;
+        public float structuralAlignmentResidualSum;
+        public List<StructuralPair> structuralMatches = new List<StructuralPair>();
         public bool unitsComparable;
         public List<Pair> matches = new List<Pair>();
         public List<string> connectionLog = new List<string>();
@@ -699,6 +716,369 @@ public static class FASTSharedGrading
         }
     }
 
+    // -------------------------------------------------------------------------
+    // STRUCTURAL GRADING ONLY (independent of color/connection property scores)
+    // -------------------------------------------------------------------------
+    // For each same-type connector anchor pair and each rotation explicitly
+    // declared on the two connectors, rotate the participant relative to the
+    // target, then find the largest CONNECTED, one-to-one tube/connector match.
+    // A node gets structural credit only when its attachment to an already
+    // matched neighboring node exists in the participant build. Invalid branches
+    // stop there; other branches continue. Colors are intentionally ignored.
+    // The original positional matching and all property calculations below
+    // remain unchanged so that verified property results are preserved.
+
+    sealed class StructureGraph
+    {
+        public bool[,] linked;
+        public List<int>[] neighbors;
+        public int attachmentCount;
+    }
+
+    static StructureGraph MakeStructureGraph(List<BuildingPiece> pieces)
+    {
+        int n = pieces.Count;
+        var graph = new StructureGraph {
+            linked = new bool[n, n],
+            neighbors = new List<int>[n],
+            attachmentCount = 0
+        };
+        for (int i = 0; i < n; i++) graph.neighbors[i] = new List<int>();
+        var indexes = new Dictionary<BuildingPiece, int>();
+        for (int i = 0; i < n; i++) indexes[pieces[i]] = i;
+        foreach (var connection in TargetConnections(pieces))
+        {
+            int a, b;
+            if (!indexes.TryGetValue(connection.Item1, out a) ||
+                !indexes.TryGetValue(connection.Item2, out b) || a == b) continue;
+            if (graph.linked[a, b]) continue;
+            graph.linked[a, b] = graph.linked[b, a] = true;
+            graph.neighbors[a].Add(b);
+            graph.neighbors[b].Add(a);
+            graph.attachmentCount++;
+        }
+        return graph;
+    }
+
+    static List<Quaternion> ConnectorRotationOptions(BuildingPiece piece)
+    {
+        var rotations = new List<Quaternion> { Quaternion.identity };
+        if (piece.symmetries != null)
+            foreach (var symmetry in piece.symmetries)
+            {
+                if (symmetry == null) continue;
+                var option = symmetry.rotationalOffsetFromCanonical;
+                if (!rotations.Any(q => Quaternion.Angle(q, option) < 0.01f))
+                    rotations.Add(option);
+            }
+        return rotations;
+    }
+
+    sealed class BranchMatchSearch
+    {
+        const int SearchBudget = 50000;
+        public readonly int[] order;
+        public readonly int[] parent;
+        public readonly int[] assignment;
+        public readonly bool[] participantTaken;
+        public readonly bool[,] eligible;
+        public readonly float[,] distances;
+        public readonly StructureGraph targetGraph, participantGraph;
+        public int[] bestAssignment;
+        public int bestCount;
+        public float bestError;
+        public int searchSteps;
+        public bool truncated;
+
+        public BranchMatchSearch(int targetCount, int participantCount, int tAnchor,
+            int pAnchor, bool[,] canMatch, float[,] positionDistances,
+            StructureGraph targetLinks, StructureGraph participantLinks)
+        {
+            eligible = canMatch;
+            distances = positionDistances;
+            targetGraph = targetLinks;
+            participantGraph = participantLinks;
+            assignment = Enumerable.Repeat(-1, targetCount).ToArray();
+            participantTaken = new bool[participantCount];
+            parent = Enumerable.Repeat(-1, targetCount).ToArray();
+            var traversal = new List<int>();
+            var visited = new bool[targetCount];
+            var queue = new Queue<int>();
+            visited[tAnchor] = true;
+            queue.Enqueue(tAnchor);
+            while (queue.Count > 0)
+            {
+                int current = queue.Dequeue();
+                traversal.Add(current);
+                foreach (int next in targetLinks.neighbors[current])
+                {
+                    if (visited[next]) continue;
+                    visited[next] = true;
+                    parent[next] = current;
+                    queue.Enqueue(next);
+                }
+            }
+            order = traversal.ToArray();
+            assignment[tAnchor] = pAnchor;
+            participantTaken[pAnchor] = true;
+            bestAssignment = (int[])assignment.Clone();
+            bestCount = 1;
+            bestError = distances[tAnchor, pAnchor];
+        }
+
+        public void Run()
+        {
+            Recurse(1, 1, bestError);
+        }
+
+        void Recurse(int depth, int count, float error)
+        {
+            if (++searchSteps > SearchBudget)
+            {
+                truncated = true;
+                return;
+            }
+            if (count + order.Length - depth < bestCount) return;
+            if (depth == order.Length)
+            {
+                if (count > bestCount ||
+                    (count == bestCount && error < bestError - 1e-5f))
+                {
+                    bestCount = count;
+                    bestError = error;
+                    bestAssignment = (int[])assignment.Clone();
+                }
+                return;
+            }
+            int t = order[depth];
+            int tParent = parent[t];
+            int pParent = tParent >= 0 ? assignment[tParent] : -1;
+
+            if (pParent >= 0)
+            {
+                foreach (int p in participantGraph.neighbors[pParent])
+                {
+                    if (participantTaken[p] || !eligible[t, p]) continue;
+                    bool linksAgree = true;
+                    // A matched target edge must map to a real participant edge,
+                    // including graph cycles and paths beyond the BFS parent edge.
+                    for (int previous = 0; previous < depth; previous++)
+                    {
+                        int tOther = order[previous];
+                        int pOther = assignment[tOther];
+                        if (pOther >= 0 && targetGraph.linked[t, tOther] &&
+                            !participantGraph.linked[p, pOther])
+                        {
+                            linksAgree = false;
+                            break;
+                        }
+                    }
+                    if (!linksAgree) continue;
+                    assignment[t] = p;
+                    participantTaken[p] = true;
+                    Recurse(depth + 1, count + 1, error + distances[t, p]);
+                    participantTaken[p] = false;
+                    assignment[t] = -1;
+                    if (truncated) return;
+                }
+            }
+            // Skipping a node prevents its descendants from receiving structural
+            // credit via this branch; other pivot-connected branches are examined.
+            Recurse(depth + 1, count, error);
+        }
+    }
+
+    sealed class ConnectedStructuralResult
+    {
+        public Quaternion rotation = Quaternion.identity;
+        public Vector3 translation = Vector3.zero;
+        public int targetAnchor = -1, participantAnchor = -1;
+        public int targetRotationOption = -1, participantRotationOption = -1;
+        public int candidates, truncatedCandidates;
+        public int matchedCount;
+        public float residualSum = float.PositiveInfinity;
+        public int[] targetToParticipant;
+        public float[] positionalErrors;
+    }
+
+    static ConnectedStructuralResult FindConnectedStructuralAlignment(
+        List<BuildingPiece> ps, List<BuildingPiece> ts,
+        Transform participantRoot, Transform targetRoot,
+        Vector3 pc, Vector3 tc, float targetUnit, Settings settings,
+        StructureGraph targetGraph, StructureGraph participantGraph)
+    {
+        var result = new ConnectedStructuralResult();
+        // Deliberately use the TARGET unit for BOTH structures. A participant
+        // build with incorrect physical size must not normalize itself into a pass.
+        Vector3[] pPoints = ps.Select(p => (Local(participantRoot, p) - pc) / targetUnit).ToArray();
+        Vector3[] tPoints = ts.Select(t => (Local(targetRoot, t) - tc) / targetUnit).ToArray();
+        Quaternion[] pRotations = ps.Select(p => Rotation(participantRoot, p)).ToArray();
+        Quaternion[] tRotations = ts.Select(t => Rotation(targetRoot, t)).ToArray();
+        for (int ti = 0; ti < ts.Count; ti++)
+        {
+            if (!Connector(ts[ti])) continue;
+            var tOptions = ConnectorRotationOptions(ts[ti]);
+            for (int pi = 0; pi < ps.Count; pi++)
+            {
+                if (!Connector(ps[pi]) || ps[pi].pieceType != ts[ti].pieceType) continue;
+                var pOptions = ConnectorRotationOptions(ps[pi]);
+                var testedRotations = new List<Quaternion>();
+                for (int to = 0; to < tOptions.Count; to++)
+                    for (int po = 0; po < pOptions.Count; po++)
+                    {
+                        Quaternion q = (tRotations[ti] * tOptions[to]) *
+                            Quaternion.Inverse(pRotations[pi] * pOptions[po]);
+                        if (testedRotations.Any(previous => Quaternion.Angle(previous, q) < 0.01f))
+                            continue;
+                        testedRotations.Add(q);
+                        Vector3 shift = tPoints[ti] - q * pPoints[pi];
+                        result.candidates++;
+                        var eligible = new bool[ts.Count, ps.Count];
+                        var distances = new float[ts.Count, ps.Count];
+                        for (int t = 0; t < ts.Count; t++)
+                            for (int p = 0; p < ps.Count; p++)
+                            {
+                                distances[t, p] = Vector3.Distance(tPoints[t], q * pPoints[p] + shift);
+                                bool sameKind = ts[t].pieceType == ps[p].pieceType;
+                                bool rotationOK = !Connector(ts[t]) ||
+                                    ErrorAngle(ts[t], ps[p], tRotations[t], q * pRotations[p])
+                                        <= settings.OrientationTolerance;
+                                eligible[t, p] = sameKind && rotationOK &&
+                                    distances[t, p] <= settings.PositionTolerance + 1e-5f;
+                            }
+                        if (!eligible[ti, pi]) continue;
+                        var search = new BranchMatchSearch(ts.Count, ps.Count, ti, pi,
+                            eligible, distances, targetGraph, participantGraph);
+                        search.Run();
+                        if (search.truncated) result.truncatedCandidates++;
+                        if (search.bestCount > result.matchedCount ||
+                            (search.bestCount == result.matchedCount &&
+                             search.bestError < result.residualSum - 1e-5f))
+                        {
+                            result.rotation = q;
+                            result.translation = shift;
+                            result.targetAnchor = ti;
+                            result.participantAnchor = pi;
+                            result.targetRotationOption = to;
+                            result.participantRotationOption = po;
+                            result.matchedCount = search.bestCount;
+                            result.residualSum = search.bestError;
+                            result.targetToParticipant = (int[])search.bestAssignment.Clone();
+                            result.positionalErrors = new float[ts.Count];
+                            for (int t = 0; t < ts.Count; t++)
+                            {
+                                int p = result.targetToParticipant[t];
+                                result.positionalErrors[t] = p >= 0 ? distances[t, p] : float.PositiveInfinity;
+                            }
+                        }
+                    }
+            }
+        }
+        return result;
+    }
+
+    static void ApplyConnectedStructuralGrade(Result r, List<BuildingPiece> ps,
+        List<BuildingPiece> ts, Transform participantRoot, Transform targetRoot,
+        Vector3 pc, Vector3 tc, float targetUnit, Settings settings)
+    {
+        var tGraph = MakeStructureGraph(ts);
+        var pGraph = MakeStructureGraph(ps);
+        r.geometricPositionMatches = r.correctPositions; // original position-only number
+        var structural = FindConnectedStructuralAlignment(ps, ts, participantRoot,
+            targetRoot, pc, tc, targetUnit, settings, tGraph, pGraph);
+        r.structuralCandidatesEvaluated = structural.candidates;
+        r.structuralCandidatesTruncated = structural.truncatedCandidates;
+        r.structuralAlignmentRotation = structural.rotation;
+        r.structuralAlignmentResidualSum = structural.residualSum;
+        r.structuralTargetRotationIndex = structural.targetRotationOption;
+        r.structuralParticipantRotationIndex = structural.participantRotationOption;
+        r.structurallyMatchedPieces = structural.matchedCount;
+        r.correctPositions = structural.matchedCount;
+        r.structuralMissing = ts.Count - structural.matchedCount;
+        if (structural.targetAnchor >= 0)
+        {
+            r.structuralTargetAnchorPath = AnchorHierarchyPath(targetRoot,
+                ts[structural.targetAnchor].transform);
+            r.structuralParticipantAnchorPath = AnchorHierarchyPath(participantRoot,
+                ps[structural.participantAnchor].transform);
+            r.structuralAlignmentTranslation = tc + targetUnit * structural.translation -
+                structural.rotation * pc;
+            for (int t = 0; t < ts.Count; t++)
+            {
+                int p = structural.targetToParticipant[t];
+                if (p < 0) continue;
+                float rotationError = Connector(ts[t]) ?
+                    ErrorAngle(ts[t], ps[p], Rotation(targetRoot, ts[t]),
+                        structural.rotation * Rotation(participantRoot, ps[p])) : 0f;
+                r.structuralMatches.Add(new StructuralPair {
+                    target = ts[t], participant = ps[p],
+                    positionError = structural.positionalErrors[t],
+                    connectorRotationError = rotationError
+                });
+            }
+        }
+        r.diagnosticLog.Add($"[STRUCTURAL GRAPH] {r.correctPositions}/{ts.Count} " +
+            $"connected pieces; position-only overlap={r.geometricPositionMatches}/{ts.Count}; " +
+            $"target edges={tGraph.attachmentCount}, participant edges={pGraph.attachmentCount}; " +
+            $"candidate rotations={r.structuralCandidatesEvaluated}, incomplete searches={r.structuralCandidatesTruncated}");
+        r.diagnosticLog.Add($"[STRUCTURAL PIVOT] target={r.structuralTargetAnchorPath} " +
+            $"participant={r.structuralParticipantAnchorPath} " +
+            $"targetRotationOption={r.structuralTargetRotationIndex} " +
+            $"participantRotationOption={r.structuralParticipantRotationIndex}");
+        if (tGraph.attachmentCount == 0)
+            r.diagnosticLog.Add("[STRUCTURAL WARNING] Target attachPoints contain no tube-connector links; " +
+                "branch matching cannot establish structural overlap beyond a pivot.");
+        if (r.structuralCandidatesTruncated > 0)
+            r.diagnosticLog.Add("[STRUCTURAL WARNING] At least one correspondence search hit the " +
+                "50,000-step safety limit; reported maximum may be incomplete.");
+        foreach (var match in r.structuralMatches)
+            r.diagnosticLog.Add($"[STRUCTURAL PASS] " +
+                $"target={AnchorHierarchyPath(targetRoot, match.target.transform)} " +
+                $"participant={AnchorHierarchyPath(participantRoot, match.participant.transform)} " +
+                $"positionError={match.positionError:F4} " +
+                $"connectorRotationError={match.connectorRotationError:F2}");
+        var structuralTargets = new HashSet<BuildingPiece>(r.structuralMatches.Select(x => x.target));
+        foreach (var target in ts)
+        {
+            if (structuralTargets.Contains(target)) continue;
+            string reason = "no compatible connected branch from the pivot";
+            if (structural.targetAnchor >= 0)
+            {
+                Vector3 targetPoint = (Local(targetRoot, target) - tc) / targetUnit;
+                bool anySameType = false, anyInPosition = false, anyValidRotation = false;
+                foreach (var candidate in ps)
+                {
+                    if (candidate.pieceType != target.pieceType) continue;
+                    anySameType = true;
+                    Vector3 candidatePoint = (Local(participantRoot, candidate) - pc) / targetUnit;
+                    float separation = Vector3.Distance(targetPoint,
+                        structural.rotation * candidatePoint + structural.translation);
+                    if (separation > settings.PositionTolerance + 1e-5f) continue;
+                    anyInPosition = true;
+                    if (!Connector(target) || ErrorAngle(target, candidate,
+                        Rotation(targetRoot, target),
+                        structural.rotation * Rotation(participantRoot, candidate)) <= settings.OrientationTolerance)
+                        anyValidRotation = true;
+                }
+                if (!anySameType) reason = "no participant piece with matching type";
+                else if (!anyInPosition) reason = "matching type exists, but not at the required structural position";
+                else if (!anyValidRotation) reason = "connector rotation does not match";
+                else reason = "attachment path broken or candidate needed by another branch";
+            }
+            r.diagnosticLog.Add($"[STRUCTURAL NO CREDIT] " +
+                AnchorHierarchyPath(targetRoot, target.transform) + " reason=" + reason);
+        }
+        // The axis diagnostic uses the structural alignment, not the independent
+        // position-only property alignment. This is separate from the graph score.
+        var ta = Axes(ts, targetRoot, tc, targetUnit, Quaternion.identity);
+        var pa = Axes(ps, participantRoot, pc, targetUnit, structural.rotation);
+        r.targetAxisCount = ta.Count;
+        r.participantAxisCount = pa.Count;
+        r.axisEvaluated = ta.Count > 0 && pa.Count > 0;
+        r.structuralAxisError = r.axisEvaluated ? AxisError(ta, pa) : 180f;
+        r.structuralAxisCorrect = r.axisEvaluated && r.structuralAxisError <= settings.AxisTolerance;
+    }
+
     public static Result Grade(Transform targetRoot, Transform participantRoot, Settings settings)
     {
         if (targetRoot == null || participantRoot == null)
@@ -816,7 +1196,7 @@ public static class FASTSharedGrading
         foreach (var p in ps.Where(x => !r.matches.Any(m => m.participant == x)))
             r.diagnosticLog.Add("[EXTRA/UNMATCHED] " + p.name);
         if (r.correctPositions == 0)
-            r.diagnosticLog.Add("[WARNING] Zero structural overlap despite anchor alignment.");
+            r.diagnosticLog.Add("[WARNING] Zero geometric overlap in the original property alignment.");
 
         // Compare directions in the SAME registered frame, not unaligned source frames.
         var targetAxes = Axes(ts, targetRoot, tc, tu, Quaternion.identity);
@@ -876,6 +1256,11 @@ public static class FASTSharedGrading
             }
             r.connectionLog.Add($"[CONNECTION] {tube.name} <-> {connector.name}: {reason}");
         }
+        // Independent structural stage. Runs AFTER the original calculations
+        // only to guarantee that its alignment cannot change colors/connectors/
+        // connections; the two stages use the same unchanged scene data.
+        ApplyConnectedStructuralGrade(r, ps, ts, participantRoot, targetRoot,
+            pc, tc, tu, settings);
         return r;
     }
 
@@ -914,7 +1299,7 @@ public static class FASTSharedGrading
             return;
         }
         Debug.Log("========== FAST GRADING ==========\n" +
-            "STAGE 0: EXHAUSTIVE CONNECTOR-ANCHOR ALIGNMENT\n" +
+            "STAGE 0: ORIGINAL GEOMETRIC ALIGNMENT (preserved for property scoring)\n" +
             $"Candidates tested: {r.alignmentCandidatesEvaluated}\n" +
             $"Winning anchors: target={r.winningTargetAnchor}, participant={r.winningParticipantAnchor}\n" +
             $"Target pivot hierarchy: {r.winningTargetAnchorPath}\n" +
@@ -922,13 +1307,15 @@ public static class FASTSharedGrading
             $"Target/participant child indexes (zero-based): {r.winningTargetChildIndex}/{r.winningParticipantChildIndex}\n" +
             $"Target/participant connector indexes: {r.winningTargetConnectorIndex}/{r.winningParticipantConnectorIndex}\n" +
             $"Winning orientation index: {r.winningOrientationIndex}\n" +
-            $"Structural overlap: {r.correctPositions}/{r.targetCount} ({r.PositionPercent:F2}%)\n" +
+            $"Property-alignment geometric overlap: {r.geometricPositionMatches}/{r.targetCount}\n" +
             $"Total normalized residual: {r.alignmentResidualSum:F4}\n\n" +
-            "STAGE 1: STRUCTURAL ANALYSIS\n" +
-            $"Structural Position: {r.correctPositions}/{r.targetCount} ({r.PositionPercent:F2}%)\n" +
+            "STAGE 1: CONNECTED STRUCTURAL ANALYSIS (connector type + rotation + links; no color)\n" +
+            $"Connected Structural Pieces: {r.correctPositions}/{r.targetCount} ({r.PositionPercent:F2}%)\n" +
+            $"Position-only overlap (property alignment): {r.geometricPositionMatches}/{r.targetCount}\n" +
+            $"Connected structural missing: {r.structuralMissing}\n" +
             $"Structural Axis: {(r.axisEvaluated ? r.structuralAxisError.ToString("F2") + " deg" : "n/a")} " +
             $"({(r.structuralAxisCorrect ? "CORRECT" : "INCORRECT")}; axes {r.targetAxisCount}/{r.participantAxisCount})\n" +
-            $"Matched: {r.matches.Count}, Missing: {r.missing}, Extra: {r.extra}\n\n" +
+            $"Property alignment paired: {r.matches.Count}, unmatched target: {r.missing}, unmatched participant: {r.extra}\n\n" +
             "STAGE 2: TUBE COLORS\n" +
             $"Tube Colors: {r.correctColors}/{r.targetTubes} ({r.ColorPercent:F2}%)\n\n" +
             "STAGE 3: CONNECTOR TYPES\n" +

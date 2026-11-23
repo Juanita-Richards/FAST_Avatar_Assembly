@@ -15,6 +15,9 @@ public class BuildGrader : MonoBehaviour
     {
         public int targetPieceCount, participantPieceCount, matchedPieceCount, missingPieces, extraPieces;
         public int targetStructuralPositions, correctStructuralPositions;
+        public int geometricPropertyPositionMatches, structurallyUnmatchedPieces;
+        public int structuralCandidatesEvaluated, structuralCandidatesTruncated;
+        public string structuralTargetPivotPath, structuralParticipantPivotPath;
         public float structureAccuracy;
         public int targetTubeCount, correctTubeColors;
         public float colorAccuracy;
@@ -29,11 +32,6 @@ public class BuildGrader : MonoBehaviour
         public bool unitsComparable;
         public bool rotationAlignmentApplied;
         public float rotationAlignmentDegrees;
-        public int alignmentCandidatesEvaluated, winningOrientationIndex;
-        public string winningTargetAnchor, winningParticipantAnchor;
-        public string winningTargetAnchorPath, winningParticipantAnchorPath;
-        public int winningTargetConnectorIndex, winningParticipantConnectorIndex;
-        public int winningTargetChildIndex, winningParticipantChildIndex;
         public FASTSharedGrading.Result sharedResult;
     }
 
@@ -42,19 +40,25 @@ public class BuildGrader : MonoBehaviour
         var r = FASTSharedGrading.Grade(targetBuildRoot, participantBuildRoot, gradingSettings);
         if (r == null)
         {
-            Debug.LogError("BuildGrader: one of the build roots is unassigned.");
+            Debug.LogError("BuildGrader2: one of the build roots is unassigned.");
             return null;
         }
         FASTSharedGrading.Log(r, verboseLog);
         // Grade() returns a Result even when the build could not be framed; check the flag
         // before reading any of the percentages, which are all zero in that case.
         if (!r.unitsComparable)
-            Debug.LogWarning("BuildGrader: result is NOT GRADED (unitsComparable is false). " +
+            Debug.LogWarning("BuildGrader2: result is NOT GRADED (unitsComparable is false). " +
                 "The percentages below are meaningless.");
         return new GradeResult {
             targetPieceCount=r.targetCount, participantPieceCount=r.participantCount,
             matchedPieceCount=r.matches.Count, missingPieces=r.missing, extraPieces=r.extra,
             targetStructuralPositions=r.targetCount, correctStructuralPositions=r.correctPositions,
+            geometricPropertyPositionMatches=r.geometricPositionMatches,
+            structurallyUnmatchedPieces=r.structuralMissing,
+            structuralCandidatesEvaluated=r.structuralCandidatesEvaluated,
+            structuralCandidatesTruncated=r.structuralCandidatesTruncated,
+            structuralTargetPivotPath=r.structuralTargetAnchorPath,
+            structuralParticipantPivotPath=r.structuralParticipantAnchorPath,
             structureAccuracy=r.PositionPercent,
             targetTubeCount=r.targetTubes, correctTubeColors=r.correctColors,
             colorAccuracy=r.ColorPercent,
@@ -72,16 +76,6 @@ public class BuildGrader : MonoBehaviour
             connectionAccuracy=r.ConnectionPercent,
             unitsComparable=r.unitsComparable,
             rotationAlignmentApplied=r.anchorAlignmentApplied,
-            alignmentCandidatesEvaluated=r.alignmentCandidatesEvaluated,
-            winningOrientationIndex=r.winningOrientationIndex,
-            winningTargetAnchor=r.winningTargetAnchor,
-            winningParticipantAnchor=r.winningParticipantAnchor,
-            winningTargetAnchorPath=r.winningTargetAnchorPath,
-            winningParticipantAnchorPath=r.winningParticipantAnchorPath,
-            winningTargetConnectorIndex=r.winningTargetConnectorIndex,
-            winningTargetChildIndex=r.winningTargetChildIndex,
-            winningParticipantConnectorIndex=r.winningParticipantConnectorIndex,
-            winningParticipantChildIndex=r.winningParticipantChildIndex,
             rotationAlignmentDegrees=Quaternion.Angle(Quaternion.identity,r.alignmentRotation),
             sharedResult=r
         };

@@ -403,7 +403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &47475833
 Transform:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ Transform:
   m_GameObject: {fileID: 47475832}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.012, y: 1.02216, z: 3.168}
+  m_LocalPosition: {x: -0.191, y: 1.02216, z: 3.372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5134,7 +5134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1092660077
 Transform:
   m_ObjectHideFlags: 0
@@ -5144,7 +5144,7 @@ Transform:
   m_GameObject: {fileID: 1092660076}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.012, y: 1.02216, z: 3.168}
+  m_LocalPosition: {x: -0.018, y: 1.02216, z: 2.853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8203,13 +8203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e34b70f4afad47a099e0dd60993c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildGrader2
-  targetBuildRoot: {fileID: 2304289702279674313}
-  participantBuildRoot: {fileID: 3534284440172294107}
+  targetBuildRoot: {fileID: 8691302677276401512}
+  participantBuildRoot: {fileID: 5149386979406293292}
   gradingSettings:
     normalizedPositionTolerance: 0.35
     orientationToleranceDegrees: 10
     axisToleranceDegrees: 10
-    alignWholeBuildRotation: 0
+    alignWholeBuildRotation: 1
     correspondenceAmbiguityThreshold: 0.03
     coAlignCorrespondences: 1
     coAlignSolveRotation: 1
@@ -25925,6 +25925,7 @@ Transform:
   m_Children:
   - {fileID: 3034099767615009559}
   - {fileID: 5530617702967294678}
+  - {fileID: 4597367539454959437}
   - {fileID: 6538492264785156055}
   - {fileID: 2390544339937180223}
   - {fileID: 4458183688152267452}
@@ -25932,7 +25933,6 @@ Transform:
   - {fileID: 6543791672964071657}
   - {fileID: 2752363859875052039}
   - {fileID: 2195583625024788364}
-  - {fileID: 4597367539454959437}
   m_Father: {fileID: 1429495760}
   m_LocalEulerAnglesHint: {x: 0, y: 48.745, z: 0}
 --- !u!4 &3535854645253412646
@@ -31833,7 +31833,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.3923679, y: -0.58825797, z: 0.58825797, w: 0.3923679}
   m_LocalPosition: {x: 0, y: 0.19749999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.9999999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3238901420914030003}
@@ -32264,7 +32264,7 @@ Transform:
   m_GameObject: {fileID: 6440057436915188336}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.003, y: 1.02216, z: 3.38008}
+  m_LocalPosition: {x: -0.079, y: 1.02216, z: 3.38008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34528,7 +34528,7 @@ Transform:
   m_GameObject: {fileID: 5292710520845096863}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.072, y: 1.025, z: 2.936}
+  m_LocalPosition: {x: -1.072, y: 1.025, z: 3.065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41011,7 +41011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &6446191876374550777
 GameObject:
   m_ObjectHideFlags: 0
@@ -43584,7 +43584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &7042322577432241812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51498,7 +51498,7 @@ Transform:
   m_GameObject: {fileID: 3041158047393504933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.119, y: 1.02216, z: 3.314}
+  m_LocalPosition: {x: -0.003, y: 1.02216, z: 3.384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
